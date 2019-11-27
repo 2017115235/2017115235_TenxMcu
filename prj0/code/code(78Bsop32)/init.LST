@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   INIT                                                              11/27/2019 19:22:55 PAGE 1   
+C51 COMPILER V9.60.0.0   INIT                                                              11/27/2019 20:10:24 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE INIT
@@ -13,7 +13,7 @@ line level    source
    4          void SysInit() {
    5   1         F_clearWDT();  //启动后立即清除看门狗
    6   1        //时钟初始化
-   7   1       CLKCON = 0x03; // Clock div 1// Clock div 1
+   7   1         CLKCON = 0x03; // Clock div 1  7.3728Mhz
    8   1        STPPCK = 0;
    9   1        STPFCK = 0;
   10   1        _nop_();
@@ -34,14 +34,23 @@ line level    source
   25   1        _nop_();
   26   1      
   27   1        // IO 模式初始化
-  28   1       P1MODL = 0xa8;
-  29   1        P1_0 = 1;
-  30   1        // IO 状态初始化
-  31   1        F_ledOff();
-  32   1      }
-  33          //=============================================================================
-  34          void VarsInit() {} 
-C51 COMPILER V9.60.0.0   INIT                                                              11/27/2019 19:22:55 PAGE 2   
+  28   1        P1MODL = 0xaa;   //P10 初始化为输出
+  29   1        // IO 状态初始化
+  30   1        F_ledOff();
+  31   1        //初始化 T2 定时器，设置为 1ms 中断一次；
+  32   1        // T2 初始化  7.3728Mhz/2 = 3686400Hz
+  33   1        //  3686400Hz/3686.4 = 1000Hz = 1ms timer2 interrupt
+  34   1        TH2 = (65536 - 3686) / 256;
+  35   1        RCP2H = TH2;
+  36   1        TL2 = (65536 - 3686) % 256;
+  37   1        RCP2L = TL2;
+  38   1        TR2 = 1;
+  39   1        ET2 = 1;
+  40   1        EA = 1;
+  41   1      }
+  42          //=============================================================================
+  43          void VarsInit() {} 
+C51 COMPILER V9.60.0.0   INIT                                                              11/27/2019 20:10:24 PAGE 2   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -89,21 +98,35 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 25
 0019 00                NOP     
                                            ; SOURCE LINE # 28
-001A 75A2A8            MOV     P1MODL,#0A8H
-                                           ; SOURCE LINE # 29
-001D D290              SETB    P1_0
-                                           ; SOURCE LINE # 31
-001F C291              CLR     P1_1
-                                           ; SOURCE LINE # 32
-0021 22                RET     
+001A 75A2AA            MOV     P1MODL,#0AAH
+                                           ; SOURCE LINE # 30
+001D C290              CLR     P1_0
+                                           ; SOURCE LINE # 34
+001F 75CDF1            MOV     TH2,#0F1H
+                                           ; SOURCE LINE # 35
+0022 85CDCB            MOV     RCP2H,TH2
+                                           ; SOURCE LINE # 36
+0025 75CC9A            MOV     TL2,#09AH
+                                           ; SOURCE LINE # 37
+0028 85CCCA            MOV     RCP2L,TL2
+                                           ; SOURCE LINE # 38
+002B D2CA              SETB    TR2
+                                           ; SOURCE LINE # 39
+002D D2AD              SETB    ET2
+                                           ; SOURCE LINE # 40
+C51 COMPILER V9.60.0.0   INIT                                                              11/27/2019 20:10:24 PAGE 3   
+
+002F D2AF              SETB    EA
+                                           ; SOURCE LINE # 41
+0031 22                RET     
              ; FUNCTION SysInit (END)
 
              ; FUNCTION VarsInit (BEGIN)
-                                           ; SOURCE LINE # 34
+                                           ; SOURCE LINE # 43
 0000 22                RET     
              ; FUNCTION VarsInit (END)
 
-C51 COMPILER V9.60.0.0   INIT                                                              11/27/2019 19:22:55 PAGE 3   
+C51 COMPILER V9.60.0.0   INIT                                                              11/27/2019 20:10:24 PAGE 4   
 
 NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
 ====                                    =====   ======  ====    ======  ====
@@ -114,11 +137,11 @@ P0 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0080H  1
 P1 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0090H  1
 P2 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00A0H  1
 P3 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00B0H  1
+EA . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00AFH  1
 int32_t. . . . . . . . . . . . . . . .  TYPEDEF  -----  LONG     -----  4
 int16_t. . . . . . . . . . . . . . . .  TYPEDEF  -----  INT      -----  2
 IE . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00A8H  1
 P1_0 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0090H  1
-P1_1 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0091H  1
 IP . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00B8H  1
 AUX1 . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00F8H  1
 P1MODL . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00A2H  1
@@ -127,19 +150,25 @@ VarsInit . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
 TCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0088H  1
 SELFCK . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00DAH  1
 CLKCON . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00D8H  1
+ET2. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00ADH  1
 STPFCK . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00DBH  1
+TH2. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00CDH  1
 uint8_t. . . . . . . . . . . . . . . .  TYPEDEF  -----  U_CHAR   -----  1
 CLRWDT . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00FFH  1
+TL2. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00CCH  1
 SysInit. . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
 STPPCK . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00DCH  1
+TR2. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00CAH  1
 int8_t . . . . . . . . . . . . . . . .  TYPEDEF  -----  CHAR     -----  1
+RCP2H. . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00CBH  1
+RCP2L. . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00CAH  1
 T2CON. . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00C8H  1
 PSW. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00D0H  1
 uint32_t . . . . . . . . . . . . . . .  TYPEDEF  -----  U_LONG   -----  4
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     35    ----
+   CODE SIZE        =     51    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

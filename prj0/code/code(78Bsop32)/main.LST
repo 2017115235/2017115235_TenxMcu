@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MAIN                                                              11/27/2019 19:22:55 PAGE 1   
+C51 COMPILER V9.60.0.0   MAIN                                                              11/27/2019 20:10:25 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
@@ -13,38 +13,72 @@ line level    source
    4          void main() {
    5   1            SysInit();
    6   1              VarsInit();
-   7   1             F_ledOn();
-   8   1         DelayMs(500); 
-   9   1        //使能看门狗
-  10   1        F_turnOnWDT();
-  11   1        while (1) {
-  12   2          //喂狗
-  13   2           F_clearWDT();
-  14   2          // user coding
-  15   2           // F_ledOff();
-  16   2          // delayMs(500);
-  17   2          // F_ledOn();
-  18   2          // delayMs(500);
-  19   2          // delayMs(5);
-  20   2           GetKeys();
-  21   2          if (D_keyValue1 == keyValue) {
-  22   3            F_ledNeg();
-  23   3          }
-  24   2          keyValue = D_keyNull;
-  25   2        }
-  26   1      }
-  27          //=============================================================================
-  28          void DelayMs(uint16_t msCount) {
-  29   1       uint16_t i, j;
-  30   1        for (i = 0; i < msCount; i++) {
-  31   2                for (j = 0; j < 1000; j++) {
-  32   3                   /* code */
-  33   3                   F_clearWDT();
-  34   3          }
-  35   2                }
-  36   1        }
-  37                
-C51 COMPILER V9.60.0.0   MAIN                                                              11/27/2019 19:22:55 PAGE 2   
+   7   1           
+   8   1        //使能看门狗
+   9   1        F_turnOnWDT();
+  10   1        while (1) {
+  11   2          //喂狗
+  12   2           F_clearWDT();
+  13   2          //业务代码
+  14   2          TimeProcess();
+  15   2          TaskSetting();
+  16   2          TaskProcess();
+  17   2           // DisplayProcess();
+  18   2        }
+  19   1      }
+  20          //=============================================================================
+  21          void TimeProcess() {
+  22   1        static uint8_t timer5ms = 0;
+  23   1        static uint16_t second = 0;
+  24   1      
+  25   1        if (b1ms) {
+  26   2          // 1ms 执行一次
+  27   2          b1ms = 0;
+  28   2          timer5ms++;
+  29   2          second++;
+  30   2        }
+  31   1        if (timer5ms >= D_5ms) {
+  32   2            // 5ms 执行一次
+  33   2          timer5ms = 0;
+  34   2           GetKeys();
+  35   2          }
+  36   1        if (second >= D_1000ms) {
+  37   2          // 1s 执行一次
+  38   2          second = 0;
+  39   2          //volatile 配合使用的代码
+  40   2          vData = 0;
+  41   2        }
+  42   1        vData +=gData;
+  43   1        if (vData > 100) {
+  44   2          F_ledOn();
+  45   2        } else {
+  46   2          F_ledOff();
+  47   2        }
+  48   1      }
+  49          //=============================================================================
+  50          void TaskProcess() {}
+  51          //=============================================================================
+  52          void TaskSetting() {
+  53   1        if (D_keyValue1 == keyValue) {
+  54   2           bLedFlash = ~bLedFlash;
+  55   2        }
+C51 COMPILER V9.60.0.0   MAIN                                                              11/27/2019 20:10:25 PAGE 2   
+
+  56   1        keyValue = D_keyNull;
+  57   1      }
+  58          //=============================================================================
+  59          void DisplayProcess() {
+  60   1        // F_ledOn();
+  61   1        if (bLedFlash) {
+  62   2          F_ledOn();
+  63   2        } else {
+  64   2          F_ledOff();
+  65   2        }
+  66   1      } 
+  67                    
+  68            
+  69                
+C51 COMPILER V9.60.0.0   MAIN                                                              11/27/2019 20:10:25 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -55,83 +89,139 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0000 120000      E     LCALL   SysInit
                                            ; SOURCE LINE # 6
 0003 120000      E     LCALL   VarsInit
-                                           ; SOURCE LINE # 7
-0006 D291              SETB    P1_1
-                                           ; SOURCE LINE # 8
-0008 7FF4              MOV     R7,#0F4H
-000A 7E01              MOV     R6,#01H
-000C 120000      R     LCALL   _DelayMs
+                                           ; SOURCE LINE # 9
+0006 E5F7              MOV     A,CFGWL
+0008 543F              ANL     A,#03FH
+000A 44C0              ORL     A,#0C0H
+000C F5F7              MOV     CFGWL,A
+000E         ?C0001:
                                            ; SOURCE LINE # 10
-000F E5F7              MOV     A,CFGWL
-0011 543F              ANL     A,#03FH
-0013 44C0              ORL     A,#0C0H
-0015 F5F7              MOV     CFGWL,A
-0017         ?C0001:
-                                           ; SOURCE LINE # 11
-                                           ; SOURCE LINE # 13
-0017 D2FF              SETB    CLRWDT
-                                           ; SOURCE LINE # 20
-0019 120000      E     LCALL   GetKeys
-                                           ; SOURCE LINE # 21
-001C E500        E     MOV     A,keyValue
-001E 6401              XRL     A,#01H
-0020 7002              JNZ     ?C0003
-                                           ; SOURCE LINE # 22
-0022 B291              CPL     P1_1
-                                           ; SOURCE LINE # 23
-0024         ?C0003:
-                                           ; SOURCE LINE # 24
-0024 E4                CLR     A
-0025 F500        E     MOV     keyValue,A
-                                           ; SOURCE LINE # 25
-0027 80EE              SJMP    ?C0001
+                                           ; SOURCE LINE # 12
+000E D2FF              SETB    CLRWDT
+                                           ; SOURCE LINE # 14
+0010 120000      R     LCALL   TimeProcess
+                                           ; SOURCE LINE # 15
+0013 120000      R     LCALL   TaskSetting
+                                           ; SOURCE LINE # 16
+0016 120000      R     LCALL   TaskProcess
+                                           ; SOURCE LINE # 18
+0019 80F3              SJMP    ?C0001
              ; FUNCTION main (END)
 
-             ; FUNCTION _DelayMs (BEGIN)
+             ; FUNCTION TimeProcess (BEGIN)
+                                           ; SOURCE LINE # 21
+                                           ; SOURCE LINE # 25
+0000 30000C      E     JNB     b1ms,?C0004
+                                           ; SOURCE LINE # 27
+0003 C200        E     CLR     b1ms
                                            ; SOURCE LINE # 28
-;---- Variable 'msCount' assigned to Register 'R6/R7' ----
+0005 0500        R     INC     timer5ms
+                                           ; SOURCE LINE # 29
+0007 0500        R     INC     second+01H
+0009 E500        R     MOV     A,second+01H
+000B 7002              JNZ     ?C0016
+000D 0500        R     INC     second
+000F         ?C0016:
                                            ; SOURCE LINE # 30
-;---- Variable 'i' assigned to Register 'R4/R5' ----
-0000 E4                CLR     A
-0001 FD                MOV     R5,A
-0002 FC                MOV     R4,A
-0003         ?C0005:
-0003 C3                CLR     C
-0004 ED                MOV     A,R5
-0005 9F                SUBB    A,R7
-0006 EC                MOV     A,R4
-0007 9E                SUBB    A,R6
-0008 5017              JNC     ?C0011
+000F         ?C0004:
                                            ; SOURCE LINE # 31
-;---- Variable 'j' assigned to Register 'R2/R3' ----
-000A E4                CLR     A
-000B FB                MOV     R3,A
-000C FA                MOV     R2,A
-000D         ?C0008:
-C51 COMPILER V9.60.0.0   MAIN                                                              11/27/2019 19:22:55 PAGE 3   
-
+000F C3                CLR     C
+0010 E500        R     MOV     A,timer5ms
+0012 9405              SUBB    A,#05H
+0014 7480              MOV     A,#080H
+0016 9480              SUBB    A,#080H
+0018 4006              JC      ?C0005
                                            ; SOURCE LINE # 33
-000D D2FF              SETB    CLRWDT
+001A E4                CLR     A
+001B F500        R     MOV     timer5ms,A
                                            ; SOURCE LINE # 34
-000F 0B                INC     R3
-0010 BB0001            CJNE    R3,#00H,?C0012
-0013 0A                INC     R2
-0014         ?C0012:
-0014 BA03F6            CJNE    R2,#03H,?C0008
-0017 BBE8F3            CJNE    R3,#0E8H,?C0008
+001D 120000      E     LCALL   GetKeys
                                            ; SOURCE LINE # 35
-001A         ?C0007:
-001A 0D                INC     R5
-001B BD0001            CJNE    R5,#00H,?C0013
-001E 0C                INC     R4
-001F         ?C0013:
-001F 80E2              SJMP    ?C0005
+0020         ?C0005:
                                            ; SOURCE LINE # 36
-0021         ?C0011:
-0021 22                RET     
-             ; FUNCTION _DelayMs (END)
+0020 C3                CLR     C
+0021 E500        R     MOV     A,second+01H
+0023 94E8              SUBB    A,#0E8H
+C51 COMPILER V9.60.0.0   MAIN                                                              11/27/2019 20:10:25 PAGE 4   
 
-C51 COMPILER V9.60.0.0   MAIN                                                              11/27/2019 19:22:55 PAGE 4   
+0025 E500        R     MOV     A,second
+0027 9403              SUBB    A,#03H
+0029 4007              JC      ?C0006
+                                           ; SOURCE LINE # 38
+002B E4                CLR     A
+002C F500        R     MOV     second,A
+002E F500        R     MOV     second+01H,A
+                                           ; SOURCE LINE # 40
+0030 F500        E     MOV     vData,A
+                                           ; SOURCE LINE # 41
+0032         ?C0006:
+                                           ; SOURCE LINE # 42
+0032 E500        E     MOV     A,gData
+0034 2500        E     ADD     A,vData
+0036 F500        E     MOV     vData,A
+                                           ; SOURCE LINE # 43
+0038 AF00        E     MOV     R7,vData
+003A D3                SETB    C
+003B EF                MOV     A,R7
+003C 9464              SUBB    A,#064H
+003E 7480              MOV     A,#080H
+0040 9480              SUBB    A,#080H
+0042 4003              JC      ?C0007
+                                           ; SOURCE LINE # 44
+0044 D290              SETB    P1_0
+                                           ; SOURCE LINE # 45
+0046 22                RET     
+0047         ?C0007:
+                                           ; SOURCE LINE # 46
+0047 C290              CLR     P1_0
+                                           ; SOURCE LINE # 47
+                                           ; SOURCE LINE # 48
+0049         ?C0009:
+0049 22                RET     
+             ; FUNCTION TimeProcess (END)
+
+             ; FUNCTION TaskProcess (BEGIN)
+                                           ; SOURCE LINE # 50
+0000 22                RET     
+             ; FUNCTION TaskProcess (END)
+
+             ; FUNCTION TaskSetting (BEGIN)
+                                           ; SOURCE LINE # 52
+                                           ; SOURCE LINE # 53
+0000 E500        E     MOV     A,keyValue
+0002 6401              XRL     A,#01H
+0004 7002              JNZ     ?C0011
+                                           ; SOURCE LINE # 54
+0006 B200        R     CPL     bLedFlash
+                                           ; SOURCE LINE # 55
+0008         ?C0011:
+                                           ; SOURCE LINE # 56
+0008 E4                CLR     A
+0009 F500        E     MOV     keyValue,A
+                                           ; SOURCE LINE # 57
+000B 22                RET     
+             ; FUNCTION TaskSetting (END)
+
+             ; FUNCTION DisplayProcess (BEGIN)
+                                           ; SOURCE LINE # 59
+                                           ; SOURCE LINE # 61
+0000 300003      R     JNB     bLedFlash,?C0013
+C51 COMPILER V9.60.0.0   MAIN                                                              11/27/2019 20:10:25 PAGE 5   
+
+                                           ; SOURCE LINE # 62
+0003 D290              SETB    P1_0
+                                           ; SOURCE LINE # 63
+0005 22                RET     
+0006         ?C0013:
+                                           ; SOURCE LINE # 64
+0006 C290              CLR     P1_0
+                                           ; SOURCE LINE # 65
+                                           ; SOURCE LINE # 66
+0008         ?C0015:
+0008 22                RET     
+             ; FUNCTION DisplayProcess (END)
+
+C51 COMPILER V9.60.0.0   MAIN                                                              11/27/2019 20:10:25 PAGE 6   
 
 NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
 ====                                    =====   ======  ====    ======  ====
@@ -145,38 +235,44 @@ P3 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00B0H  1
 int32_t. . . . . . . . . . . . . . . .  TYPEDEF  -----  LONG     -----  4
 int16_t. . . . . . . . . . . . . . . .  TYPEDEF  -----  INT      -----  2
 IE . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00A8H  1
-P1_1 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0091H  1
+P1_0 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0090H  1
 IP . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00B8H  1
 AUX1 . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00F8H  1
 main . . . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
-_DelayMs . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
-  msCount. . . . . . . . . . . . . . .  * REG *  DATA   U_INT    0006H  2
-  i. . . . . . . . . . . . . . . . . .  * REG *  DATA   U_INT    0004H  2
-  j. . . . . . . . . . . . . . . . . .  * REG *  DATA   U_INT    0002H  2
 SCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0098H  1
 VarsInit . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
 TCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0088H  1
 CLKCON . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00D8H  1
+DisplayProcess . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
 GetKeys. . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
 keyValue . . . . . . . . . . . . . . .  EXTERN   DATA   U_CHAR   -----  1
 uint8_t. . . . . . . . . . . . . . . .  TYPEDEF  -----  U_CHAR   -----  1
 CLRWDT . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00FFH  1
 SysInit. . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
 int8_t . . . . . . . . . . . . . . . .  TYPEDEF  -----  CHAR     -----  1
+gData. . . . . . . . . . . . . . . . .  EXTERN   DATA   U_CHAR   -----  1
 T2CON. . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00C8H  1
+bLedFlash. . . . . . . . . . . . . . .  PUBLIC   DATA   BIT      0000H  1
+vData. . . . . . . . . . . . . . . . .  EXTERN   DATA   U_CHAR   -----  1
+b1ms . . . . . . . . . . . . . . . . .  EXTERN   DATA   BIT      -----  1
 CFGWL. . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00F7H  1
+TimeProcess. . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+  timer5ms . . . . . . . . . . . . . .  STATIC   DATA   U_CHAR   0000H  1
+  second . . . . . . . . . . . . . . .  STATIC   DATA   U_INT    0001H  2
+TaskSetting. . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+TaskProcess. . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
 PSW. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00D0H  1
 uint32_t . . . . . . . . . . . . . . .  TYPEDEF  -----  U_LONG   -----  4
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     75    ----
+   CODE SIZE        =    123    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----    ----
+   DATA SIZE        =      3    ----
    IDATA SIZE       =   ----    ----
-   BIT SIZE         =   ----    ----
+   BIT SIZE         =      1    ----
 END OF MODULE INFORMATION.
 
 

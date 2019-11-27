@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   KEYS                                                              11/27/2019 19:22:56 PAGE 1   
+C51 COMPILER V9.60.0.0   KEYS                                                              11/27/2019 20:10:25 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE KEYS
@@ -12,15 +12,23 @@ line level    source
    3          //=============================================================================
    4          void GetKeys() {
    5   1        static uint8_t tempKeyValue = D_keyNull;
-   6   1      
-   7   1        if (P_key1 == 0) {
-   8   2            tempKeyValue = D_keyValue1;
-   9   2        } else {
-  10   2          keyValue = tempKeyValue;
-  11   2          tempKeyValue = D_keyNull;
-  12   2        }
-  13   1      }  
-C51 COMPILER V9.60.0.0   KEYS                                                              11/27/2019 19:22:56 PAGE 2   
+   6   1      //按键口 P10 设为上拉输入
+   7   1        P1MODL = 0xa8;
+   8   1        _nop_();
+   9   1        _nop_();
+  10   1        _nop_();
+  11   1        _nop_();
+  12   1        _nop_();
+  13   1        if (P_key1 == 0) {
+  14   2            tempKeyValue = D_keyValue1;
+  15   2        } else {
+  16   2          keyValue = tempKeyValue;
+  17   2          tempKeyValue = D_keyNull;
+  18   2        }
+  19   1        //按键口P10，恢复为输出
+  20   1        P1MODL = 0xaa;
+  21   1      }  
+C51 COMPILER V9.60.0.0   KEYS                                                              11/27/2019 20:10:25 PAGE 2   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -28,24 +36,38 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION GetKeys (BEGIN)
                                            ; SOURCE LINE # 4
                                            ; SOURCE LINE # 7
-0000 209004            JB      P1_0,?C0001
+0000 75A2A8            MOV     P1MODL,#0A8H
                                            ; SOURCE LINE # 8
-0003 750001      R     MOV     tempKeyValue,#01H
+0003 00                NOP     
                                            ; SOURCE LINE # 9
-0006 22                RET     
-0007         ?C0001:
+0004 00                NOP     
                                            ; SOURCE LINE # 10
-0007 850000      R     MOV     keyValue,tempKeyValue
+0005 00                NOP     
                                            ; SOURCE LINE # 11
-000A E4                CLR     A
-000B F500        R     MOV     tempKeyValue,A
+0006 00                NOP     
                                            ; SOURCE LINE # 12
+0007 00                NOP     
                                            ; SOURCE LINE # 13
-000D         ?C0003:
-000D 22                RET     
+0008 209005            JB      P1_0,?C0001
+                                           ; SOURCE LINE # 14
+000B 750001      R     MOV     tempKeyValue,#01H
+                                           ; SOURCE LINE # 15
+000E 8006              SJMP    ?C0002
+0010         ?C0001:
+                                           ; SOURCE LINE # 16
+0010 850000      R     MOV     keyValue,tempKeyValue
+                                           ; SOURCE LINE # 17
+0013 E4                CLR     A
+0014 F500        R     MOV     tempKeyValue,A
+                                           ; SOURCE LINE # 18
+0016         ?C0002:
+                                           ; SOURCE LINE # 20
+0016 75A2AA            MOV     P1MODL,#0AAH
+                                           ; SOURCE LINE # 21
+0019 22                RET     
              ; FUNCTION GetKeys (END)
 
-C51 COMPILER V9.60.0.0   KEYS                                                              11/27/2019 19:22:56 PAGE 3   
+C51 COMPILER V9.60.0.0   KEYS                                                              11/27/2019 20:10:25 PAGE 3   
 
 NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
 ====                                    =====   ======  ====    ======  ====
@@ -62,6 +84,7 @@ IE . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00A8H  1
 P1_0 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0090H  1
 IP . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00B8H  1
 AUX1 . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00F8H  1
+P1MODL . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00A2H  1
 SCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0098H  1
 TCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0088H  1
 CLKCON . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00D8H  1
@@ -76,7 +99,7 @@ uint32_t . . . . . . . . . . . . . . .  TYPEDEF  -----  U_LONG   -----  4
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     14    ----
+   CODE SIZE        =     26    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
