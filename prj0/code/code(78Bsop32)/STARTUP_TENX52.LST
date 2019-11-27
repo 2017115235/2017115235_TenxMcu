@@ -1,9 +1,9 @@
-A51 MACRO ASSEMBLER  STARTUP_TENX52                                                       11/25/2019 22:52:43 PAGE     1
+A51 MACRO ASSEMBLER  STARTUP_TENX52                                                       11/27/2019 19:22:54 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.2.7.0
 OBJECT MODULE PLACED IN STARTUP_TENX52.OBJ
-ASSEMBLER INVOKED BY: F:\keil C51\C51\BIN\A51.EXE STARTUP_TENX52.A51 SET(SMALL) DEBUG EP
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE STARTUP_TENX52.A51 SET(SMALL) DEBUG EP
 
 LOC  OBJ            LINE     SOURCE
 
@@ -65,7 +65,7 @@ LOC  OBJ            LINE     SOURCE
                       55     ;     <i> The absolute start address of PDATA memory
   0000                56     PDATASTART      EQU     0H              ; the absolute start-address of PDATA memory
                       57     ;
-A51 MACRO ASSEMBLER  STARTUP_TENX52                                                       11/25/2019 22:52:43 PAGE     2
+A51 MACRO ASSEMBLER  STARTUP_TENX52                                                       11/27/2019 19:22:54 PAGE     2
 
                       58     ; <o> PDATALEN: PDATA memory size <0x0-0xFF> 
                       59     ;     <i> The length of PDATA memory in bytes.
@@ -133,7 +133,7 @@ LOC  OBJ            LINE     SOURCE
                      121     ; Standard SFR Symbols 
   00E0               122     ACC     DATA    0E0H
   00F0               123     B       DATA    0F0H
-A51 MACRO ASSEMBLER  STARTUP_TENX52                                                       11/25/2019 22:52:43 PAGE     3
+A51 MACRO ASSEMBLER  STARTUP_TENX52                                                       11/27/2019 19:22:54 PAGE     3
 
   0081               124     SP      DATA    81H
   0082               125     DPL     DATA    82H
@@ -201,7 +201,7 @@ LOC  OBJ            LINE     SOURCE
                              PDATALOOP:      MOVX    @R0,A
                                              INC     R0
                                              DJNZ    R7,PDATALOOP
-A51 MACRO ASSEMBLER  STARTUP_TENX52                                                       11/25/2019 22:52:43 PAGE     4
+A51 MACRO ASSEMBLER  STARTUP_TENX52                                                       11/27/2019 19:22:54 PAGE     4
 
                              ENDIF
                      191     
@@ -237,7 +237,7 @@ LOC  OBJ            LINE     SOURCE
 0009 020000   F      221                     LJMP    ?C_START    ;call main() function in the C code
                      222     
                      223                     END
-A51 MACRO ASSEMBLER  STARTUP_TENX52                                                       11/25/2019 22:52:43 PAGE     5
+A51 MACRO ASSEMBLER  STARTUP_TENX52                                                       11/27/2019 19:22:54 PAGE     5
 
 SYMBOL TABLE LISTING
 ------ ----- -------
