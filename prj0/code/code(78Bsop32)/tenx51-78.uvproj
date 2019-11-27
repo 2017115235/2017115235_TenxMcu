@@ -33,10 +33,10 @@
           <SFDFile></SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
-          <BinPath>F:\keil C51\C51\BIN\</BinPath>
+          <BinPath></BinPath>
           <IncludePath></IncludePath>
           <LibPath></LibPath>
-          <RegisterFilePath></RegisterFilePath>
+          <RegisterFilePath>tenx\</RegisterFilePath>
           <DBRegisterFilePath>tenx\</DBRegisterFilePath>
           <TargetStatus>
             <Error>0</Error>
@@ -314,7 +314,7 @@
             <uAregs>0</uAregs>
             <UseInterruptVector>1</UseInterruptVector>
             <Fuzzy>3</Fuzzy>
-            <Optimize>9</Optimize>
+            <Optimize>8</Optimize>
             <WarningLevel>2</WarningLevel>
             <SizeSpeed>1</SizeSpeed>
             <ObjectExtend>1</ObjectExtend>
@@ -374,8 +374,13 @@
       </TargetOption>
       <Groups>
         <Group>
-          <GroupName>New Group</GroupName>
+          <GroupName>Source Group 1</GroupName>
           <Files>
+            <File>
+              <FileName>STARTUP_TENX52.A51</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\STARTUP_TENX52.A51</FilePath>
+            </File>
             <File>
               <FileName>display.c</FileName>
               <FileType>1</FileType>
@@ -390,6 +395,11 @@
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>keys.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\keys.c</FilePath>
             </File>
           </Files>
         </Group>
