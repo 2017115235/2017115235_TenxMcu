@@ -1,0 +1,89 @@
+C51 COMPILER V9.60.0.0   KEYS                                                              11/27/2019 19:22:56 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE KEYS
+OBJECT MODULE PLACED IN keys.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE keys.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND CODE SYMBOLS TABS(2)
+
+line level    source
+
+   1          #define __keys_c
+   2          #include "includeAll.h"
+   3          //=============================================================================
+   4          void GetKeys() {
+   5   1        static uint8_t tempKeyValue = D_keyNull;
+   6   1      
+   7   1        if (P_key1 == 0) {
+   8   2            tempKeyValue = D_keyValue1;
+   9   2        } else {
+  10   2          keyValue = tempKeyValue;
+  11   2          tempKeyValue = D_keyNull;
+  12   2        }
+  13   1      }  
+C51 COMPILER V9.60.0.0   KEYS                                                              11/27/2019 19:22:56 PAGE 2   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION GetKeys (BEGIN)
+                                           ; SOURCE LINE # 4
+                                           ; SOURCE LINE # 7
+0000 209004            JB      P1_0,?C0001
+                                           ; SOURCE LINE # 8
+0003 750001      R     MOV     tempKeyValue,#01H
+                                           ; SOURCE LINE # 9
+0006 22                RET     
+0007         ?C0001:
+                                           ; SOURCE LINE # 10
+0007 850000      R     MOV     keyValue,tempKeyValue
+                                           ; SOURCE LINE # 11
+000A E4                CLR     A
+000B F500        R     MOV     tempKeyValue,A
+                                           ; SOURCE LINE # 12
+                                           ; SOURCE LINE # 13
+000D         ?C0003:
+000D 22                RET     
+             ; FUNCTION GetKeys (END)
+
+C51 COMPILER V9.60.0.0   KEYS                                                              11/27/2019 19:22:56 PAGE 3   
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+
+uint16_t . . . . . . . . . . . . . . .  TYPEDEF  -----  U_INT    -----  2
+P0 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0080H  1
+P1 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0090H  1
+P2 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00A0H  1
+P3 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00B0H  1
+int32_t. . . . . . . . . . . . . . . .  TYPEDEF  -----  LONG     -----  4
+int16_t. . . . . . . . . . . . . . . .  TYPEDEF  -----  INT      -----  2
+IE . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00A8H  1
+P1_0 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0090H  1
+IP . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00B8H  1
+AUX1 . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00F8H  1
+SCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0098H  1
+TCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0088H  1
+CLKCON . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00D8H  1
+GetKeys. . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+  tempKeyValue . . . . . . . . . . . .  STATIC   DATA   U_CHAR   0000H  1
+keyValue . . . . . . . . . . . . . . .  PUBLIC   DATA   U_CHAR   0001H  1
+uint8_t. . . . . . . . . . . . . . . .  TYPEDEF  -----  U_CHAR   -----  1
+int8_t . . . . . . . . . . . . . . . .  TYPEDEF  -----  CHAR     -----  1
+T2CON. . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00C8H  1
+PSW. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00D0H  1
+uint32_t . . . . . . . . . . . . . . .  TYPEDEF  -----  U_LONG   -----  4
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     14    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
