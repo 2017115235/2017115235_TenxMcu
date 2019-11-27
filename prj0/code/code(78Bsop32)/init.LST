@@ -1,0 +1,143 @@
+C51 COMPILER V9.60.0.0   INIT                                                              11/26/2019 14:48:21 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE INIT
+OBJECT MODULE PLACED IN init.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE init.c OPTIMIZE(9,SPEED) BROWSE DEBUG OBJECTEXTEND CODE SYMBOLS TABS(2)
+
+line level    source
+
+   1          #define __init_c
+   2          #include "includeAll.h"
+   3          //=============================================================================
+   4          void SysInit() {
+   5   1        //时钟初始化
+   6   1        CLKCON = 0x03; // Clock div 1
+   7   1        STPPCK = 0;
+   8   1        STPFCK = 0;
+   9   1        _nop_();
+  10   1        _nop_();
+  11   1        _nop_();
+  12   1        _nop_();
+  13   1        _nop_();
+  14   1        SELFCK = 1;
+  15   1        _nop_();
+  16   1        _nop_();
+  17   1        _nop_();
+  18   1        _nop_();
+  19   1        _nop_();
+  20   1        _nop_();
+  21   1        _nop_();
+  22   1        _nop_();
+  23   1        _nop_();
+  24   1        _nop_();
+  25   1         // IO 模式初始化
+  26   1        P1MODL = 0xaa;
+  27   1        // IO 状态初始化
+  28   1        F_ledOff();
+  29   1      }
+  30          //=============================================================================
+  31          void VarsInit() {} 
+C51 COMPILER V9.60.0.0   INIT                                                              11/26/2019 14:48:21 PAGE 2   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION SysInit (BEGIN)
+                                           ; SOURCE LINE # 4
+                                           ; SOURCE LINE # 6
+0000 75D803            MOV     CLKCON,#03H
+                                           ; SOURCE LINE # 7
+0003 C2DC              CLR     STPPCK
+                                           ; SOURCE LINE # 8
+0005 C2DB              CLR     STPFCK
+                                           ; SOURCE LINE # 9
+0007 00                NOP     
+                                           ; SOURCE LINE # 10
+0008 00                NOP     
+                                           ; SOURCE LINE # 11
+0009 00                NOP     
+                                           ; SOURCE LINE # 12
+000A 00                NOP     
+                                           ; SOURCE LINE # 13
+000B 00                NOP     
+                                           ; SOURCE LINE # 14
+000C D2DA              SETB    SELFCK
+                                           ; SOURCE LINE # 15
+000E 00                NOP     
+                                           ; SOURCE LINE # 16
+000F 00                NOP     
+                                           ; SOURCE LINE # 17
+0010 00                NOP     
+                                           ; SOURCE LINE # 18
+0011 00                NOP     
+                                           ; SOURCE LINE # 19
+0012 00                NOP     
+                                           ; SOURCE LINE # 20
+0013 00                NOP     
+                                           ; SOURCE LINE # 21
+0014 00                NOP     
+                                           ; SOURCE LINE # 22
+0015 00                NOP     
+                                           ; SOURCE LINE # 23
+0016 00                NOP     
+                                           ; SOURCE LINE # 24
+0017 00                NOP     
+                                           ; SOURCE LINE # 26
+0018 75A2AA            MOV     P1MODL,#0AAH
+                                           ; SOURCE LINE # 28
+001B C291              CLR     P1_1
+                                           ; SOURCE LINE # 29
+001D 22                RET     
+             ; FUNCTION SysInit (END)
+
+             ; FUNCTION VarsInit (BEGIN)
+                                           ; SOURCE LINE # 31
+0000 22                RET     
+             ; FUNCTION VarsInit (END)
+
+C51 COMPILER V9.60.0.0   INIT                                                              11/26/2019 14:48:21 PAGE 3   
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+
+uint16_t . . . . . . . . . . . . . . .  TYPEDEF  -----  U_INT    -----  2
+P0 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0080H  1
+P1 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0090H  1
+P2 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00A0H  1
+P3 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00B0H  1
+int32_t. . . . . . . . . . . . . . . .  TYPEDEF  -----  LONG     -----  4
+int16_t. . . . . . . . . . . . . . . .  TYPEDEF  -----  INT      -----  2
+IE . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00A8H  1
+P1_1 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0091H  1
+IP . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00B8H  1
+AUX1 . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00F8H  1
+P1MODL . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00A2H  1
+SCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0098H  1
+VarsInit . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+TCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0088H  1
+SELFCK . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00DAH  1
+CLKCON . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00D8H  1
+STPFCK . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00DBH  1
+uint8_t. . . . . . . . . . . . . . . .  TYPEDEF  -----  U_CHAR   -----  1
+SysInit. . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+STPPCK . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00DCH  1
+int8_t . . . . . . . . . . . . . . . .  TYPEDEF  -----  CHAR     -----  1
+T2CON. . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00C8H  1
+PSW. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00D0H  1
+uint32_t . . . . . . . . . . . . . . .  TYPEDEF  -----  U_LONG   -----  4
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     31    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
