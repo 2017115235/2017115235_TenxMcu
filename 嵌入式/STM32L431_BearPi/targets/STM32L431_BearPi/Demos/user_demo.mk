@@ -17,6 +17,13 @@ ifeq ($(CONFIG_DEMO_TYPE), "none")
 		
 	endif
 
+#example for osal_task_demo
+	ifeq ($(CONFIG_USER_DEMO), "osal_task_demo")
+	 	user_demo_src  = ${wildcard $(TOP_DIR)/targets/STM32L431_BearPi/Demos/osal_task_demo/*.c}
+  		user_demo_defs = -D CONFIG_OSAL_TASK_ENABLE=1
+	endif
+
+
 	#example for oc_streetlight_infrared_template
 	ifeq ($(CONFIG_USER_DEMO), "oc_streetlight_infrared_template")	
 		user_demo_src  = ${wildcard $(TOP_DIR)/targets/STM32L431_BearPi/Demos/oc_streetlight_infrared_template/*.c}
@@ -70,11 +77,7 @@ ifeq ($(CONFIG_DEMO_TYPE), "none")
 		user_demo_defs = -D CONFIG_OC_LWM2M_CLOUD_MAP_ENABLE=1
 	endif
 
-#example for osal_task_demo
-	ifeq ($(CONFIG_USER_DEMO), "osal_task_demo")
-	 	user_demo_src  = ${wildcard $(TOP_DIR)/targets/STM32L431_BearPi/Demos/osal_task_demo/*.c}
-  		user_demo_defs = -D CONFIG_OSAL_TASK_ENABLE=1
-	endif
+
 
 	C_SOURCES += $(user_demo_src)
 	C_INCLUDES += $(user_demo_inc)
