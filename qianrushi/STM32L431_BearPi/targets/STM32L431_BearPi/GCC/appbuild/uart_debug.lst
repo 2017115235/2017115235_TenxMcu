@@ -1,0 +1,632 @@
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"uart_debug.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.data.s_pUSART,"aw",%progbits
+  18              		.align	2
+  21              	s_pUSART:
+  22 0000 00380140 		.word	1073821696
+  23              		.section	.data.s_uwIRQn,"aw",%progbits
+  24              		.align	2
+  27              	s_uwIRQn:
+  28 0000 25000000 		.word	37
+  29              		.section	.bss.s_uart_init,"aw",%nobits
+  30              		.align	2
+  33              	s_uart_init:
+  34 0000 00000000 		.space	4
+  35              		.comm	uart_debug,120,4
+  36              		.section	.bss.s_uartdebug_rcv_ring,"aw",%nobits
+  37              		.align	2
+  40              	s_uartdebug_rcv_ring:
+  41 0000 00000000 		.space	16
+  41      00000000 
+  41      00000000 
+  41      00000000 
+  42              		.section	.bss.s_uartdebug_rcv_ringmem,"aw",%nobits
+  43              		.align	2
+  46              	s_uartdebug_rcv_ringmem:
+  47 0000 00000000 		.space	128
+  47      00000000 
+  47      00000000 
+  47      00000000 
+  47      00000000 
+  48              		.section	.bss.s_uartdebug_rcv_sync,"aw",%nobits
+  49              		.align	2
+  52              	s_uartdebug_rcv_sync:
+  53 0000 00000000 		.space	4
+  54              		.section	.text.uart_debug_irq,"ax",%progbits
+  55              		.align	1
+  56              		.syntax unified
+  57              		.thumb
+  58              		.thumb_func
+  59              		.fpu fpv4-sp-d16
+  61              	uart_debug_irq:
+  62              	.LFB287:
+  63              		.file 1 "E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src/u
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s 			page 2
+
+
+   1:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** /*----------------------------------------------------------------------------
+   2:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * All rights reserved.
+   4:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * are permitted provided that the following conditions are met:
+   6:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * conditions and the following disclaimer.
+   8:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * provided with the distribution.
+  11:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * permission.
+  14:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  *---------------------------------------------------------------------------*/
+  26:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** /*----------------------------------------------------------------------------
+  27:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * Notice of Export Control Law
+  28:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * ===============================================
+  29:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  * applicable export control laws and regulations.
+  33:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****  *---------------------------------------------------------------------------*/
+  34:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** 
+  35:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** #include "usart.h"
+  36:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** 
+  37:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** #include "stm32l4xx.h"
+  38:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** #include <stdint.h>
+  39:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** #include <stddef.h>
+  40:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** 
+  41:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** #include <osal.h>
+  42:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** #include <link_misc.h>
+  43:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** 
+  44:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** #include <los_hwi.h>
+  45:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** #include <los_sem.h>
+  46:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** #include <los_base.h>
+  47:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** 
+  48:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** #define CN_RCV_RING_BUFLEN  128
+  49:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** 
+  50:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** static USART_TypeDef*     s_pUSART = USART1;
+  51:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** static uint32_t           s_uwIRQn = USART1_IRQn;
+  52:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** 
+  53:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** static bool_t s_uart_init = false;
+  54:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** 
+  55:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** /* USART1 init function */
+  56:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** UART_HandleTypeDef uart_debug;
+  57:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** static tag_ring_buffer_t  s_uartdebug_rcv_ring;
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s 			page 3
+
+
+  58:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** static unsigned char      s_uartdebug_rcv_ringmem[CN_RCV_RING_BUFLEN];
+  59:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** static UINT32        s_uartdebug_rcv_sync;
+  60:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** static void uart_debug_irq(void)
+  61:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** {
+  64              		.loc 1 61 0
+  65              		.cfi_startproc
+  66              		@ args = 0, pretend = 0, frame = 8
+  67              		@ frame_needed = 1, uses_anonymous_args = 0
+  68 0000 80B5     		push	{r7, lr}
+  69              	.LCFI0:
+  70              		.cfi_def_cfa_offset 8
+  71              		.cfi_offset 7, -8
+  72              		.cfi_offset 14, -4
+  73 0002 82B0     		sub	sp, sp, #8
+  74              	.LCFI1:
+  75              		.cfi_def_cfa_offset 16
+  76 0004 00AF     		add	r7, sp, #0
+  77              	.LCFI2:
+  78              		.cfi_def_cfa_register 7
+  62:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     unsigned char value;
+  63:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     if(__HAL_UART_GET_FLAG(&uart_debug, UART_FLAG_RXNE) != RESET)
+  79              		.loc 1 63 0
+  80 0006 144B     		ldr	r3, .L5
+  81 0008 1B68     		ldr	r3, [r3]
+  82 000a DB69     		ldr	r3, [r3, #28]
+  83 000c 03F02003 		and	r3, r3, #32
+  84 0010 202B     		cmp	r3, #32
+  85 0012 11D1     		bne	.L2
+  64:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     {
+  65:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****         value = (uint8_t)(uart_debug.Instance->RDR & 0x00FF);
+  86              		.loc 1 65 0
+  87 0014 104B     		ldr	r3, .L5
+  88 0016 1B68     		ldr	r3, [r3]
+  89 0018 9B8C     		ldrh	r3, [r3, #36]	@ movhi
+  90 001a 9BB2     		uxth	r3, r3
+  91 001c DBB2     		uxtb	r3, r3
+  92 001e FB71     		strb	r3, [r7, #7]
+  66:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****         ring_buffer_write(&s_uartdebug_rcv_ring,&value,1);
+  93              		.loc 1 66 0
+  94 0020 FB1D     		adds	r3, r7, #7
+  95 0022 0122     		movs	r2, #1
+  96 0024 1946     		mov	r1, r3
+  97 0026 0D48     		ldr	r0, .L5+4
+  98 0028 FFF7FEFF 		bl	ring_buffer_write
+  67:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****         LOS_SemPost(s_uartdebug_rcv_sync);
+  99              		.loc 1 67 0
+ 100 002c 0C4B     		ldr	r3, .L5+8
+ 101 002e 1B68     		ldr	r3, [r3]
+ 102 0030 1846     		mov	r0, r3
+ 103 0032 FFF7FEFF 		bl	LOS_SemPost
+  68:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     }
+  69:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     else if (__HAL_UART_GET_FLAG(&uart_debug,UART_FLAG_IDLE) != RESET)
+  70:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     {
+  71:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****         __HAL_UART_CLEAR_IDLEFLAG(&uart_debug);
+  72:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     }
+  73:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** }
+ 104              		.loc 1 73 0
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s 			page 4
+
+
+ 105 0036 0AE0     		b	.L4
+ 106              	.L2:
+  69:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     {
+ 107              		.loc 1 69 0
+ 108 0038 074B     		ldr	r3, .L5
+ 109 003a 1B68     		ldr	r3, [r3]
+ 110 003c DB69     		ldr	r3, [r3, #28]
+ 111 003e 03F01003 		and	r3, r3, #16
+ 112 0042 102B     		cmp	r3, #16
+ 113 0044 03D1     		bne	.L4
+  71:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     }
+ 114              		.loc 1 71 0
+ 115 0046 044B     		ldr	r3, .L5
+ 116 0048 1B68     		ldr	r3, [r3]
+ 117 004a 1022     		movs	r2, #16
+ 118 004c 1A62     		str	r2, [r3, #32]
+ 119              	.L4:
+ 120              		.loc 1 73 0
+ 121 004e 00BF     		nop
+ 122 0050 0837     		adds	r7, r7, #8
+ 123              	.LCFI3:
+ 124              		.cfi_def_cfa_offset 8
+ 125 0052 BD46     		mov	sp, r7
+ 126              	.LCFI4:
+ 127              		.cfi_def_cfa_register 13
+ 128              		@ sp needed
+ 129 0054 80BD     		pop	{r7, pc}
+ 130              	.L6:
+ 131 0056 00BF     		.align	2
+ 132              	.L5:
+ 133 0058 00000000 		.word	uart_debug
+ 134 005c 00000000 		.word	s_uartdebug_rcv_ring
+ 135 0060 00000000 		.word	s_uartdebug_rcv_sync
+ 136              		.cfi_endproc
+ 137              	.LFE287:
+ 139              		.section	.text.shell_uart_init,"ax",%progbits
+ 140              		.align	1
+ 141              		.global	shell_uart_init
+ 142              		.syntax unified
+ 143              		.thumb
+ 144              		.thumb_func
+ 145              		.fpu fpv4-sp-d16
+ 147              	shell_uart_init:
+ 148              	.LFB288:
+  74:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** void shell_uart_init(int baud)
+  75:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** {
+ 149              		.loc 1 75 0
+ 150              		.cfi_startproc
+ 151              		@ args = 0, pretend = 0, frame = 8
+ 152              		@ frame_needed = 1, uses_anonymous_args = 0
+ 153 0000 80B5     		push	{r7, lr}
+ 154              	.LCFI5:
+ 155              		.cfi_def_cfa_offset 8
+ 156              		.cfi_offset 7, -8
+ 157              		.cfi_offset 14, -4
+ 158 0002 84B0     		sub	sp, sp, #16
+ 159              	.LCFI6:
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s 			page 5
+
+
+ 160              		.cfi_def_cfa_offset 24
+ 161 0004 02AF     		add	r7, sp, #8
+ 162              	.LCFI7:
+ 163              		.cfi_def_cfa 7, 16
+ 164 0006 7860     		str	r0, [r7, #4]
+  76:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     uart_debug.Instance = s_pUSART;
+ 165              		.loc 1 76 0
+ 166 0008 224B     		ldr	r3, .L11
+ 167 000a 1B68     		ldr	r3, [r3]
+ 168 000c 224A     		ldr	r2, .L11+4
+ 169 000e 1360     		str	r3, [r2]
+  77:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     uart_debug.Init.BaudRate = baud;
+ 170              		.loc 1 77 0
+ 171 0010 7B68     		ldr	r3, [r7, #4]
+ 172 0012 214A     		ldr	r2, .L11+4
+ 173 0014 5360     		str	r3, [r2, #4]
+  78:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     uart_debug.Init.WordLength = UART_WORDLENGTH_8B;
+ 174              		.loc 1 78 0
+ 175 0016 204B     		ldr	r3, .L11+4
+ 176 0018 0022     		movs	r2, #0
+ 177 001a 9A60     		str	r2, [r3, #8]
+  79:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     uart_debug.Init.StopBits = UART_STOPBITS_1;
+ 178              		.loc 1 79 0
+ 179 001c 1E4B     		ldr	r3, .L11+4
+ 180 001e 0022     		movs	r2, #0
+ 181 0020 DA60     		str	r2, [r3, #12]
+  80:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     uart_debug.Init.Parity = UART_PARITY_NONE;
+ 182              		.loc 1 80 0
+ 183 0022 1D4B     		ldr	r3, .L11+4
+ 184 0024 0022     		movs	r2, #0
+ 185 0026 1A61     		str	r2, [r3, #16]
+  81:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     uart_debug.Init.Mode = UART_MODE_TX_RX;
+ 186              		.loc 1 81 0
+ 187 0028 1B4B     		ldr	r3, .L11+4
+ 188 002a 0C22     		movs	r2, #12
+ 189 002c 5A61     		str	r2, [r3, #20]
+  82:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     uart_debug.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 190              		.loc 1 82 0
+ 191 002e 1A4B     		ldr	r3, .L11+4
+ 192 0030 0022     		movs	r2, #0
+ 193 0032 9A61     		str	r2, [r3, #24]
+  83:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     uart_debug.Init.OverSampling = UART_OVERSAMPLING_16;
+ 194              		.loc 1 83 0
+ 195 0034 184B     		ldr	r3, .L11+4
+ 196 0036 0022     		movs	r2, #0
+ 197 0038 DA61     		str	r2, [r3, #28]
+  84:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     if (HAL_UART_Init(&uart_debug) != HAL_OK)
+ 198              		.loc 1 84 0
+ 199 003a 1748     		ldr	r0, .L11+4
+ 200 003c FFF7FEFF 		bl	HAL_UART_Init
+ 201 0040 0346     		mov	r3, r0
+ 202 0042 002B     		cmp	r3, #0
+ 203 0044 21D1     		bne	.L10
+  85:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     {
+  86:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****         return;
+  87:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     }
+  88:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     LOS_HwiCreate(s_uwIRQn, 3, 0, uart_debug_irq, 0);
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s 			page 6
+
+
+ 204              		.loc 1 88 0
+ 205 0046 154B     		ldr	r3, .L11+8
+ 206 0048 1868     		ldr	r0, [r3]
+ 207 004a 0023     		movs	r3, #0
+ 208 004c 0093     		str	r3, [sp]
+ 209 004e 144B     		ldr	r3, .L11+12
+ 210 0050 0022     		movs	r2, #0
+ 211 0052 0321     		movs	r1, #3
+ 212 0054 FFF7FEFF 		bl	LOS_HwiCreate
+  89:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     //__HAL_UART_ENABLE_IT(&uart_debug, UART_IT_IDLE);
+  90:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     __HAL_UART_ENABLE_IT(&uart_debug, UART_IT_RXNE);
+ 213              		.loc 1 90 0
+ 214 0058 0F4B     		ldr	r3, .L11+4
+ 215 005a 1B68     		ldr	r3, [r3]
+ 216 005c 1A68     		ldr	r2, [r3]
+ 217 005e 0E4B     		ldr	r3, .L11+4
+ 218 0060 1B68     		ldr	r3, [r3]
+ 219 0062 42F02002 		orr	r2, r2, #32
+ 220 0066 1A60     		str	r2, [r3]
+  91:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     
+  92:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     //create the receive buffer and receive sync
+  93:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     extern UINT32 osSemCreate (UINT16 usCount, UINT16 usMaxCount, UINT32 *puwSemHandle);
+  94:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     osSemCreate(0,CN_RCV_RING_BUFLEN,(UINT32 *)&s_uartdebug_rcv_sync);
+ 221              		.loc 1 94 0
+ 222 0068 0E4A     		ldr	r2, .L11+16
+ 223 006a 8021     		movs	r1, #128
+ 224 006c 0020     		movs	r0, #0
+ 225 006e FFF7FEFF 		bl	osSemCreate
+  95:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     ring_buffer_init(&s_uartdebug_rcv_ring,s_uartdebug_rcv_ringmem,CN_RCV_RING_BUFLEN,0,0);
+ 226              		.loc 1 95 0
+ 227 0072 0023     		movs	r3, #0
+ 228 0074 0093     		str	r3, [sp]
+ 229 0076 0023     		movs	r3, #0
+ 230 0078 8022     		movs	r2, #128
+ 231 007a 0B49     		ldr	r1, .L11+20
+ 232 007c 0B48     		ldr	r0, .L11+24
+ 233 007e FFF7FEFF 		bl	ring_buffer_init
+  96:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     s_uart_init = true;
+ 234              		.loc 1 96 0
+ 235 0082 0B4B     		ldr	r3, .L11+28
+ 236 0084 0122     		movs	r2, #1
+ 237 0086 1A60     		str	r2, [r3]
+ 238 0088 00E0     		b	.L7
+ 239              	.L10:
+  86:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     }
+ 240              		.loc 1 86 0
+ 241 008a 00BF     		nop
+ 242              	.L7:
+  97:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** 
+  98:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** }
+ 243              		.loc 1 98 0
+ 244 008c 0837     		adds	r7, r7, #8
+ 245              	.LCFI8:
+ 246              		.cfi_def_cfa_offset 8
+ 247 008e BD46     		mov	sp, r7
+ 248              	.LCFI9:
+ 249              		.cfi_def_cfa_register 13
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s 			page 7
+
+
+ 250              		@ sp needed
+ 251 0090 80BD     		pop	{r7, pc}
+ 252              	.L12:
+ 253 0092 00BF     		.align	2
+ 254              	.L11:
+ 255 0094 00000000 		.word	s_pUSART
+ 256 0098 00000000 		.word	uart_debug
+ 257 009c 00000000 		.word	s_uwIRQn
+ 258 00a0 00000000 		.word	uart_debug_irq
+ 259 00a4 00000000 		.word	s_uartdebug_rcv_sync
+ 260 00a8 00000000 		.word	s_uartdebug_rcv_ringmem
+ 261 00ac 00000000 		.word	s_uartdebug_rcv_ring
+ 262 00b0 00000000 		.word	s_uart_init
+ 263              		.cfi_endproc
+ 264              	.LFE288:
+ 266              		.section	.text._write,"ax",%progbits
+ 267              		.align	1
+ 268              		.global	_write
+ 269              		.syntax unified
+ 270              		.thumb
+ 271              		.thumb_func
+ 272              		.fpu fpv4-sp-d16
+ 274              	_write:
+ 275              	.LFB289:
+  99:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** 
+ 100:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** 
+ 101:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** /* define fputc */
+ 102:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** #if defined ( __CC_ARM ) || defined ( __ICCARM__ )  /* KEIL and IAR: printf will call fputc to prin
+ 103:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** int fputc(int ch, FILE *f)
+ 104:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** {
+ 105:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     HAL_UART_Transmit(&uart_debug, (uint8_t *)&ch, 1, 0xFFFF);
+ 106:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     return ch;
+ 107:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** }
+ 108:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** int fgetc(FILE *f){
+ 109:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     int ret = 0;
+ 110:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     unsigned char  value;
+ 111:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     do
+ 112:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     {
+ 113:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****         if(LOS_OK == LOS_SemPend(s_uartdebug_rcv_sync,LOS_WAIT_FOREVER))
+ 114:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****         {
+ 115:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****             ret = ring_buffer_read(&s_uartdebug_rcv_ring,&value,1);
+ 116:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****         }
+ 117:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     }while(ret <=0);
+ 118:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     ret = value;
+ 119:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     return ret;
+ 120:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** }
+ 121:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** #elif defined ( __GNUC__ )  /* GCC: printf will call _write to print */
+ 122:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** 
+ 123:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** 
+ 124:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** __attribute__((used)) int _write(int fd, char *ptr, int len)
+ 125:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** {
+ 276              		.loc 1 125 0
+ 277              		.cfi_startproc
+ 278              		@ args = 0, pretend = 0, frame = 16
+ 279              		@ frame_needed = 1, uses_anonymous_args = 0
+ 280 0000 80B5     		push	{r7, lr}
+ 281              	.LCFI10:
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s 			page 8
+
+
+ 282              		.cfi_def_cfa_offset 8
+ 283              		.cfi_offset 7, -8
+ 284              		.cfi_offset 14, -4
+ 285 0002 84B0     		sub	sp, sp, #16
+ 286              	.LCFI11:
+ 287              		.cfi_def_cfa_offset 24
+ 288 0004 00AF     		add	r7, sp, #0
+ 289              	.LCFI12:
+ 290              		.cfi_def_cfa_register 7
+ 291 0006 F860     		str	r0, [r7, #12]
+ 292 0008 B960     		str	r1, [r7, #8]
+ 293 000a 7A60     		str	r2, [r7, #4]
+ 126:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     if(s_uart_init)
+ 294              		.loc 1 126 0
+ 295 000c 084B     		ldr	r3, .L16
+ 296 000e 1B68     		ldr	r3, [r3]
+ 297 0010 002B     		cmp	r3, #0
+ 298 0012 07D0     		beq	.L14
+ 127:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     {
+ 128:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****         HAL_UART_Transmit(&uart_debug, (uint8_t *)ptr, len, 0xFFFF);
+ 299              		.loc 1 128 0
+ 300 0014 7B68     		ldr	r3, [r7, #4]
+ 301 0016 9AB2     		uxth	r2, r3
+ 302 0018 4FF6FF73 		movw	r3, #65535
+ 303 001c B968     		ldr	r1, [r7, #8]
+ 304 001e 0548     		ldr	r0, .L16+4
+ 305 0020 FFF7FEFF 		bl	HAL_UART_Transmit
+ 306              	.L14:
+ 129:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     }
+ 130:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     return len;
+ 307              		.loc 1 130 0
+ 308 0024 7B68     		ldr	r3, [r7, #4]
+ 131:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** }
+ 309              		.loc 1 131 0
+ 310 0026 1846     		mov	r0, r3
+ 311 0028 1037     		adds	r7, r7, #16
+ 312              	.LCFI13:
+ 313              		.cfi_def_cfa_offset 8
+ 314 002a BD46     		mov	sp, r7
+ 315              	.LCFI14:
+ 316              		.cfi_def_cfa_register 13
+ 317              		@ sp needed
+ 318 002c 80BD     		pop	{r7, pc}
+ 319              	.L17:
+ 320 002e 00BF     		.align	2
+ 321              	.L16:
+ 322 0030 00000000 		.word	s_uart_init
+ 323 0034 00000000 		.word	uart_debug
+ 324              		.cfi_endproc
+ 325              	.LFE289:
+ 327              		.section	.text._read,"ax",%progbits
+ 328              		.align	1
+ 329              		.global	_read
+ 330              		.syntax unified
+ 331              		.thumb
+ 332              		.thumb_func
+ 333              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s 			page 9
+
+
+ 335              	_read:
+ 336              	.LFB290:
+ 132:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** __attribute__((used)) int _read(int fd, char *ptr, int len)
+ 133:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** {
+ 337              		.loc 1 133 0
+ 338              		.cfi_startproc
+ 339              		@ args = 0, pretend = 0, frame = 24
+ 340              		@ frame_needed = 1, uses_anonymous_args = 0
+ 341 0000 80B5     		push	{r7, lr}
+ 342              	.LCFI15:
+ 343              		.cfi_def_cfa_offset 8
+ 344              		.cfi_offset 7, -8
+ 345              		.cfi_offset 14, -4
+ 346 0002 86B0     		sub	sp, sp, #24
+ 347              	.LCFI16:
+ 348              		.cfi_def_cfa_offset 32
+ 349 0004 00AF     		add	r7, sp, #0
+ 350              	.LCFI17:
+ 351              		.cfi_def_cfa_register 7
+ 352 0006 F860     		str	r0, [r7, #12]
+ 353 0008 B960     		str	r1, [r7, #8]
+ 354 000a 7A60     		str	r2, [r7, #4]
+ 134:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     int ret = 0;
+ 355              		.loc 1 134 0
+ 356 000c 0023     		movs	r3, #0
+ 357 000e 7B61     		str	r3, [r7, #20]
+ 358              	.L20:
+ 135:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     unsigned char  value;
+ 136:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     do
+ 137:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     {
+ 138:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****         if(LOS_OK == LOS_SemPend(s_uartdebug_rcv_sync,LOS_WAIT_FOREVER))
+ 359              		.loc 1 138 0
+ 360 0010 0E4B     		ldr	r3, .L22
+ 361 0012 1B68     		ldr	r3, [r3]
+ 362 0014 4FF0FF31 		mov	r1, #-1
+ 363 0018 1846     		mov	r0, r3
+ 364 001a FFF7FEFF 		bl	LOS_SemPend
+ 365 001e 0346     		mov	r3, r0
+ 366 0020 002B     		cmp	r3, #0
+ 367 0022 07D1     		bne	.L19
+ 139:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****         {
+ 140:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****             ret = ring_buffer_read(&s_uartdebug_rcv_ring,&value,1);
+ 368              		.loc 1 140 0
+ 369 0024 07F11303 		add	r3, r7, #19
+ 370 0028 0122     		movs	r2, #1
+ 371 002a 1946     		mov	r1, r3
+ 372 002c 0848     		ldr	r0, .L22+4
+ 373 002e FFF7FEFF 		bl	ring_buffer_read
+ 374 0032 7861     		str	r0, [r7, #20]
+ 375              	.L19:
+ 141:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****         }
+ 142:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     }while(ret <=0);
+ 376              		.loc 1 142 0
+ 377 0034 7B69     		ldr	r3, [r7, #20]
+ 378 0036 002B     		cmp	r3, #0
+ 379 0038 EADD     		ble	.L20
+ 143:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     *(unsigned char *)ptr = value;
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s 			page 10
+
+
+ 380              		.loc 1 143 0
+ 381 003a FA7C     		ldrb	r2, [r7, #19]	@ zero_extendqisi2
+ 382 003c BB68     		ldr	r3, [r7, #8]
+ 383 003e 1A70     		strb	r2, [r3]
+ 144:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c ****     return 1;
+ 384              		.loc 1 144 0
+ 385 0040 0123     		movs	r3, #1
+ 145:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\uart_debug.c **** }
+ 386              		.loc 1 145 0
+ 387 0042 1846     		mov	r0, r3
+ 388 0044 1837     		adds	r7, r7, #24
+ 389              	.LCFI18:
+ 390              		.cfi_def_cfa_offset 8
+ 391 0046 BD46     		mov	sp, r7
+ 392              	.LCFI19:
+ 393              		.cfi_def_cfa_register 13
+ 394              		@ sp needed
+ 395 0048 80BD     		pop	{r7, pc}
+ 396              	.L23:
+ 397 004a 00BF     		.align	2
+ 398              	.L22:
+ 399 004c 00000000 		.word	s_uartdebug_rcv_sync
+ 400 0050 00000000 		.word	s_uartdebug_rcv_ring
+ 401              		.cfi_endproc
+ 402              	.LFE290:
+ 404              		.text
+ 405              	.Letext0:
+ 406              		.file 2 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 407              		.file 3 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 408              		.file 4 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 409              		.file 5 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gc
+ 410              		.file 6 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 411              		.file 7 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/los_typedef.h"
+ 412              		.file 8 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 413              		.file 9 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/arch/arm/common/cmsis/co
+ 414              		.file 10 "E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Inc/
+ 415              		.file 11 "E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Inc/
+ 416              		.file 12 "E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Inc/
+ 417              		.file 13 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/los_config.h"
+ 418              		.file 14 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/los_err.h"
+ 419              		.file 15 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/arch/arm/arm-m/include/
+ 420              		.file 16 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/drivers/third_party/ST/STM32L4xx_HAL_Drive
+ 421              		.file 17 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/drivers/third_party/ST/STM32L4xx_HAL_Drive
+ 422              		.file 18 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/drivers/third_party/ST/STM32L4xx_HAL_Drive
+ 423              		.file 19 "E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Inc/
+ 424              		.file 20 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/link_misc/link_misc.h"
+ 425              		.file 21 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/los_tick.h"
+ 426              		.file 22 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/los_task.h"
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 uart_debug.c
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:18     .data.s_pUSART:00000000 $d
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:21     .data.s_pUSART:00000000 s_pUSART
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:24     .data.s_uwIRQn:00000000 $d
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:27     .data.s_uwIRQn:00000000 s_uwIRQn
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:30     .bss.s_uart_init:00000000 $d
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:33     .bss.s_uart_init:00000000 s_uart_init
+                            *COM*:00000078 uart_debug
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:37     .bss.s_uartdebug_rcv_ring:00000000 $d
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:40     .bss.s_uartdebug_rcv_ring:00000000 s_uartdebug_rcv_ring
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:43     .bss.s_uartdebug_rcv_ringmem:00000000 $d
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:46     .bss.s_uartdebug_rcv_ringmem:00000000 s_uartdebug_rcv_ringmem
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:49     .bss.s_uartdebug_rcv_sync:00000000 $d
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:52     .bss.s_uartdebug_rcv_sync:00000000 s_uartdebug_rcv_sync
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:55     .text.uart_debug_irq:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:61     .text.uart_debug_irq:00000000 uart_debug_irq
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:133    .text.uart_debug_irq:00000058 $d
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:140    .text.shell_uart_init:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:147    .text.shell_uart_init:00000000 shell_uart_init
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:255    .text.shell_uart_init:00000094 $d
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:267    .text._write:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:274    .text._write:00000000 _write
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:322    .text._write:00000030 $d
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:328    .text._read:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:335    .text._read:00000000 _read
+C:\Users\201711~1\AppData\Local\Temp\ccAmkn33.s:399    .text._read:0000004c $d
+
+UNDEFINED SYMBOLS
+ring_buffer_write
+LOS_SemPost
+HAL_UART_Init
+LOS_HwiCreate
+osSemCreate
+ring_buffer_init
+HAL_UART_Transmit
+LOS_SemPend
+ring_buffer_read

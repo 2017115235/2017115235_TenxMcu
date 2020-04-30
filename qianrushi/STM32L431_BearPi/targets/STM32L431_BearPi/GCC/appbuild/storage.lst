@@ -1,0 +1,650 @@
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"storage.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.bss.s_device,"aw",%nobits
+  18              		.align	2
+  21              	s_device:
+  22 0000 00000000 		.space	4
+  23              		.section	.bss.max_dev_num,"aw",%nobits
+  24              		.align	2
+  27              	max_dev_num:
+  28 0000 00000000 		.space	4
+  29              		.section	.text.storage_dev_install,"ax",%progbits
+  30              		.align	1
+  31              		.global	storage_dev_install
+  32              		.syntax unified
+  33              		.thumb
+  34              		.thumb_func
+  35              		.fpu fpv4-sp-d16
+  37              	storage_dev_install:
+  38              	.LFB0:
+  39              		.file 1 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage/storage.c"
+   1:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** #include "storage.h"
+   2:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** 
+   3:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** static const storage_device *s_device = NULL;
+   4:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** static uint32_t max_dev_num = 0;
+   5:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** 
+   6:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** int storage_dev_install(storage_device *dev, uint32_t max_num)
+   7:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** {
+  40              		.loc 1 7 0
+  41              		.cfi_startproc
+  42              		@ args = 0, pretend = 0, frame = 16
+  43              		@ frame_needed = 1, uses_anonymous_args = 0
+  44 0000 80B5     		push	{r7, lr}
+  45              	.LCFI0:
+  46              		.cfi_def_cfa_offset 8
+  47              		.cfi_offset 7, -8
+  48              		.cfi_offset 14, -4
+  49 0002 84B0     		sub	sp, sp, #16
+  50              	.LCFI1:
+  51              		.cfi_def_cfa_offset 24
+  52 0004 00AF     		add	r7, sp, #0
+  53              	.LCFI2:
+  54              		.cfi_def_cfa_register 7
+  55 0006 7860     		str	r0, [r7, #4]
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s 			page 2
+
+
+  56 0008 3960     		str	r1, [r7]
+   8:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****   int i = 0;
+  57              		.loc 1 8 0
+  58 000a 0023     		movs	r3, #0
+  59 000c FB60     		str	r3, [r7, #12]
+   9:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****   if (dev != NULL && s_device == NULL) {
+  60              		.loc 1 9 0
+  61 000e 7B68     		ldr	r3, [r7, #4]
+  62 0010 002B     		cmp	r3, #0
+  63 0012 22D0     		beq	.L2
+  64              		.loc 1 9 0 is_stmt 0 discriminator 1
+  65 0014 144B     		ldr	r3, .L7
+  66 0016 1B68     		ldr	r3, [r3]
+  67 0018 002B     		cmp	r3, #0
+  68 001a 1ED1     		bne	.L2
+  10:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****     for (i = 0; i < max_num; i++) {
+  69              		.loc 1 10 0 is_stmt 1
+  70 001c 0023     		movs	r3, #0
+  71 001e FB60     		str	r3, [r7, #12]
+  72 0020 0FE0     		b	.L3
+  73              	.L5:
+  11:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****       if (dev[i].init != NULL) {
+  74              		.loc 1 11 0
+  75 0022 FB68     		ldr	r3, [r7, #12]
+  76 0024 5B01     		lsls	r3, r3, #5
+  77 0026 7A68     		ldr	r2, [r7, #4]
+  78 0028 1344     		add	r3, r3, r2
+  79 002a DB68     		ldr	r3, [r3, #12]
+  80 002c 002B     		cmp	r3, #0
+  81 002e 05D0     		beq	.L4
+  12:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****         dev[i].init();
+  82              		.loc 1 12 0
+  83 0030 FB68     		ldr	r3, [r7, #12]
+  84 0032 5B01     		lsls	r3, r3, #5
+  85 0034 7A68     		ldr	r2, [r7, #4]
+  86 0036 1344     		add	r3, r3, r2
+  87 0038 DB68     		ldr	r3, [r3, #12]
+  88 003a 9847     		blx	r3
+  89              	.LVL0:
+  90              	.L4:
+  10:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****     for (i = 0; i < max_num; i++) {
+  91              		.loc 1 10 0 discriminator 2
+  92 003c FB68     		ldr	r3, [r7, #12]
+  93 003e 0133     		adds	r3, r3, #1
+  94 0040 FB60     		str	r3, [r7, #12]
+  95              	.L3:
+  10:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****     for (i = 0; i < max_num; i++) {
+  96              		.loc 1 10 0 is_stmt 0 discriminator 1
+  97 0042 FB68     		ldr	r3, [r7, #12]
+  98 0044 3A68     		ldr	r2, [r7]
+  99 0046 9A42     		cmp	r2, r3
+ 100 0048 EBD8     		bhi	.L5
+  13:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****       }
+  14:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****     }
+  15:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** 
+  16:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****     s_device = dev;
+ 101              		.loc 1 16 0 is_stmt 1
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s 			page 3
+
+
+ 102 004a 074A     		ldr	r2, .L7
+ 103 004c 7B68     		ldr	r3, [r7, #4]
+ 104 004e 1360     		str	r3, [r2]
+  17:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****     max_dev_num = max_num;
+ 105              		.loc 1 17 0
+ 106 0050 064A     		ldr	r2, .L7+4
+ 107 0052 3B68     		ldr	r3, [r7]
+ 108 0054 1360     		str	r3, [r2]
+  18:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****     return 0;
+ 109              		.loc 1 18 0
+ 110 0056 0023     		movs	r3, #0
+ 111 0058 01E0     		b	.L6
+ 112              	.L2:
+  19:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****   }
+  20:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****   return -1;
+ 113              		.loc 1 20 0
+ 114 005a 4FF0FF33 		mov	r3, #-1
+ 115              	.L6:
+  21:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** }
+ 116              		.loc 1 21 0
+ 117 005e 1846     		mov	r0, r3
+ 118 0060 1037     		adds	r7, r7, #16
+ 119              	.LCFI3:
+ 120              		.cfi_def_cfa_offset 8
+ 121 0062 BD46     		mov	sp, r7
+ 122              	.LCFI4:
+ 123              		.cfi_def_cfa_register 13
+ 124              		@ sp needed
+ 125 0064 80BD     		pop	{r7, pc}
+ 126              	.L8:
+ 127 0066 00BF     		.align	2
+ 128              	.L7:
+ 129 0068 00000000 		.word	s_device
+ 130 006c 00000000 		.word	max_dev_num
+ 131              		.cfi_endproc
+ 132              	.LFE0:
+ 134              		.section	.text.storage_dev_uninstall,"ax",%progbits
+ 135              		.align	1
+ 136              		.global	storage_dev_uninstall
+ 137              		.syntax unified
+ 138              		.thumb
+ 139              		.thumb_func
+ 140              		.fpu fpv4-sp-d16
+ 142              	storage_dev_uninstall:
+ 143              	.LFB1:
+  22:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** 
+  23:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** int storage_dev_uninstall()
+  24:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** {
+ 144              		.loc 1 24 0
+ 145              		.cfi_startproc
+ 146              		@ args = 0, pretend = 0, frame = 0
+ 147              		@ frame_needed = 1, uses_anonymous_args = 0
+ 148              		@ link register save eliminated.
+ 149 0000 80B4     		push	{r7}
+ 150              	.LCFI5:
+ 151              		.cfi_def_cfa_offset 4
+ 152              		.cfi_offset 7, -4
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s 			page 4
+
+
+ 153 0002 00AF     		add	r7, sp, #0
+ 154              	.LCFI6:
+ 155              		.cfi_def_cfa_register 7
+  25:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****   if (s_device != NULL) {
+ 156              		.loc 1 25 0
+ 157 0004 094B     		ldr	r3, .L12
+ 158 0006 1B68     		ldr	r3, [r3]
+ 159 0008 002B     		cmp	r3, #0
+ 160 000a 07D0     		beq	.L10
+  26:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****     s_device = NULL;
+ 161              		.loc 1 26 0
+ 162 000c 074B     		ldr	r3, .L12
+ 163 000e 0022     		movs	r2, #0
+ 164 0010 1A60     		str	r2, [r3]
+  27:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****     max_dev_num = 0;
+ 165              		.loc 1 27 0
+ 166 0012 074B     		ldr	r3, .L12+4
+ 167 0014 0022     		movs	r2, #0
+ 168 0016 1A60     		str	r2, [r3]
+  28:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****     return 0;
+ 169              		.loc 1 28 0
+ 170 0018 0023     		movs	r3, #0
+ 171 001a 01E0     		b	.L11
+ 172              	.L10:
+  29:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****   }
+  30:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****   return -1;
+ 173              		.loc 1 30 0
+ 174 001c 4FF0FF33 		mov	r3, #-1
+ 175              	.L11:
+  31:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** }
+ 176              		.loc 1 31 0
+ 177 0020 1846     		mov	r0, r3
+ 178 0022 BD46     		mov	sp, r7
+ 179              	.LCFI7:
+ 180              		.cfi_def_cfa_register 13
+ 181              		@ sp needed
+ 182 0024 5DF8047B 		ldr	r7, [sp], #4
+ 183              	.LCFI8:
+ 184              		.cfi_restore 7
+ 185              		.cfi_def_cfa_offset 0
+ 186 0028 7047     		bx	lr
+ 187              	.L13:
+ 188 002a 00BF     		.align	2
+ 189              	.L12:
+ 190 002c 00000000 		.word	s_device
+ 191 0030 00000000 		.word	max_dev_num
+ 192              		.cfi_endproc
+ 193              	.LFE1:
+ 195              		.section	.text.storage_device_erase,"ax",%progbits
+ 196              		.align	1
+ 197              		.global	storage_device_erase
+ 198              		.syntax unified
+ 199              		.thumb
+ 200              		.thumb_func
+ 201              		.fpu fpv4-sp-d16
+ 203              	storage_device_erase:
+ 204              	.LFB2:
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s 			page 5
+
+
+  32:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** 
+  33:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** int storage_device_erase(int dev_id, uint32_t addr, uint32_t len)
+  34:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** {
+ 205              		.loc 1 34 0
+ 206              		.cfi_startproc
+ 207              		@ args = 0, pretend = 0, frame = 16
+ 208              		@ frame_needed = 1, uses_anonymous_args = 0
+ 209 0000 80B5     		push	{r7, lr}
+ 210              	.LCFI9:
+ 211              		.cfi_def_cfa_offset 8
+ 212              		.cfi_offset 7, -8
+ 213              		.cfi_offset 14, -4
+ 214 0002 84B0     		sub	sp, sp, #16
+ 215              	.LCFI10:
+ 216              		.cfi_def_cfa_offset 24
+ 217 0004 00AF     		add	r7, sp, #0
+ 218              	.LCFI11:
+ 219              		.cfi_def_cfa_register 7
+ 220 0006 F860     		str	r0, [r7, #12]
+ 221 0008 B960     		str	r1, [r7, #8]
+ 222 000a 7A60     		str	r2, [r7, #4]
+  35:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****   if (dev_id < max_dev_num && s_device != NULL && s_device[dev_id].erase != NULL) {
+ 223              		.loc 1 35 0
+ 224 000c FA68     		ldr	r2, [r7, #12]
+ 225 000e 114B     		ldr	r3, .L17
+ 226 0010 1B68     		ldr	r3, [r3]
+ 227 0012 9A42     		cmp	r2, r3
+ 228 0014 17D2     		bcs	.L15
+ 229              		.loc 1 35 0 is_stmt 0 discriminator 1
+ 230 0016 104B     		ldr	r3, .L17+4
+ 231 0018 1B68     		ldr	r3, [r3]
+ 232 001a 002B     		cmp	r3, #0
+ 233 001c 13D0     		beq	.L15
+ 234              		.loc 1 35 0 discriminator 2
+ 235 001e 0E4B     		ldr	r3, .L17+4
+ 236 0020 1A68     		ldr	r2, [r3]
+ 237 0022 FB68     		ldr	r3, [r7, #12]
+ 238 0024 5B01     		lsls	r3, r3, #5
+ 239 0026 1344     		add	r3, r3, r2
+ 240 0028 9B69     		ldr	r3, [r3, #24]
+ 241 002a 002B     		cmp	r3, #0
+ 242 002c 0BD0     		beq	.L15
+  36:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****     return s_device[dev_id].erase(addr, len);
+ 243              		.loc 1 36 0 is_stmt 1
+ 244 002e 0A4B     		ldr	r3, .L17+4
+ 245 0030 1A68     		ldr	r2, [r3]
+ 246 0032 FB68     		ldr	r3, [r7, #12]
+ 247 0034 5B01     		lsls	r3, r3, #5
+ 248 0036 1344     		add	r3, r3, r2
+ 249 0038 9B69     		ldr	r3, [r3, #24]
+ 250 003a 7A68     		ldr	r2, [r7, #4]
+ 251 003c 1146     		mov	r1, r2
+ 252 003e B868     		ldr	r0, [r7, #8]
+ 253 0040 9847     		blx	r3
+ 254              	.LVL1:
+ 255 0042 0346     		mov	r3, r0
+ 256 0044 01E0     		b	.L16
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s 			page 6
+
+
+ 257              	.L15:
+  37:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****   }
+  38:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****   return -1;
+ 258              		.loc 1 38 0
+ 259 0046 4FF0FF33 		mov	r3, #-1
+ 260              	.L16:
+  39:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** }
+ 261              		.loc 1 39 0
+ 262 004a 1846     		mov	r0, r3
+ 263 004c 1037     		adds	r7, r7, #16
+ 264              	.LCFI12:
+ 265              		.cfi_def_cfa_offset 8
+ 266 004e BD46     		mov	sp, r7
+ 267              	.LCFI13:
+ 268              		.cfi_def_cfa_register 13
+ 269              		@ sp needed
+ 270 0050 80BD     		pop	{r7, pc}
+ 271              	.L18:
+ 272 0052 00BF     		.align	2
+ 273              	.L17:
+ 274 0054 00000000 		.word	max_dev_num
+ 275 0058 00000000 		.word	s_device
+ 276              		.cfi_endproc
+ 277              	.LFE2:
+ 279              		.section	.text.storage_device_erase_write,"ax",%progbits
+ 280              		.align	1
+ 281              		.global	storage_device_erase_write
+ 282              		.syntax unified
+ 283              		.thumb
+ 284              		.thumb_func
+ 285              		.fpu fpv4-sp-d16
+ 287              	storage_device_erase_write:
+ 288              	.LFB3:
+  40:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** 
+  41:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** int storage_device_erase_write(int dev_id, uint8_t *buf, uint32_t len, uint32_t addr)
+  42:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** {
+ 289              		.loc 1 42 0
+ 290              		.cfi_startproc
+ 291              		@ args = 0, pretend = 0, frame = 16
+ 292              		@ frame_needed = 1, uses_anonymous_args = 0
+ 293 0000 80B5     		push	{r7, lr}
+ 294              	.LCFI14:
+ 295              		.cfi_def_cfa_offset 8
+ 296              		.cfi_offset 7, -8
+ 297              		.cfi_offset 14, -4
+ 298 0002 84B0     		sub	sp, sp, #16
+ 299              	.LCFI15:
+ 300              		.cfi_def_cfa_offset 24
+ 301 0004 00AF     		add	r7, sp, #0
+ 302              	.LCFI16:
+ 303              		.cfi_def_cfa_register 7
+ 304 0006 F860     		str	r0, [r7, #12]
+ 305 0008 B960     		str	r1, [r7, #8]
+ 306 000a 7A60     		str	r2, [r7, #4]
+ 307 000c 3B60     		str	r3, [r7]
+  43:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****   if (dev_id < max_dev_num && s_device != NULL && s_device[dev_id].erase_write != NULL) {
+ 308              		.loc 1 43 0
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s 			page 7
+
+
+ 309 000e FA68     		ldr	r2, [r7, #12]
+ 310 0010 104B     		ldr	r3, .L22
+ 311 0012 1B68     		ldr	r3, [r3]
+ 312 0014 9A42     		cmp	r2, r3
+ 313 0016 17D2     		bcs	.L20
+ 314              		.loc 1 43 0 is_stmt 0 discriminator 1
+ 315 0018 0F4B     		ldr	r3, .L22+4
+ 316 001a 1B68     		ldr	r3, [r3]
+ 317 001c 002B     		cmp	r3, #0
+ 318 001e 13D0     		beq	.L20
+ 319              		.loc 1 43 0 discriminator 2
+ 320 0020 0D4B     		ldr	r3, .L22+4
+ 321 0022 1A68     		ldr	r2, [r3]
+ 322 0024 FB68     		ldr	r3, [r7, #12]
+ 323 0026 5B01     		lsls	r3, r3, #5
+ 324 0028 1344     		add	r3, r3, r2
+ 325 002a DB69     		ldr	r3, [r3, #28]
+ 326 002c 002B     		cmp	r3, #0
+ 327 002e 0BD0     		beq	.L20
+  44:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****     return s_device[dev_id].erase_write(buf, len, addr);
+ 328              		.loc 1 44 0 is_stmt 1
+ 329 0030 094B     		ldr	r3, .L22+4
+ 330 0032 1A68     		ldr	r2, [r3]
+ 331 0034 FB68     		ldr	r3, [r7, #12]
+ 332 0036 5B01     		lsls	r3, r3, #5
+ 333 0038 1344     		add	r3, r3, r2
+ 334 003a DB69     		ldr	r3, [r3, #28]
+ 335 003c 7968     		ldr	r1, [r7, #4]
+ 336 003e 3A68     		ldr	r2, [r7]
+ 337 0040 B868     		ldr	r0, [r7, #8]
+ 338 0042 9847     		blx	r3
+ 339              	.LVL2:
+ 340 0044 0346     		mov	r3, r0
+ 341 0046 01E0     		b	.L21
+ 342              	.L20:
+  45:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****   }
+  46:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****   return -1;
+ 343              		.loc 1 46 0
+ 344 0048 4FF0FF33 		mov	r3, #-1
+ 345              	.L21:
+  47:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** }
+ 346              		.loc 1 47 0
+ 347 004c 1846     		mov	r0, r3
+ 348 004e 1037     		adds	r7, r7, #16
+ 349              	.LCFI17:
+ 350              		.cfi_def_cfa_offset 8
+ 351 0050 BD46     		mov	sp, r7
+ 352              	.LCFI18:
+ 353              		.cfi_def_cfa_register 13
+ 354              		@ sp needed
+ 355 0052 80BD     		pop	{r7, pc}
+ 356              	.L23:
+ 357              		.align	2
+ 358              	.L22:
+ 359 0054 00000000 		.word	max_dev_num
+ 360 0058 00000000 		.word	s_device
+ 361              		.cfi_endproc
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s 			page 8
+
+
+ 362              	.LFE3:
+ 364              		.section	.text.storage_device_write,"ax",%progbits
+ 365              		.align	1
+ 366              		.global	storage_device_write
+ 367              		.syntax unified
+ 368              		.thumb
+ 369              		.thumb_func
+ 370              		.fpu fpv4-sp-d16
+ 372              	storage_device_write:
+ 373              	.LFB4:
+  48:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** 
+  49:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** int storage_device_write(int dev_id, uint8_t *buf, uint32_t len, uint32_t addr)
+  50:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** {
+ 374              		.loc 1 50 0
+ 375              		.cfi_startproc
+ 376              		@ args = 0, pretend = 0, frame = 16
+ 377              		@ frame_needed = 1, uses_anonymous_args = 0
+ 378 0000 80B5     		push	{r7, lr}
+ 379              	.LCFI19:
+ 380              		.cfi_def_cfa_offset 8
+ 381              		.cfi_offset 7, -8
+ 382              		.cfi_offset 14, -4
+ 383 0002 84B0     		sub	sp, sp, #16
+ 384              	.LCFI20:
+ 385              		.cfi_def_cfa_offset 24
+ 386 0004 00AF     		add	r7, sp, #0
+ 387              	.LCFI21:
+ 388              		.cfi_def_cfa_register 7
+ 389 0006 F860     		str	r0, [r7, #12]
+ 390 0008 B960     		str	r1, [r7, #8]
+ 391 000a 7A60     		str	r2, [r7, #4]
+ 392 000c 3B60     		str	r3, [r7]
+  51:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****   if (dev_id < max_dev_num && s_device != NULL && s_device[dev_id].write != NULL) {
+ 393              		.loc 1 51 0
+ 394 000e FA68     		ldr	r2, [r7, #12]
+ 395 0010 104B     		ldr	r3, .L27
+ 396 0012 1B68     		ldr	r3, [r3]
+ 397 0014 9A42     		cmp	r2, r3
+ 398 0016 17D2     		bcs	.L25
+ 399              		.loc 1 51 0 is_stmt 0 discriminator 1
+ 400 0018 0F4B     		ldr	r3, .L27+4
+ 401 001a 1B68     		ldr	r3, [r3]
+ 402 001c 002B     		cmp	r3, #0
+ 403 001e 13D0     		beq	.L25
+ 404              		.loc 1 51 0 discriminator 2
+ 405 0020 0D4B     		ldr	r3, .L27+4
+ 406 0022 1A68     		ldr	r2, [r3]
+ 407 0024 FB68     		ldr	r3, [r7, #12]
+ 408 0026 5B01     		lsls	r3, r3, #5
+ 409 0028 1344     		add	r3, r3, r2
+ 410 002a 5B69     		ldr	r3, [r3, #20]
+ 411 002c 002B     		cmp	r3, #0
+ 412 002e 0BD0     		beq	.L25
+  52:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****     return s_device[dev_id].write(buf, len, addr);
+ 413              		.loc 1 52 0 is_stmt 1
+ 414 0030 094B     		ldr	r3, .L27+4
+ 415 0032 1A68     		ldr	r2, [r3]
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s 			page 9
+
+
+ 416 0034 FB68     		ldr	r3, [r7, #12]
+ 417 0036 5B01     		lsls	r3, r3, #5
+ 418 0038 1344     		add	r3, r3, r2
+ 419 003a 5B69     		ldr	r3, [r3, #20]
+ 420 003c 7968     		ldr	r1, [r7, #4]
+ 421 003e 3A68     		ldr	r2, [r7]
+ 422 0040 B868     		ldr	r0, [r7, #8]
+ 423 0042 9847     		blx	r3
+ 424              	.LVL3:
+ 425 0044 0346     		mov	r3, r0
+ 426 0046 01E0     		b	.L26
+ 427              	.L25:
+  53:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****   }
+  54:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****   return -1;
+ 428              		.loc 1 54 0
+ 429 0048 4FF0FF33 		mov	r3, #-1
+ 430              	.L26:
+  55:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** }
+ 431              		.loc 1 55 0
+ 432 004c 1846     		mov	r0, r3
+ 433 004e 1037     		adds	r7, r7, #16
+ 434              	.LCFI22:
+ 435              		.cfi_def_cfa_offset 8
+ 436 0050 BD46     		mov	sp, r7
+ 437              	.LCFI23:
+ 438              		.cfi_def_cfa_register 13
+ 439              		@ sp needed
+ 440 0052 80BD     		pop	{r7, pc}
+ 441              	.L28:
+ 442              		.align	2
+ 443              	.L27:
+ 444 0054 00000000 		.word	max_dev_num
+ 445 0058 00000000 		.word	s_device
+ 446              		.cfi_endproc
+ 447              	.LFE4:
+ 449              		.section	.text.storage_device_read,"ax",%progbits
+ 450              		.align	1
+ 451              		.global	storage_device_read
+ 452              		.syntax unified
+ 453              		.thumb
+ 454              		.thumb_func
+ 455              		.fpu fpv4-sp-d16
+ 457              	storage_device_read:
+ 458              	.LFB5:
+  56:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** 
+  57:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** int storage_device_read(int dev_id, uint8_t *buf, uint32_t len, uint32_t addr)
+  58:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** {
+ 459              		.loc 1 58 0
+ 460              		.cfi_startproc
+ 461              		@ args = 0, pretend = 0, frame = 16
+ 462              		@ frame_needed = 1, uses_anonymous_args = 0
+ 463 0000 80B5     		push	{r7, lr}
+ 464              	.LCFI24:
+ 465              		.cfi_def_cfa_offset 8
+ 466              		.cfi_offset 7, -8
+ 467              		.cfi_offset 14, -4
+ 468 0002 84B0     		sub	sp, sp, #16
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s 			page 10
+
+
+ 469              	.LCFI25:
+ 470              		.cfi_def_cfa_offset 24
+ 471 0004 00AF     		add	r7, sp, #0
+ 472              	.LCFI26:
+ 473              		.cfi_def_cfa_register 7
+ 474 0006 F860     		str	r0, [r7, #12]
+ 475 0008 B960     		str	r1, [r7, #8]
+ 476 000a 7A60     		str	r2, [r7, #4]
+ 477 000c 3B60     		str	r3, [r7]
+  59:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** 
+  60:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****   if (dev_id < max_dev_num && s_device != NULL && s_device[dev_id].read != NULL) {
+ 478              		.loc 1 60 0
+ 479 000e FA68     		ldr	r2, [r7, #12]
+ 480 0010 104B     		ldr	r3, .L32
+ 481 0012 1B68     		ldr	r3, [r3]
+ 482 0014 9A42     		cmp	r2, r3
+ 483 0016 17D2     		bcs	.L30
+ 484              		.loc 1 60 0 is_stmt 0 discriminator 1
+ 485 0018 0F4B     		ldr	r3, .L32+4
+ 486 001a 1B68     		ldr	r3, [r3]
+ 487 001c 002B     		cmp	r3, #0
+ 488 001e 13D0     		beq	.L30
+ 489              		.loc 1 60 0 discriminator 2
+ 490 0020 0D4B     		ldr	r3, .L32+4
+ 491 0022 1A68     		ldr	r2, [r3]
+ 492 0024 FB68     		ldr	r3, [r7, #12]
+ 493 0026 5B01     		lsls	r3, r3, #5
+ 494 0028 1344     		add	r3, r3, r2
+ 495 002a 1B69     		ldr	r3, [r3, #16]
+ 496 002c 002B     		cmp	r3, #0
+ 497 002e 0BD0     		beq	.L30
+  61:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****     return s_device[dev_id].read(buf, len, addr);
+ 498              		.loc 1 61 0 is_stmt 1
+ 499 0030 094B     		ldr	r3, .L32+4
+ 500 0032 1A68     		ldr	r2, [r3]
+ 501 0034 FB68     		ldr	r3, [r7, #12]
+ 502 0036 5B01     		lsls	r3, r3, #5
+ 503 0038 1344     		add	r3, r3, r2
+ 504 003a 1B69     		ldr	r3, [r3, #16]
+ 505 003c 7968     		ldr	r1, [r7, #4]
+ 506 003e 3A68     		ldr	r2, [r7]
+ 507 0040 B868     		ldr	r0, [r7, #8]
+ 508 0042 9847     		blx	r3
+ 509              	.LVL4:
+ 510 0044 0346     		mov	r3, r0
+ 511 0046 01E0     		b	.L31
+ 512              	.L30:
+  62:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****   }
+  63:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c ****   return -1;
+ 513              		.loc 1 63 0
+ 514 0048 4FF0FF33 		mov	r3, #-1
+ 515              	.L31:
+  64:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\storage.c **** }
+ 516              		.loc 1 64 0
+ 517 004c 1846     		mov	r0, r3
+ 518 004e 1037     		adds	r7, r7, #16
+ 519              	.LCFI27:
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s 			page 11
+
+
+ 520              		.cfi_def_cfa_offset 8
+ 521 0050 BD46     		mov	sp, r7
+ 522              	.LCFI28:
+ 523              		.cfi_def_cfa_register 13
+ 524              		@ sp needed
+ 525 0052 80BD     		pop	{r7, pc}
+ 526              	.L33:
+ 527              		.align	2
+ 528              	.L32:
+ 529 0054 00000000 		.word	max_dev_num
+ 530 0058 00000000 		.word	s_device
+ 531              		.cfi_endproc
+ 532              	.LFE5:
+ 534              		.text
+ 535              	.Letext0:
+ 536              		.file 2 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 537              		.file 3 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 538              		.file 4 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage/storage.h"
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 storage.c
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:18     .bss.s_device:00000000 $d
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:21     .bss.s_device:00000000 s_device
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:24     .bss.max_dev_num:00000000 $d
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:27     .bss.max_dev_num:00000000 max_dev_num
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:30     .text.storage_dev_install:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:37     .text.storage_dev_install:00000000 storage_dev_install
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:129    .text.storage_dev_install:00000068 $d
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:135    .text.storage_dev_uninstall:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:142    .text.storage_dev_uninstall:00000000 storage_dev_uninstall
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:190    .text.storage_dev_uninstall:0000002c $d
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:196    .text.storage_device_erase:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:203    .text.storage_device_erase:00000000 storage_device_erase
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:274    .text.storage_device_erase:00000054 $d
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:280    .text.storage_device_erase_write:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:287    .text.storage_device_erase_write:00000000 storage_device_erase_write
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:359    .text.storage_device_erase_write:00000054 $d
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:365    .text.storage_device_write:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:372    .text.storage_device_write:00000000 storage_device_write
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:444    .text.storage_device_write:00000054 $d
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:450    .text.storage_device_read:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:457    .text.storage_device_read:00000000 storage_device_read
+C:\Users\201711~1\AppData\Local\Temp\ccNEz6Th.s:529    .text.storage_device_read:00000054 $d
+
+NO UNDEFINED SYMBOLS

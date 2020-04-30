@@ -1,0 +1,895 @@
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32l4xx_it.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.NMI_Handler,"ax",%progbits
+  18              		.align	1
+  19              		.global	NMI_Handler
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	NMI_Handler:
+  26              	.LFB287:
+  27              		.file 1 "E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src/s
+   1:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /**
+   2:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   ******************************************************************************
+   3:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   * @file    stm32l4xx_it.c
+   4:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   * @brief   Interrupt Service Routines.
+   5:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   ******************************************************************************
+   6:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   *
+   7:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   * COPYRIGHT(c) 2018 STMicroelectronics
+   8:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   *
+   9:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  10:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   * are permitted provided that the following conditions are met:
+  11:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  12:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   *      this list of conditions and the following disclaimer.
+  13:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  14:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   *      this list of conditions and the following disclaimer in the documentation
+  15:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   *      and/or other materials provided with the distribution.
+  16:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  17:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   *      may be used to endorse or promote products derived from this software
+  18:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   *      without specific prior written permission.
+  19:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   *
+  20:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  21:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  22:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  23:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  24:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  25:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  26:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  27:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  28:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  29:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  30:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   *
+  31:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   ******************************************************************************
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s 			page 2
+
+
+  32:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   */
+  33:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /* Includes ------------------------------------------------------------------*/
+  34:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** #include "stm32l4xx_hal.h"
+  35:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** #include "stm32l4xx.h"
+  36:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** #include "stm32l4xx_it.h"
+  37:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+  38:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /* USER CODE BEGIN 0 */
+  39:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+  40:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /* USER CODE END 0 */
+  41:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+  42:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /* External variables --------------------------------------------------------*/
+  43:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** extern UART_HandleTypeDef huart1;
+  44:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** extern UART_HandleTypeDef huart2;
+  45:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** extern UART_HandleTypeDef huart3;
+  46:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+  47:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /******************************************************************************/
+  48:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /*            Cortex-M4 Processor Interruption and Exception Handlers         */ 
+  49:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /******************************************************************************/
+  50:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+  51:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /**
+  52:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** * @brief This function handles Non maskable interrupt.
+  53:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** */
+  54:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** void NMI_Handler(void)
+  55:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** {
+  28              		.loc 1 55 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33 0000 80B4     		push	{r7}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 4
+  36              		.cfi_offset 7, -4
+  37 0002 00AF     		add	r7, sp, #0
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_register 7
+  56:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN NonMaskableInt_IRQn 0 */
+  57:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+  58:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END NonMaskableInt_IRQn 0 */
+  59:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
+  60:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+  61:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END NonMaskableInt_IRQn 1 */
+  62:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** }
+  40              		.loc 1 62 0
+  41 0004 00BF     		nop
+  42 0006 BD46     		mov	sp, r7
+  43              	.LCFI2:
+  44              		.cfi_def_cfa_register 13
+  45              		@ sp needed
+  46 0008 5DF8047B 		ldr	r7, [sp], #4
+  47              	.LCFI3:
+  48              		.cfi_restore 7
+  49              		.cfi_def_cfa_offset 0
+  50 000c 7047     		bx	lr
+  51              		.cfi_endproc
+  52              	.LFE287:
+  54              		.section	.text.HardFault_Handler,"ax",%progbits
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s 			page 3
+
+
+  55              		.align	1
+  56              		.global	HardFault_Handler
+  57              		.syntax unified
+  58              		.thumb
+  59              		.thumb_func
+  60              		.fpu fpv4-sp-d16
+  62              	HardFault_Handler:
+  63              	.LFB288:
+  63:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+  64:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /**
+  65:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** * @brief This function handles Hard fault interrupt.
+  66:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** */
+  67:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** void HardFault_Handler(void)
+  68:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** {
+  64              		.loc 1 68 0
+  65              		.cfi_startproc
+  66              		@ args = 0, pretend = 0, frame = 0
+  67              		@ frame_needed = 1, uses_anonymous_args = 0
+  68              		@ link register save eliminated.
+  69 0000 80B4     		push	{r7}
+  70              	.LCFI4:
+  71              		.cfi_def_cfa_offset 4
+  72              		.cfi_offset 7, -4
+  73 0002 00AF     		add	r7, sp, #0
+  74              	.LCFI5:
+  75              		.cfi_def_cfa_register 7
+  76              	.L3:
+  69:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN HardFault_IRQn 0 */
+  70:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+  71:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END HardFault_IRQn 0 */
+  72:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   while (1)
+  77              		.loc 1 72 0 discriminator 1
+  78 0004 FEE7     		b	.L3
+  79              		.cfi_endproc
+  80              	.LFE288:
+  82              		.section	.text.MemManage_Handler,"ax",%progbits
+  83              		.align	1
+  84              		.global	MemManage_Handler
+  85              		.syntax unified
+  86              		.thumb
+  87              		.thumb_func
+  88              		.fpu fpv4-sp-d16
+  90              	MemManage_Handler:
+  91              	.LFB289:
+  73:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   {
+  74:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****     /* USER CODE BEGIN W1_HardFault_IRQn 0 */
+  75:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****     /* USER CODE END W1_HardFault_IRQn 0 */
+  76:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   }
+  77:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN HardFault_IRQn 1 */
+  78:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+  79:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END HardFault_IRQn 1 */
+  80:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** }
+  81:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+  82:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /**
+  83:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** * @brief This function handles Memory management fault.
+  84:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** */
+  85:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** void MemManage_Handler(void)
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s 			page 4
+
+
+  86:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** {
+  92              		.loc 1 86 0
+  93              		.cfi_startproc
+  94              		@ args = 0, pretend = 0, frame = 0
+  95              		@ frame_needed = 1, uses_anonymous_args = 0
+  96              		@ link register save eliminated.
+  97 0000 80B4     		push	{r7}
+  98              	.LCFI6:
+  99              		.cfi_def_cfa_offset 4
+ 100              		.cfi_offset 7, -4
+ 101 0002 00AF     		add	r7, sp, #0
+ 102              	.LCFI7:
+ 103              		.cfi_def_cfa_register 7
+ 104              	.L5:
+  87:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN MemoryManagement_IRQn 0 */
+  88:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+  89:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END MemoryManagement_IRQn 0 */
+  90:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   while (1)
+ 105              		.loc 1 90 0 discriminator 1
+ 106 0004 FEE7     		b	.L5
+ 107              		.cfi_endproc
+ 108              	.LFE289:
+ 110              		.section	.text.BusFault_Handler,"ax",%progbits
+ 111              		.align	1
+ 112              		.global	BusFault_Handler
+ 113              		.syntax unified
+ 114              		.thumb
+ 115              		.thumb_func
+ 116              		.fpu fpv4-sp-d16
+ 118              	BusFault_Handler:
+ 119              	.LFB290:
+  91:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   {
+  92:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****     /* USER CODE BEGIN W1_MemoryManagement_IRQn 0 */
+  93:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****     /* USER CODE END W1_MemoryManagement_IRQn 0 */
+  94:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   }
+  95:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN MemoryManagement_IRQn 1 */
+  96:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+  97:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END MemoryManagement_IRQn 1 */
+  98:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** }
+  99:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 100:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /**
+ 101:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** * @brief This function handles Prefetch fault, memory access fault.
+ 102:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** */
+ 103:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** void BusFault_Handler(void)
+ 104:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** {
+ 120              		.loc 1 104 0
+ 121              		.cfi_startproc
+ 122              		@ args = 0, pretend = 0, frame = 0
+ 123              		@ frame_needed = 1, uses_anonymous_args = 0
+ 124              		@ link register save eliminated.
+ 125 0000 80B4     		push	{r7}
+ 126              	.LCFI8:
+ 127              		.cfi_def_cfa_offset 4
+ 128              		.cfi_offset 7, -4
+ 129 0002 00AF     		add	r7, sp, #0
+ 130              	.LCFI9:
+ 131              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s 			page 5
+
+
+ 132              	.L7:
+ 105:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN BusFault_IRQn 0 */
+ 106:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 107:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END BusFault_IRQn 0 */
+ 108:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   while (1)
+ 133              		.loc 1 108 0 discriminator 1
+ 134 0004 FEE7     		b	.L7
+ 135              		.cfi_endproc
+ 136              	.LFE290:
+ 138              		.section	.text.UsageFault_Handler,"ax",%progbits
+ 139              		.align	1
+ 140              		.global	UsageFault_Handler
+ 141              		.syntax unified
+ 142              		.thumb
+ 143              		.thumb_func
+ 144              		.fpu fpv4-sp-d16
+ 146              	UsageFault_Handler:
+ 147              	.LFB291:
+ 109:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   {
+ 110:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****     /* USER CODE BEGIN W1_BusFault_IRQn 0 */
+ 111:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****     /* USER CODE END W1_BusFault_IRQn 0 */
+ 112:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   }
+ 113:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN BusFault_IRQn 1 */
+ 114:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 115:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END BusFault_IRQn 1 */
+ 116:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** }
+ 117:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 118:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /**
+ 119:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** * @brief This function handles Undefined instruction or illegal state.
+ 120:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** */
+ 121:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** void UsageFault_Handler(void)
+ 122:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** {
+ 148              		.loc 1 122 0
+ 149              		.cfi_startproc
+ 150              		@ args = 0, pretend = 0, frame = 0
+ 151              		@ frame_needed = 1, uses_anonymous_args = 0
+ 152              		@ link register save eliminated.
+ 153 0000 80B4     		push	{r7}
+ 154              	.LCFI10:
+ 155              		.cfi_def_cfa_offset 4
+ 156              		.cfi_offset 7, -4
+ 157 0002 00AF     		add	r7, sp, #0
+ 158              	.LCFI11:
+ 159              		.cfi_def_cfa_register 7
+ 160              	.L9:
+ 123:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN UsageFault_IRQn 0 */
+ 124:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 125:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END UsageFault_IRQn 0 */
+ 126:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   while (1)
+ 161              		.loc 1 126 0 discriminator 1
+ 162 0004 FEE7     		b	.L9
+ 163              		.cfi_endproc
+ 164              	.LFE291:
+ 166              		.section	.text.SVC_Handler,"ax",%progbits
+ 167              		.align	1
+ 168              		.global	SVC_Handler
+ 169              		.syntax unified
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s 			page 6
+
+
+ 170              		.thumb
+ 171              		.thumb_func
+ 172              		.fpu fpv4-sp-d16
+ 174              	SVC_Handler:
+ 175              	.LFB292:
+ 127:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   {
+ 128:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****     /* USER CODE BEGIN W1_UsageFault_IRQn 0 */
+ 129:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****     /* USER CODE END W1_UsageFault_IRQn 0 */
+ 130:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   }
+ 131:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN UsageFault_IRQn 1 */
+ 132:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 133:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END UsageFault_IRQn 1 */
+ 134:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** }
+ 135:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 136:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /**
+ 137:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** * @brief This function handles System service call via SWI instruction.
+ 138:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** */
+ 139:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** void SVC_Handler(void)
+ 140:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** {
+ 176              		.loc 1 140 0
+ 177              		.cfi_startproc
+ 178              		@ args = 0, pretend = 0, frame = 0
+ 179              		@ frame_needed = 1, uses_anonymous_args = 0
+ 180              		@ link register save eliminated.
+ 181 0000 80B4     		push	{r7}
+ 182              	.LCFI12:
+ 183              		.cfi_def_cfa_offset 4
+ 184              		.cfi_offset 7, -4
+ 185 0002 00AF     		add	r7, sp, #0
+ 186              	.LCFI13:
+ 187              		.cfi_def_cfa_register 7
+ 141:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN SVCall_IRQn 0 */
+ 142:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 143:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END SVCall_IRQn 0 */
+ 144:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN SVCall_IRQn 1 */
+ 145:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 146:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END SVCall_IRQn 1 */
+ 147:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** }
+ 188              		.loc 1 147 0
+ 189 0004 00BF     		nop
+ 190 0006 BD46     		mov	sp, r7
+ 191              	.LCFI14:
+ 192              		.cfi_def_cfa_register 13
+ 193              		@ sp needed
+ 194 0008 5DF8047B 		ldr	r7, [sp], #4
+ 195              	.LCFI15:
+ 196              		.cfi_restore 7
+ 197              		.cfi_def_cfa_offset 0
+ 198 000c 7047     		bx	lr
+ 199              		.cfi_endproc
+ 200              	.LFE292:
+ 202              		.section	.text.DebugMon_Handler,"ax",%progbits
+ 203              		.align	1
+ 204              		.global	DebugMon_Handler
+ 205              		.syntax unified
+ 206              		.thumb
+ 207              		.thumb_func
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s 			page 7
+
+
+ 208              		.fpu fpv4-sp-d16
+ 210              	DebugMon_Handler:
+ 211              	.LFB293:
+ 148:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 149:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /**
+ 150:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** * @brief This function handles Debug monitor.
+ 151:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** */
+ 152:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** void DebugMon_Handler(void)
+ 153:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** {
+ 212              		.loc 1 153 0
+ 213              		.cfi_startproc
+ 214              		@ args = 0, pretend = 0, frame = 0
+ 215              		@ frame_needed = 1, uses_anonymous_args = 0
+ 216              		@ link register save eliminated.
+ 217 0000 80B4     		push	{r7}
+ 218              	.LCFI16:
+ 219              		.cfi_def_cfa_offset 4
+ 220              		.cfi_offset 7, -4
+ 221 0002 00AF     		add	r7, sp, #0
+ 222              	.LCFI17:
+ 223              		.cfi_def_cfa_register 7
+ 154:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN DebugMonitor_IRQn 0 */
+ 155:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 156:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END DebugMonitor_IRQn 0 */
+ 157:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN DebugMonitor_IRQn 1 */
+ 158:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 159:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END DebugMonitor_IRQn 1 */
+ 160:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** }
+ 224              		.loc 1 160 0
+ 225 0004 00BF     		nop
+ 226 0006 BD46     		mov	sp, r7
+ 227              	.LCFI18:
+ 228              		.cfi_def_cfa_register 13
+ 229              		@ sp needed
+ 230 0008 5DF8047B 		ldr	r7, [sp], #4
+ 231              	.LCFI19:
+ 232              		.cfi_restore 7
+ 233              		.cfi_def_cfa_offset 0
+ 234 000c 7047     		bx	lr
+ 235              		.cfi_endproc
+ 236              	.LFE293:
+ 238              		.section	.text.PendSV_Handler,"ax",%progbits
+ 239              		.align	1
+ 240              		.weak	PendSV_Handler
+ 241              		.syntax unified
+ 242              		.thumb
+ 243              		.thumb_func
+ 244              		.fpu fpv4-sp-d16
+ 246              	PendSV_Handler:
+ 247              	.LFB294:
+ 161:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 162:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /**
+ 163:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** * @brief This function handles Pendable request for system service.
+ 164:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** */
+ 165:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** __weak void PendSV_Handler(void)
+ 166:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** {
+ 248              		.loc 1 166 0
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s 			page 8
+
+
+ 249              		.cfi_startproc
+ 250              		@ args = 0, pretend = 0, frame = 0
+ 251              		@ frame_needed = 1, uses_anonymous_args = 0
+ 252              		@ link register save eliminated.
+ 253 0000 80B4     		push	{r7}
+ 254              	.LCFI20:
+ 255              		.cfi_def_cfa_offset 4
+ 256              		.cfi_offset 7, -4
+ 257 0002 00AF     		add	r7, sp, #0
+ 258              	.LCFI21:
+ 259              		.cfi_def_cfa_register 7
+ 167:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN PendSV_IRQn 0 */
+ 168:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 169:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END PendSV_IRQn 0 */
+ 170:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN PendSV_IRQn 1 */
+ 171:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 172:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END PendSV_IRQn 1 */
+ 173:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** }
+ 260              		.loc 1 173 0
+ 261 0004 00BF     		nop
+ 262 0006 BD46     		mov	sp, r7
+ 263              	.LCFI22:
+ 264              		.cfi_def_cfa_register 13
+ 265              		@ sp needed
+ 266 0008 5DF8047B 		ldr	r7, [sp], #4
+ 267              	.LCFI23:
+ 268              		.cfi_restore 7
+ 269              		.cfi_def_cfa_offset 0
+ 270 000c 7047     		bx	lr
+ 271              		.cfi_endproc
+ 272              	.LFE294:
+ 274              		.section	.text.SysTick_Handler,"ax",%progbits
+ 275              		.align	1
+ 276              		.weak	SysTick_Handler
+ 277              		.syntax unified
+ 278              		.thumb
+ 279              		.thumb_func
+ 280              		.fpu fpv4-sp-d16
+ 282              	SysTick_Handler:
+ 283              	.LFB295:
+ 174:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 175:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /**
+ 176:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** * @brief This function handles System tick timer.
+ 177:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** */
+ 178:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** __weak void SysTick_Handler(void)
+ 179:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** {
+ 284              		.loc 1 179 0
+ 285              		.cfi_startproc
+ 286              		@ args = 0, pretend = 0, frame = 0
+ 287              		@ frame_needed = 1, uses_anonymous_args = 0
+ 288 0000 80B5     		push	{r7, lr}
+ 289              	.LCFI24:
+ 290              		.cfi_def_cfa_offset 8
+ 291              		.cfi_offset 7, -8
+ 292              		.cfi_offset 14, -4
+ 293 0002 00AF     		add	r7, sp, #0
+ 294              	.LCFI25:
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s 			page 9
+
+
+ 295              		.cfi_def_cfa_register 7
+ 180:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN SysTick_IRQn 0 */
+ 181:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 182:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END SysTick_IRQn 0 */
+ 183:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   HAL_IncTick();
+ 296              		.loc 1 183 0
+ 297 0004 FFF7FEFF 		bl	HAL_IncTick
+ 184:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   HAL_SYSTICK_IRQHandler();
+ 298              		.loc 1 184 0
+ 299 0008 FFF7FEFF 		bl	HAL_SYSTICK_IRQHandler
+ 185:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN SysTick_IRQn 1 */
+ 186:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 187:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END SysTick_IRQn 1 */
+ 188:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** }
+ 300              		.loc 1 188 0
+ 301 000c 00BF     		nop
+ 302 000e 80BD     		pop	{r7, pc}
+ 303              		.cfi_endproc
+ 304              	.LFE295:
+ 306              		.section	.text.Key1_IRQHandler,"ax",%progbits
+ 307              		.align	1
+ 308              		.global	Key1_IRQHandler
+ 309              		.syntax unified
+ 310              		.thumb
+ 311              		.thumb_func
+ 312              		.fpu fpv4-sp-d16
+ 314              	Key1_IRQHandler:
+ 315              	.LFB296:
+ 189:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 190:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /******************************************************************************/
+ 191:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /* STM32L4xx Peripheral Interrupt Handlers                                    */
+ 192:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /* Add here the Interrupt Handlers for the used peripherals.                  */
+ 193:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /* For the available peripheral interrupt handler names,                      */
+ 194:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /* please refer to the startup file (startup_stm32l4xx.s).                    */
+ 195:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /******************************************************************************/
+ 196:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 197:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /**
+ 198:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** * @brief This function handles EXTI line2 interrupt.
+ 199:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** */
+ 200:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** void Key1_IRQHandler(void *args)
+ 201:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** {
+ 316              		.loc 1 201 0
+ 317              		.cfi_startproc
+ 318              		@ args = 0, pretend = 0, frame = 8
+ 319              		@ frame_needed = 1, uses_anonymous_args = 0
+ 320 0000 80B5     		push	{r7, lr}
+ 321              	.LCFI26:
+ 322              		.cfi_def_cfa_offset 8
+ 323              		.cfi_offset 7, -8
+ 324              		.cfi_offset 14, -4
+ 325 0002 82B0     		sub	sp, sp, #8
+ 326              	.LCFI27:
+ 327              		.cfi_def_cfa_offset 16
+ 328 0004 00AF     		add	r7, sp, #0
+ 329              	.LCFI28:
+ 330              		.cfi_def_cfa_register 7
+ 331 0006 7860     		str	r0, [r7, #4]
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s 			page 10
+
+
+ 202:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN EXTI2_IRQn 0 */
+ 203:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 204:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END EXTI2_IRQn 0 */
+ 205:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_2);
+ 332              		.loc 1 205 0
+ 333 0008 0420     		movs	r0, #4
+ 334 000a FFF7FEFF 		bl	HAL_GPIO_EXTI_IRQHandler
+ 206:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN EXTI2_IRQn 1 */
+ 207:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 208:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END EXTI2_IRQn 1 */
+ 209:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** }
+ 335              		.loc 1 209 0
+ 336 000e 00BF     		nop
+ 337 0010 0837     		adds	r7, r7, #8
+ 338              	.LCFI29:
+ 339              		.cfi_def_cfa_offset 8
+ 340 0012 BD46     		mov	sp, r7
+ 341              	.LCFI30:
+ 342              		.cfi_def_cfa_register 13
+ 343              		@ sp needed
+ 344 0014 80BD     		pop	{r7, pc}
+ 345              		.cfi_endproc
+ 346              	.LFE296:
+ 348              		.section	.text.Key2_IRQHandler,"ax",%progbits
+ 349              		.align	1
+ 350              		.global	Key2_IRQHandler
+ 351              		.syntax unified
+ 352              		.thumb
+ 353              		.thumb_func
+ 354              		.fpu fpv4-sp-d16
+ 356              	Key2_IRQHandler:
+ 357              	.LFB297:
+ 210:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 211:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /**
+ 212:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** * @brief This function handles EXTI line3 interrupt.
+ 213:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** */
+ 214:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** void Key2_IRQHandler(void *args)
+ 215:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** {
+ 358              		.loc 1 215 0
+ 359              		.cfi_startproc
+ 360              		@ args = 0, pretend = 0, frame = 8
+ 361              		@ frame_needed = 1, uses_anonymous_args = 0
+ 362 0000 80B5     		push	{r7, lr}
+ 363              	.LCFI31:
+ 364              		.cfi_def_cfa_offset 8
+ 365              		.cfi_offset 7, -8
+ 366              		.cfi_offset 14, -4
+ 367 0002 82B0     		sub	sp, sp, #8
+ 368              	.LCFI32:
+ 369              		.cfi_def_cfa_offset 16
+ 370 0004 00AF     		add	r7, sp, #0
+ 371              	.LCFI33:
+ 372              		.cfi_def_cfa_register 7
+ 373 0006 7860     		str	r0, [r7, #4]
+ 216:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN EXTI3_IRQn 0 */
+ 217:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 218:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END EXTI3_IRQn 0 */
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s 			page 11
+
+
+ 219:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_3);
+ 374              		.loc 1 219 0
+ 375 0008 0820     		movs	r0, #8
+ 376 000a FFF7FEFF 		bl	HAL_GPIO_EXTI_IRQHandler
+ 220:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN EXTI3_IRQn 1 */
+ 221:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 222:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END EXTI3_IRQn 1 */
+ 223:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** }
+ 377              		.loc 1 223 0
+ 378 000e 00BF     		nop
+ 379 0010 0837     		adds	r7, r7, #8
+ 380              	.LCFI34:
+ 381              		.cfi_def_cfa_offset 8
+ 382 0012 BD46     		mov	sp, r7
+ 383              	.LCFI35:
+ 384              		.cfi_def_cfa_register 13
+ 385              		@ sp needed
+ 386 0014 80BD     		pop	{r7, pc}
+ 387              		.cfi_endproc
+ 388              	.LFE297:
+ 390              		.section	.text.Infrared_IRQHandler,"ax",%progbits
+ 391              		.align	1
+ 392              		.global	Infrared_IRQHandler
+ 393              		.syntax unified
+ 394              		.thumb
+ 395              		.thumb_func
+ 396              		.fpu fpv4-sp-d16
+ 398              	Infrared_IRQHandler:
+ 399              	.LFB298:
+ 224:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 225:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /**
+ 226:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   * @brief This function handles EXTI line[9:5] interrupts.
+ 227:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   */
+ 228:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** //void EXTI9_5_IRQHandler(void)
+ 229:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** void Infrared_IRQHandler(void *args)
+ 230:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** {
+ 400              		.loc 1 230 0
+ 401              		.cfi_startproc
+ 402              		@ args = 0, pretend = 0, frame = 8
+ 403              		@ frame_needed = 1, uses_anonymous_args = 0
+ 404 0000 80B5     		push	{r7, lr}
+ 405              	.LCFI36:
+ 406              		.cfi_def_cfa_offset 8
+ 407              		.cfi_offset 7, -8
+ 408              		.cfi_offset 14, -4
+ 409 0002 82B0     		sub	sp, sp, #8
+ 410              	.LCFI37:
+ 411              		.cfi_def_cfa_offset 16
+ 412 0004 00AF     		add	r7, sp, #0
+ 413              	.LCFI38:
+ 414              		.cfi_def_cfa_register 7
+ 415 0006 7860     		str	r0, [r7, #4]
+ 231:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN EXTI9_5_IRQn 0 */
+ 232:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 233:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END EXTI9_5_IRQn 0 */
+ 234:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_9);
+ 416              		.loc 1 234 0
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s 			page 12
+
+
+ 417 0008 4FF40070 		mov	r0, #512
+ 418 000c FFF7FEFF 		bl	HAL_GPIO_EXTI_IRQHandler
+ 235:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN EXTI9_5_IRQn 1 */
+ 236:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 237:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END EXTI9_5_IRQn 1 */
+ 238:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** }
+ 419              		.loc 1 238 0
+ 420 0010 00BF     		nop
+ 421 0012 0837     		adds	r7, r7, #8
+ 422              	.LCFI39:
+ 423              		.cfi_def_cfa_offset 8
+ 424 0014 BD46     		mov	sp, r7
+ 425              	.LCFI40:
+ 426              		.cfi_def_cfa_register 13
+ 427              		@ sp needed
+ 428 0016 80BD     		pop	{r7, pc}
+ 429              		.cfi_endproc
+ 430              	.LFE298:
+ 432              		.section	.text.USART1_IRQHandler,"ax",%progbits
+ 433              		.align	1
+ 434              		.global	USART1_IRQHandler
+ 435              		.syntax unified
+ 436              		.thumb
+ 437              		.thumb_func
+ 438              		.fpu fpv4-sp-d16
+ 440              	USART1_IRQHandler:
+ 441              	.LFB299:
+ 239:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 240:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /**
+ 241:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** * @brief This function handles USART1 global interrupt.
+ 242:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** */
+ 243:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** void USART1_IRQHandler(void)
+ 244:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** {
+ 442              		.loc 1 244 0
+ 443              		.cfi_startproc
+ 444              		@ args = 0, pretend = 0, frame = 0
+ 445              		@ frame_needed = 1, uses_anonymous_args = 0
+ 446 0000 80B5     		push	{r7, lr}
+ 447              	.LCFI41:
+ 448              		.cfi_def_cfa_offset 8
+ 449              		.cfi_offset 7, -8
+ 450              		.cfi_offset 14, -4
+ 451 0002 00AF     		add	r7, sp, #0
+ 452              	.LCFI42:
+ 453              		.cfi_def_cfa_register 7
+ 245:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN USART1_IRQn 0 */
+ 246:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 247:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END USART1_IRQn 0 */
+ 248:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   HAL_UART_IRQHandler(&huart1);
+ 454              		.loc 1 248 0
+ 455 0004 0248     		ldr	r0, .L18
+ 456 0006 FFF7FEFF 		bl	HAL_UART_IRQHandler
+ 249:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN USART1_IRQn 1 */
+ 250:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 251:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END USART1_IRQn 1 */
+ 252:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** }
+ 457              		.loc 1 252 0
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s 			page 13
+
+
+ 458 000a 00BF     		nop
+ 459 000c 80BD     		pop	{r7, pc}
+ 460              	.L19:
+ 461 000e 00BF     		.align	2
+ 462              	.L18:
+ 463 0010 00000000 		.word	huart1
+ 464              		.cfi_endproc
+ 465              	.LFE299:
+ 467              		.section	.text.USART2_IRQHandler,"ax",%progbits
+ 468              		.align	1
+ 469              		.global	USART2_IRQHandler
+ 470              		.syntax unified
+ 471              		.thumb
+ 472              		.thumb_func
+ 473              		.fpu fpv4-sp-d16
+ 475              	USART2_IRQHandler:
+ 476              	.LFB300:
+ 253:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 254:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /**
+ 255:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** * @brief This function handles USART2 global interrupt.
+ 256:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** */
+ 257:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** void USART2_IRQHandler(void)
+ 258:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** {
+ 477              		.loc 1 258 0
+ 478              		.cfi_startproc
+ 479              		@ args = 0, pretend = 0, frame = 0
+ 480              		@ frame_needed = 1, uses_anonymous_args = 0
+ 481              		@ link register save eliminated.
+ 482 0000 80B4     		push	{r7}
+ 483              	.LCFI43:
+ 484              		.cfi_def_cfa_offset 4
+ 485              		.cfi_offset 7, -4
+ 486 0002 00AF     		add	r7, sp, #0
+ 487              	.LCFI44:
+ 488              		.cfi_def_cfa_register 7
+ 259:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN USART2_IRQn 0 */
+ 260:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 261:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END USART2_IRQn 0 */
+ 262:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** //  HAL_UART_IRQHandler(&huart2);
+ 263:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN USART2_IRQn 1 */
+ 264:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 265:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END USART2_IRQn 1 */
+ 266:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** }
+ 489              		.loc 1 266 0
+ 490 0004 00BF     		nop
+ 491 0006 BD46     		mov	sp, r7
+ 492              	.LCFI45:
+ 493              		.cfi_def_cfa_register 13
+ 494              		@ sp needed
+ 495 0008 5DF8047B 		ldr	r7, [sp], #4
+ 496              	.LCFI46:
+ 497              		.cfi_restore 7
+ 498              		.cfi_def_cfa_offset 0
+ 499 000c 7047     		bx	lr
+ 500              		.cfi_endproc
+ 501              	.LFE300:
+ 503              		.section	.text.USART3_IRQHandler,"ax",%progbits
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s 			page 14
+
+
+ 504              		.align	1
+ 505              		.global	USART3_IRQHandler
+ 506              		.syntax unified
+ 507              		.thumb
+ 508              		.thumb_func
+ 509              		.fpu fpv4-sp-d16
+ 511              	USART3_IRQHandler:
+ 512              	.LFB301:
+ 267:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 268:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** /**
+ 269:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** * @brief This function handles USART3 global interrupt.
+ 270:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** */
+ 271:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** void USART3_IRQHandler(void)
+ 272:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** {
+ 513              		.loc 1 272 0
+ 514              		.cfi_startproc
+ 515              		@ args = 0, pretend = 0, frame = 0
+ 516              		@ frame_needed = 1, uses_anonymous_args = 0
+ 517 0000 80B5     		push	{r7, lr}
+ 518              	.LCFI47:
+ 519              		.cfi_def_cfa_offset 8
+ 520              		.cfi_offset 7, -8
+ 521              		.cfi_offset 14, -4
+ 522 0002 00AF     		add	r7, sp, #0
+ 523              	.LCFI48:
+ 524              		.cfi_def_cfa_register 7
+ 273:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN USART3_IRQn 0 */
+ 274:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 275:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END USART3_IRQn 0 */
+ 276:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   HAL_UART_IRQHandler(&huart3);
+ 525              		.loc 1 276 0
+ 526 0004 0248     		ldr	r0, .L22
+ 527 0006 FFF7FEFF 		bl	HAL_UART_IRQHandler
+ 277:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE BEGIN USART3_IRQn 1 */
+ 278:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** 
+ 279:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c ****   /* USER CODE END USART3_IRQn 1 */
+ 280:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\stm32l4xx_it.c **** }
+ 528              		.loc 1 280 0
+ 529 000a 00BF     		nop
+ 530 000c 80BD     		pop	{r7, pc}
+ 531              	.L23:
+ 532 000e 00BF     		.align	2
+ 533              	.L22:
+ 534 0010 00000000 		.word	huart3
+ 535              		.cfi_endproc
+ 536              	.LFE301:
+ 538              		.text
+ 539              	.Letext0:
+ 540              		.file 2 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 541              		.file 3 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 542              		.file 4 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 543              		.file 5 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gc
+ 544              		.file 6 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 545              		.file 7 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/los_typedef.h"
+ 546              		.file 8 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 547              		.file 9 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/arch/arm/common/cmsis/co
+ 548              		.file 10 "E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Inc/
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s 			page 15
+
+
+ 549              		.file 11 "E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Inc/
+ 550              		.file 12 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/los_config.h"
+ 551              		.file 13 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/los_err.h"
+ 552              		.file 14 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/arch/arm/arm-m/include/
+ 553              		.file 15 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/drivers/third_party/ST/STM32L4xx_HAL_Drive
+ 554              		.file 16 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/drivers/third_party/ST/STM32L4xx_HAL_Drive
+ 555              		.file 17 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/drivers/third_party/ST/STM32L4xx_HAL_Drive
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s 			page 16
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32l4xx_it.c
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:18     .text.NMI_Handler:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:25     .text.NMI_Handler:00000000 NMI_Handler
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:55     .text.HardFault_Handler:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:62     .text.HardFault_Handler:00000000 HardFault_Handler
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:83     .text.MemManage_Handler:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:90     .text.MemManage_Handler:00000000 MemManage_Handler
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:111    .text.BusFault_Handler:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:118    .text.BusFault_Handler:00000000 BusFault_Handler
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:139    .text.UsageFault_Handler:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:146    .text.UsageFault_Handler:00000000 UsageFault_Handler
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:167    .text.SVC_Handler:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:174    .text.SVC_Handler:00000000 SVC_Handler
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:203    .text.DebugMon_Handler:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:210    .text.DebugMon_Handler:00000000 DebugMon_Handler
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:239    .text.PendSV_Handler:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:246    .text.PendSV_Handler:00000000 PendSV_Handler
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:275    .text.SysTick_Handler:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:282    .text.SysTick_Handler:00000000 SysTick_Handler
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:307    .text.Key1_IRQHandler:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:314    .text.Key1_IRQHandler:00000000 Key1_IRQHandler
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:349    .text.Key2_IRQHandler:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:356    .text.Key2_IRQHandler:00000000 Key2_IRQHandler
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:391    .text.Infrared_IRQHandler:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:398    .text.Infrared_IRQHandler:00000000 Infrared_IRQHandler
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:433    .text.USART1_IRQHandler:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:440    .text.USART1_IRQHandler:00000000 USART1_IRQHandler
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:463    .text.USART1_IRQHandler:00000010 $d
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:468    .text.USART2_IRQHandler:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:475    .text.USART2_IRQHandler:00000000 USART2_IRQHandler
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:504    .text.USART3_IRQHandler:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:511    .text.USART3_IRQHandler:00000000 USART3_IRQHandler
+C:\Users\201711~1\AppData\Local\Temp\cc1vbiCV.s:534    .text.USART3_IRQHandler:00000010 $d
+
+UNDEFINED SYMBOLS
+HAL_IncTick
+HAL_SYSTICK_IRQHandler
+HAL_GPIO_EXTI_IRQHandler
+HAL_UART_IRQHandler
+huart1
+huart3

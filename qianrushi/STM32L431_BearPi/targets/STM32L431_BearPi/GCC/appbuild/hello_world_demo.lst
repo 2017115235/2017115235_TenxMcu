@@ -1,0 +1,210 @@
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc9AjlTO.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"hello_world_demo.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.rodata
+  18              		.align	2
+  19              	.LC0:
+  20 0000 48656C6C 		.ascii	"Hello World! This is LiteOS!\015\000"
+  20      6F20576F 
+  20      726C6421 
+  20      20546869 
+  20      73206973 
+  21              		.section	.text.app_hello_world_entry,"ax",%progbits
+  22              		.align	1
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  26              		.fpu fpv4-sp-d16
+  28              	app_hello_world_entry:
+  29              	.LFB3:
+  30              		.file 1 "E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos
+   1:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c **** /*----------------------------------------------------------------------------
+   2:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * Copyright (c) <2018>, <Huawei Technologies Co., Ltd>
+   3:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * All rights reserved.
+   4:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * are permitted provided that the following conditions are met:
+   6:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * conditions and the following disclaimer.
+   8:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * provided with the distribution.
+  11:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * permission.
+  14:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc9AjlTO.s 			page 2
+
+
+  25:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  *---------------------------------------------------------------------------*/
+  26:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c **** /*----------------------------------------------------------------------------
+  27:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * Notice of Export Control Law
+  28:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * ===============================================
+  29:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  * applicable export control laws and regulations.
+  33:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  *---------------------------------------------------------------------------*/
+  34:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c **** /**
+  35:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  *  DATE                AUTHOR      INSTRUCTION
+  36:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  *  2019-07-23 10:00    yuhengP    The first version  
+  37:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  *
+  38:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****  */
+  39:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c **** #include <stdint.h>
+  40:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c **** #include <stddef.h>
+  41:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c **** #include <string.h>
+  42:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c **** 
+  43:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c **** #include <osal.h>
+  44:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c **** 
+  45:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c **** static int app_hello_world_entry()
+  46:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c **** {
+  31              		.loc 1 46 0
+  32              		.cfi_startproc
+  33              		@ args = 0, pretend = 0, frame = 0
+  34              		@ frame_needed = 1, uses_anonymous_args = 0
+  35 0000 80B5     		push	{r7, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 7, -8
+  39              		.cfi_offset 14, -4
+  40 0002 00AF     		add	r7, sp, #0
+  41              	.LCFI1:
+  42              		.cfi_def_cfa_register 7
+  43              	.L2:
+  47:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****     while (1)
+  48:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****     {
+  49:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****         printf("Hello World! This is LiteOS!\r\n");
+  44              		.loc 1 49 0 discriminator 1
+  45 0004 0348     		ldr	r0, .L3
+  46 0006 FFF7FEFF 		bl	puts
+  50:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****         osal_task_sleep(4*1000);
+  47              		.loc 1 50 0 discriminator 1
+  48 000a 4FF47A60 		mov	r0, #4000
+  49 000e FFF7FEFF 		bl	osal_task_sleep
+  49:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****         osal_task_sleep(4*1000);
+  50              		.loc 1 49 0 discriminator 1
+  51 0012 F7E7     		b	.L2
+  52              	.L4:
+  53              		.align	2
+  54              	.L3:
+  55 0014 00000000 		.word	.LC0
+  56              		.cfi_endproc
+  57              	.LFE3:
+  59              		.section	.rodata
+  60 001e 0000     		.align	2
+  61              	.LC1:
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc9AjlTO.s 			page 3
+
+
+  62 0020 68656C6C 		.ascii	"helloworld\000"
+  62      6F776F72 
+  62      6C6400
+  63              		.section	.text.standard_app_demo_main,"ax",%progbits
+  64              		.align	1
+  65              		.global	standard_app_demo_main
+  66              		.syntax unified
+  67              		.thumb
+  68              		.thumb_func
+  69              		.fpu fpv4-sp-d16
+  71              	standard_app_demo_main:
+  72              	.LFB4:
+  51:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****     }
+  52:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c **** }
+  53:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c **** 
+  54:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c **** int standard_app_demo_main()
+  55:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c **** {
+  73              		.loc 1 55 0
+  74              		.cfi_startproc
+  75              		@ args = 0, pretend = 0, frame = 0
+  76              		@ frame_needed = 1, uses_anonymous_args = 0
+  77 0000 80B5     		push	{r7, lr}
+  78              	.LCFI2:
+  79              		.cfi_def_cfa_offset 8
+  80              		.cfi_offset 7, -8
+  81              		.cfi_offset 14, -4
+  82 0002 82B0     		sub	sp, sp, #8
+  83              	.LCFI3:
+  84              		.cfi_def_cfa_offset 16
+  85 0004 02AF     		add	r7, sp, #8
+  86              	.LCFI4:
+  87              		.cfi_def_cfa 7, 8
+  56:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****     osal_task_create("helloworld",app_hello_world_entry,NULL,0x400,NULL,2);
+  88              		.loc 1 56 0
+  89 0006 0223     		movs	r3, #2
+  90 0008 0193     		str	r3, [sp, #4]
+  91 000a 0023     		movs	r3, #0
+  92 000c 0093     		str	r3, [sp]
+  93 000e 4FF48063 		mov	r3, #1024
+  94 0012 0022     		movs	r2, #0
+  95 0014 0349     		ldr	r1, .L7
+  96 0016 0448     		ldr	r0, .L7+4
+  97 0018 FFF7FEFF 		bl	osal_task_create
+  57:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c ****     return 0;
+  98              		.loc 1 57 0
+  99 001c 0023     		movs	r3, #0
+  58:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Demos/hello_world_demo\hello_world_demo.c **** }
+ 100              		.loc 1 58 0
+ 101 001e 1846     		mov	r0, r3
+ 102 0020 BD46     		mov	sp, r7
+ 103              	.LCFI5:
+ 104              		.cfi_def_cfa_register 13
+ 105              		@ sp needed
+ 106 0022 80BD     		pop	{r7, pc}
+ 107              	.L8:
+ 108              		.align	2
+ 109              	.L7:
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc9AjlTO.s 			page 4
+
+
+ 110 0024 00000000 		.word	app_hello_world_entry
+ 111 0028 20000000 		.word	.LC1
+ 112              		.cfi_endproc
+ 113              	.LFE4:
+ 115              		.text
+ 116              	.Letext0:
+ 117              		.file 2 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 118              		.file 3 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 119              		.file 4 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gc
+ 120              		.file 5 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\cc9AjlTO.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 hello_world_demo.c
+C:\Users\201711~1\AppData\Local\Temp\cc9AjlTO.s:18     .rodata:00000000 $d
+C:\Users\201711~1\AppData\Local\Temp\cc9AjlTO.s:22     .text.app_hello_world_entry:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\cc9AjlTO.s:28     .text.app_hello_world_entry:00000000 app_hello_world_entry
+C:\Users\201711~1\AppData\Local\Temp\cc9AjlTO.s:55     .text.app_hello_world_entry:00000014 $d
+C:\Users\201711~1\AppData\Local\Temp\cc9AjlTO.s:64     .text.standard_app_demo_main:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\cc9AjlTO.s:71     .text.standard_app_demo_main:00000000 standard_app_demo_main
+C:\Users\201711~1\AppData\Local\Temp\cc9AjlTO.s:110    .text.standard_app_demo_main:00000024 $d
+
+UNDEFINED SYMBOLS
+puts
+osal_task_sleep
+osal_task_create

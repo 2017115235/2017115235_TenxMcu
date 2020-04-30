@@ -1,0 +1,56 @@
+{
+    "general": {
+        "sdk": "IoT_LINK_1.0.0",
+        "projectName": "STM32L431_BearPi"
+    },
+    "output": {
+        "name": "appbuild\\Huawei_LiteOS.elf",
+        "path": ".\\targets\\STM32L431_BearPi\\GCC",
+        "assmableFile": ""
+    },
+    "target": {
+        "UUID": "4356b3af-a6a9-44c0-82a8-f0bd62328547",
+        "boardName": "BearPi",
+        "productNumber": "STM32L431RC"
+    },
+    "debugger": {
+        "type": "OpenOCD",
+        "interface": "SWD",
+        "jlink": {
+            "interface": "SWD",
+            "port": "USB",
+            "speed": "8000",
+            "params": "-f interface/stlink-v2-1.cfg -f target/stm32l4x.cfg"
+        },
+        "initType": "reset",
+        "initFile": ".icode\\default.gdbinit",
+        "gdbPath": "C:\\Users\\2017115235\\openSourceTools\\GNU Tools Arm Embedded\\7 2018-q2-update\\bin"
+    },
+    "burner": {
+        "type": "OpenOCD",
+        "speed": "8000",
+        "interface": "SWD",
+        "flashAddress": "",
+        "loadAddress": "0x08000000",
+        "erase": true,
+        "check": true,
+        "params": "-f interface/stlink-v2-1.cfg -f target/stm32l4x.cfg"
+    },
+    "compiler": {
+        "type": "GCC",
+        "prefix": "arm-none-eabi",
+        "make": {
+            "script": "targets\\STM32L431_BearPi\\GCC\\Makefile",
+            "args": "-j",
+            "path": "C:\\Users\\2017115235\\openSourceTools\\GNU MCU Eclipse\\Build Tools\\2.11-20180428-1604\\bin\\make.exe"
+        },
+        "path": "C:\\Users\\2017115235\\openSourceTools\\GNU Tools Arm Embedded\\7 2018-q2-update\\bin"
+    },
+    "version": "0.3.6",
+    "serialPort": {
+        "logPath": "C:\\Users\\2017115235\\.icode\\logs"
+    },
+    "outputElfNames": [
+        "appbuild\\Huawei_LiteOS.elf"
+    ]
+}

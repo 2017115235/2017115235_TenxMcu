@@ -1,0 +1,536 @@
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	system_phys_mem
+  18              		.section	.rodata.system_phys_mem,"a",%progbits
+  19              		.align	2
+  22              	system_phys_mem:
+  23 0000 00000000 		.word	__los_heap_addr_start__
+  24 0004 00000000 		.word	__los_heap_addr_end__
+  25 0008 00000000 		.word	0
+  26 000c 00000000 		.word	0
+  27              		.section	.rodata
+  28              		.align	2
+  29              	.LC0:
+  30 0000 57656C63 		.ascii	"Welcome to IoTCluB!\000"
+  30      6F6D6520 
+  30      746F2049 
+  30      6F54436C 
+  30      75422100 
+  31              		.align	2
+  32              	.LC1:
+  33 0014 42656172 		.ascii	"BearPi IoT Develop Board\000"
+  33      50692049 
+  33      6F542044 
+  33      6576656C 
+  33      6F702042 
+  34 002d 000000   		.align	2
+  35              	.LC2:
+  36 0030 506F7765 		.ascii	"Powerd by Huawei LiteOS!\000"
+  36      72642062 
+  36      79204875 
+  36      61776569 
+  36      204C6974 
+  37 0049 000000   		.align	2
+  38              	.LC3:
+  39 004c 506C6561 		.ascii	"Please wait for system init\000"
+  39      73652077 
+  39      61697420 
+  39      666F7220 
+  39      73797374 
+  40              		.section	.text.HardWare_Init,"ax",%progbits
+  41              		.align	1
+  42              		.global	HardWare_Init
+  43              		.syntax unified
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s 			page 2
+
+
+  44              		.thumb
+  45              		.thumb_func
+  46              		.fpu fpv4-sp-d16
+  48              	HardWare_Init:
+  49              	.LFB314:
+  50              		.file 1 "E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src/m
+   1:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** /*----------------------------------------------------------------------------
+   2:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * All rights reserved.
+   4:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * are permitted provided that the following conditions are met:
+   6:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * conditions and the following disclaimer.
+   8:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * provided with the distribution.
+  11:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * permission.
+  14:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  *---------------------------------------------------------------------------*/
+  26:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** /*----------------------------------------------------------------------------
+  27:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * Notice of Export Control Law
+  28:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * ===============================================
+  29:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  * applicable export control laws and regulations.
+  33:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****  *---------------------------------------------------------------------------*/
+  34:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** #include "main.h"
+  35:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** #include "sys_init.h"
+  36:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** #include "mem.h"
+  37:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 
+  38:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** #include "los_base.h"
+  39:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** #include "los_task.ph"
+  40:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** #include "los_typedef.h"
+  41:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** #include "los_sys.h"
+  42:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 
+  43:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** #if defined (__CC_ARM)
+  44:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** extern char Image$$RW_IRAM1$$ZI$$Limit [];
+  45:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** extern char Image$$ARM_LIB_STACKHEAP$$Base [];
+  46:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** #elif defined (__GNUC__)
+  47:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** extern char __los_heap_addr_start__ [];
+  48:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** extern char __los_heap_addr_end__ [];
+  49:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** #else
+  50:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** #error "fix me"
+  51:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** #endif
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s 			page 3
+
+
+  52:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 
+  53:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** const struct phys_mem system_phys_mem [] =
+  54:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     {
+  55:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** #if defined (__CC_ARM)
+  56:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****         { Image$$RW_IRAM1$$ZI$$Limit, Image$$ARM_LIB_STACKHEAP$$Base },
+  57:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** #elif defined (__GNUC__)
+  58:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****         {(unsigned long) __los_heap_addr_start__,(unsigned long) __los_heap_addr_end__ },
+  59:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** #else
+  60:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** #error "fix me"
+  61:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** #endif
+  62:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****         { 0, 0 }
+  63:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     };
+  64:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 
+  65:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** VOID HardWare_Init(VOID)
+  66:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** {
+  51              		.loc 1 66 0
+  52              		.cfi_startproc
+  53              		@ args = 0, pretend = 0, frame = 0
+  54              		@ frame_needed = 1, uses_anonymous_args = 0
+  55 0000 80B5     		push	{r7, lr}
+  56              	.LCFI0:
+  57              		.cfi_def_cfa_offset 8
+  58              		.cfi_offset 7, -8
+  59              		.cfi_offset 14, -4
+  60 0002 82B0     		sub	sp, sp, #8
+  61              	.LCFI1:
+  62              		.cfi_def_cfa_offset 16
+  63 0004 02AF     		add	r7, sp, #8
+  64              	.LCFI2:
+  65              		.cfi_def_cfa 7, 8
+  67:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 	HAL_Init();
+  66              		.loc 1 67 0
+  67 0006 FFF7FEFF 		bl	HAL_Init
+  68:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 	/* Configure the system clock */
+  69:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 	SystemClock_Config();
+  68              		.loc 1 69 0
+  69 000a FFF7FEFF 		bl	SystemClock_Config
+  70:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 	MX_GPIO_Init();
+  70              		.loc 1 70 0
+  71 000e FFF7FEFF 		bl	MX_GPIO_Init
+  71:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 	MX_I2C1_Init();
+  72              		.loc 1 71 0
+  73 0012 FFF7FEFF 		bl	MX_I2C1_Init
+  72:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 	MX_SPI2_Init();
+  74              		.loc 1 72 0
+  75 0016 FFF7FEFF 		bl	MX_SPI2_Init
+  73:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 	dwt_delay_init(SystemCoreClock);
+  76              		.loc 1 73 0
+  77 001a 1D4B     		ldr	r3, .L2
+  78 001c 1B68     		ldr	r3, [r3]
+  79 001e 1846     		mov	r0, r3
+  80 0020 FFF7FEFF 		bl	dwt_delay_init
+  74:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 	LCD_Init();					
+  81              		.loc 1 74 0
+  82 0024 FFF7FEFF 		bl	LCD_Init
+  75:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 	LCD_Clear(WHITE);		   	
+  83              		.loc 1 75 0
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s 			page 4
+
+
+  84 0028 4FF6FF70 		movw	r0, #65535
+  85 002c FFF7FEFF 		bl	LCD_Clear
+  76:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 	POINT_COLOR = RED;			
+  86              		.loc 1 76 0
+  87 0030 184B     		ldr	r3, .L2+4
+  88 0032 4FF47842 		mov	r2, #63488
+  89 0036 1A80     		strh	r2, [r3]	@ movhi
+  77:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 	LCD_ShowString(10, 50, 240, 24, 24, "Welcome to IoTCluB!");
+  90              		.loc 1 77 0
+  91 0038 174B     		ldr	r3, .L2+8
+  92 003a 0193     		str	r3, [sp, #4]
+  93 003c 1823     		movs	r3, #24
+  94 003e 0093     		str	r3, [sp]
+  95 0040 1823     		movs	r3, #24
+  96 0042 F022     		movs	r2, #240
+  97 0044 3221     		movs	r1, #50
+  98 0046 0A20     		movs	r0, #10
+  99 0048 FFF7FEFF 		bl	LCD_ShowString
+  78:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 	LCD_ShowString(20, 90, 240, 16, 16, "BearPi IoT Develop Board");
+ 100              		.loc 1 78 0
+ 101 004c 134B     		ldr	r3, .L2+12
+ 102 004e 0193     		str	r3, [sp, #4]
+ 103 0050 1023     		movs	r3, #16
+ 104 0052 0093     		str	r3, [sp]
+ 105 0054 1023     		movs	r3, #16
+ 106 0056 F022     		movs	r2, #240
+ 107 0058 5A21     		movs	r1, #90
+ 108 005a 1420     		movs	r0, #20
+ 109 005c FFF7FEFF 		bl	LCD_ShowString
+  79:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 	LCD_ShowString(20, 130, 240, 16, 16, "Powerd by Huawei LiteOS!");
+ 110              		.loc 1 79 0
+ 111 0060 0F4B     		ldr	r3, .L2+16
+ 112 0062 0193     		str	r3, [sp, #4]
+ 113 0064 1023     		movs	r3, #16
+ 114 0066 0093     		str	r3, [sp]
+ 115 0068 1023     		movs	r3, #16
+ 116 006a F022     		movs	r2, #240
+ 117 006c 8221     		movs	r1, #130
+ 118 006e 1420     		movs	r0, #20
+ 119 0070 FFF7FEFF 		bl	LCD_ShowString
+  80:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 	LCD_ShowString(10, 170, 240, 16, 16, "Please wait for system init");
+ 120              		.loc 1 80 0
+ 121 0074 0B4B     		ldr	r3, .L2+20
+ 122 0076 0193     		str	r3, [sp, #4]
+ 123 0078 1023     		movs	r3, #16
+ 124 007a 0093     		str	r3, [sp]
+ 125 007c 1023     		movs	r3, #16
+ 126 007e F022     		movs	r2, #240
+ 127 0080 AA21     		movs	r1, #170
+ 128 0082 0A20     		movs	r0, #10
+ 129 0084 FFF7FEFF 		bl	LCD_ShowString
+  81:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 	
+  82:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** }
+ 130              		.loc 1 82 0
+ 131 0088 00BF     		nop
+ 132 008a BD46     		mov	sp, r7
+ 133              	.LCFI3:
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s 			page 5
+
+
+ 134              		.cfi_def_cfa_register 13
+ 135              		@ sp needed
+ 136 008c 80BD     		pop	{r7, pc}
+ 137              	.L3:
+ 138 008e 00BF     		.align	2
+ 139              	.L2:
+ 140 0090 00000000 		.word	SystemCoreClock
+ 141 0094 00000000 		.word	POINT_COLOR
+ 142 0098 00000000 		.word	.LC0
+ 143 009c 14000000 		.word	.LC1
+ 144 00a0 30000000 		.word	.LC2
+ 145 00a4 4C000000 		.word	.LC3
+ 146              		.cfi_endproc
+ 147              	.LFE314:
+ 149              		.section	.rodata
+ 150              		.align	2
+ 151              	.LC4:
+ 152 0068 6C696E6B 		.ascii	"link_main\000"
+ 152      5F6D6169 
+ 152      6E00
+ 153              		.section	.text.link_test,"ax",%progbits
+ 154              		.align	1
+ 155              		.syntax unified
+ 156              		.thumb
+ 157              		.thumb_func
+ 158              		.fpu fpv4-sp-d16
+ 160              	link_test:
+ 161              	.LFB315:
+  83:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 
+  84:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** extern int link_main(void *args);
+  85:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** static int link_test()
+  86:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** {
+ 162              		.loc 1 86 0
+ 163              		.cfi_startproc
+ 164              		@ args = 0, pretend = 0, frame = 40
+ 165              		@ frame_needed = 1, uses_anonymous_args = 0
+ 166 0000 80B5     		push	{r7, lr}
+ 167              	.LCFI4:
+ 168              		.cfi_def_cfa_offset 8
+ 169              		.cfi_offset 7, -8
+ 170              		.cfi_offset 14, -4
+ 171 0002 8AB0     		sub	sp, sp, #40
+ 172              	.LCFI5:
+ 173              		.cfi_def_cfa_offset 48
+ 174 0004 00AF     		add	r7, sp, #0
+ 175              	.LCFI6:
+ 176              		.cfi_def_cfa_register 7
+  87:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     int ret = -1;
+ 177              		.loc 1 87 0
+ 178 0006 4FF0FF33 		mov	r3, #-1
+ 179 000a 7B62     		str	r3, [r7, #36]
+  88:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     UINT32 uwRet = LOS_OK;
+ 180              		.loc 1 88 0
+ 181 000c 0023     		movs	r3, #0
+ 182 000e 3B62     		str	r3, [r7, #32]
+  89:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     UINT32  handle;
+  90:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     TSK_INIT_PARAM_S task_init_param;
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s 			page 6
+
+
+  91:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 
+  92:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     memset (&task_init_param, 0, sizeof (TSK_INIT_PARAM_S));
+ 183              		.loc 1 92 0
+ 184 0010 3B1D     		adds	r3, r7, #4
+ 185 0012 1822     		movs	r2, #24
+ 186 0014 0021     		movs	r1, #0
+ 187 0016 1846     		mov	r0, r3
+ 188 0018 FFF7FEFF 		bl	memset
+  93:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     task_init_param.uwArg = (unsigned int)NULL;
+ 189              		.loc 1 93 0
+ 190 001c 0023     		movs	r3, #0
+ 191 001e FB60     		str	r3, [r7, #12]
+  94:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     task_init_param.usTaskPrio = 2;
+ 192              		.loc 1 94 0
+ 193 0020 0223     		movs	r3, #2
+ 194 0022 3B81     		strh	r3, [r7, #8]	@ movhi
+  95:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     task_init_param.pcName =(char *) "link_main";
+ 195              		.loc 1 95 0
+ 196 0024 0C4B     		ldr	r3, .L7
+ 197 0026 7B61     		str	r3, [r7, #20]
+  96:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     task_init_param.pfnTaskEntry = (TSK_ENTRY_FUNC)link_main;
+ 198              		.loc 1 96 0
+ 199 0028 0C4B     		ldr	r3, .L7+4
+ 200 002a 7B60     		str	r3, [r7, #4]
+  97:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     task_init_param.uwStackSize = 0x1000;
+ 201              		.loc 1 97 0
+ 202 002c 4FF48053 		mov	r3, #4096
+ 203 0030 3B61     		str	r3, [r7, #16]
+  98:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     uwRet = LOS_TaskCreate(&handle, &task_init_param);
+ 204              		.loc 1 98 0
+ 205 0032 3A1D     		adds	r2, r7, #4
+ 206 0034 07F11C03 		add	r3, r7, #28
+ 207 0038 1146     		mov	r1, r2
+ 208 003a 1846     		mov	r0, r3
+ 209 003c FFF7FEFF 		bl	LOS_TaskCreate
+ 210 0040 3862     		str	r0, [r7, #32]
+  99:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     if(LOS_OK == uwRet){
+ 211              		.loc 1 99 0
+ 212 0042 3B6A     		ldr	r3, [r7, #32]
+ 213 0044 002B     		cmp	r3, #0
+ 214 0046 01D1     		bne	.L5
+ 100:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****         ret = 0;
+ 215              		.loc 1 100 0
+ 216 0048 0023     		movs	r3, #0
+ 217 004a 7B62     		str	r3, [r7, #36]
+ 218              	.L5:
+ 101:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     }
+ 102:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     return ret;
+ 219              		.loc 1 102 0
+ 220 004c 7B6A     		ldr	r3, [r7, #36]
+ 103:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** }
+ 221              		.loc 1 103 0
+ 222 004e 1846     		mov	r0, r3
+ 223 0050 2837     		adds	r7, r7, #40
+ 224              	.LCFI7:
+ 225              		.cfi_def_cfa_offset 8
+ 226 0052 BD46     		mov	sp, r7
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s 			page 7
+
+
+ 227              	.LCFI8:
+ 228              		.cfi_def_cfa_register 13
+ 229              		@ sp needed
+ 230 0054 80BD     		pop	{r7, pc}
+ 231              	.L8:
+ 232 0056 00BF     		.align	2
+ 233              	.L7:
+ 234 0058 68000000 		.word	.LC4
+ 235 005c 00000000 		.word	link_main
+ 236              		.cfi_endproc
+ 237              	.LFE315:
+ 239              		.section	.text.main,"ax",%progbits
+ 240              		.align	1
+ 241              		.global	main
+ 242              		.syntax unified
+ 243              		.thumb
+ 244              		.thumb_func
+ 245              		.fpu fpv4-sp-d16
+ 247              	main:
+ 248              	.LFB316:
+ 104:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 
+ 105:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** int main(void)
+ 106:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** {
+ 249              		.loc 1 106 0
+ 250              		.cfi_startproc
+ 251              		@ args = 0, pretend = 0, frame = 8
+ 252              		@ frame_needed = 1, uses_anonymous_args = 0
+ 253 0000 80B5     		push	{r7, lr}
+ 254              	.LCFI9:
+ 255              		.cfi_def_cfa_offset 8
+ 256              		.cfi_offset 7, -8
+ 257              		.cfi_offset 14, -4
+ 258 0002 82B0     		sub	sp, sp, #8
+ 259              	.LCFI10:
+ 260              		.cfi_def_cfa_offset 16
+ 261 0004 00AF     		add	r7, sp, #0
+ 262              	.LCFI11:
+ 263              		.cfi_def_cfa_register 7
+ 107:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     UINT32 uwRet = LOS_OK;
+ 264              		.loc 1 107 0
+ 265 0006 0023     		movs	r3, #0
+ 266 0008 7B60     		str	r3, [r7, #4]
+ 108:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     HardWare_Init();
+ 267              		.loc 1 108 0
+ 268 000a FFF7FEFF 		bl	HardWare_Init
+ 109:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     uwRet = LOS_KernelInit();
+ 269              		.loc 1 109 0
+ 270 000e FFF7FEFF 		bl	LOS_KernelInit
+ 271 0012 7860     		str	r0, [r7, #4]
+ 110:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     if (uwRet != LOS_OK)
+ 272              		.loc 1 110 0
+ 273 0014 7B68     		ldr	r3, [r7, #4]
+ 274 0016 002B     		cmp	r3, #0
+ 275 0018 01D0     		beq	.L10
+ 111:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     {
+ 112:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****         return LOS_NOK;
+ 276              		.loc 1 112 0
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s 			page 8
+
+
+ 277 001a 0123     		movs	r3, #1
+ 278 001c 08E0     		b	.L11
+ 279              	.L10:
+ 113:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     }
+ 114:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 
+ 115:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     extern void shell_uart_init(int baud);
+ 116:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     shell_uart_init(115200);
+ 280              		.loc 1 116 0
+ 281 001e 4FF4E130 		mov	r0, #115200
+ 282 0022 FFF7FEFF 		bl	shell_uart_init
+ 117:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 
+ 118:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     link_test();
+ 283              		.loc 1 118 0
+ 284 0026 FFF7FEFF 		bl	link_test
+ 119:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** 
+ 120:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     (void)LOS_Start();
+ 285              		.loc 1 120 0
+ 286 002a FFF7FEFF 		bl	LOS_Start
+ 121:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c ****     return 0;
+ 287              		.loc 1 121 0
+ 288 002e 0023     		movs	r3, #0
+ 289              	.L11:
+ 122:E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Src\main.c **** }
+ 290              		.loc 1 122 0
+ 291 0030 1846     		mov	r0, r3
+ 292 0032 0837     		adds	r7, r7, #8
+ 293              	.LCFI12:
+ 294              		.cfi_def_cfa_offset 8
+ 295 0034 BD46     		mov	sp, r7
+ 296              	.LCFI13:
+ 297              		.cfi_def_cfa_register 13
+ 298              		@ sp needed
+ 299 0036 80BD     		pop	{r7, pc}
+ 300              		.cfi_endproc
+ 301              	.LFE316:
+ 303              		.text
+ 304              	.Letext0:
+ 305              		.file 2 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gc
+ 306              		.file 3 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 307              		.file 4 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 308              		.file 5 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 309              		.file 6 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 310              		.file 7 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/los_typedef.h"
+ 311              		.file 8 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 312              		.file 9 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/arch/arm/common/cmsis/co
+ 313              		.file 10 "E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Inc/
+ 314              		.file 11 "E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Inc/
+ 315              		.file 12 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/drivers/third_party/ST/STM32L4xx_HAL_Drive
+ 316              		.file 13 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/drivers/third_party/ST/STM32L4xx_HAL_Drive
+ 317              		.file 14 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/drivers/third_party/ST/STM32L4xx_HAL_Drive
+ 318              		.file 15 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/drivers/third_party/ST/STM32L4xx_HAL_Drive
+ 319              		.file 16 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/drivers/third_party/ST/STM32L4xx_HAL_Drive
+ 320              		.file 17 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/los_config.h"
+ 321              		.file 18 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/los_list.h"
+ 322              		.file 19 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/los_err.h"
+ 323              		.file 20 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/arch/arm/arm-m/include/
+ 324              		.file 21 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/los_event.h"
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s 			page 9
+
+
+ 325              		.file 22 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/los_tick.h"
+ 326              		.file 23 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/los_task.h"
+ 327              		.file 24 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/base/include/los_task.p
+ 328              		.file 25 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/base/include/los_slab.p
+ 329              		.file 26 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/los_memory.h"
+ 330              		.file 27 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/base/include/los_queue.
+ 331              		.file 28 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-no
+ 332              		.file 29 "E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Inc/
+ 333              		.file 30 "E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Inc/
+ 334              		.file 31 "E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Inc/
+ 335              		.file 32 "E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Hard
+ 336              		.file 33 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/list.h"
+ 337              		.file 34 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/base/include/chunk.h"
+ 338              		.file 35 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/base/include/cm-tlsf.h"
+ 339              		.file 36 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/base/include/heap.h"
+ 340              		.file 37 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/base/include/mem.h"
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s:22     .rodata.system_phys_mem:00000000 system_phys_mem
+C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s:19     .rodata.system_phys_mem:00000000 $d
+C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s:28     .rodata:00000000 $d
+C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s:41     .text.HardWare_Init:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s:48     .text.HardWare_Init:00000000 HardWare_Init
+C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s:140    .text.HardWare_Init:00000090 $d
+C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s:154    .text.link_test:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s:160    .text.link_test:00000000 link_test
+C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s:234    .text.link_test:00000058 $d
+C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s:240    .text.main:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccMMFmhC.s:247    .text.main:00000000 main
+
+UNDEFINED SYMBOLS
+__los_heap_addr_start__
+__los_heap_addr_end__
+HAL_Init
+SystemClock_Config
+MX_GPIO_Init
+MX_I2C1_Init
+MX_SPI2_Init
+dwt_delay_init
+LCD_Init
+LCD_Clear
+LCD_ShowString
+SystemCoreClock
+POINT_COLOR
+memset
+LOS_TaskCreate
+link_main
+LOS_KernelInit
+shell_uart_init
+LOS_Start

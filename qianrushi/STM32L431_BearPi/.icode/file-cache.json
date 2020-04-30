@@ -1,0 +1,21 @@
+{
+    "openFiles": [
+        {
+            "file": {
+                "name": "hello_world_demo.c",
+                "isFolder": false,
+                "path": "targets\\STM32L431_BearPi\\Demos\\hello_world_demo\\hello_world_demo.c",
+                "parentPath": "E:\\danpianji\\2017115235_TenxMcu\\qianrushi\\STM32L431_BearPi\\targets\\STM32L431_BearPi\\Demos\\hello_world_demo",
+                "level": 6,
+                "isOpen": false,
+                "fileExtension": ".c",
+                "size": 2781
+            },
+            "currentShow": false,
+            "isPreview": false,
+            "isChange": false
+        }
+    ],
+    "previewName": "F:\\IoT-Studio\\IoT Studio",
+    "currentShowName": "targets\\STM32L431_BearPi\\Demos\\hello_world_demo\\hello_world_demo.c"
+}

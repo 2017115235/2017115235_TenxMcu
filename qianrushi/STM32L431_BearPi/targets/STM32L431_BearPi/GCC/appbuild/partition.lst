@@ -1,0 +1,773 @@
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"partition.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.bss.s_partition,"aw",%nobits
+  18              		.align	2
+  21              	s_partition:
+  22 0000 00000000 		.space	4
+  23              		.section	.bss.max_part_num,"aw",%nobits
+  24              		.align	2
+  27              	max_part_num:
+  28 0000 00000000 		.space	4
+  29              		.section	.text.storage_partition_init,"ax",%progbits
+  30              		.align	1
+  31              		.global	storage_partition_init
+  32              		.syntax unified
+  33              		.thumb
+  34              		.thumb_func
+  35              		.fpu fpv4-sp-d16
+  37              	storage_partition_init:
+  38              	.LFB3:
+  39              		.file 1 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage/partition.c"
+   1:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** #include "partition.h"
+   2:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** #include "storage.h"
+   3:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** 
+   4:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** #include <stdio.h>
+   5:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** 
+   6:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** static const storage_partition *s_partition = NULL;
+   7:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** static int max_part_num = 0;
+   8:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** int storage_partition_init(storage_partition *part, int32_t max_num)
+   9:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** {
+  40              		.loc 1 9 0
+  41              		.cfi_startproc
+  42              		@ args = 0, pretend = 0, frame = 8
+  43              		@ frame_needed = 1, uses_anonymous_args = 0
+  44              		@ link register save eliminated.
+  45 0000 80B4     		push	{r7}
+  46              	.LCFI0:
+  47              		.cfi_def_cfa_offset 4
+  48              		.cfi_offset 7, -4
+  49 0002 83B0     		sub	sp, sp, #12
+  50              	.LCFI1:
+  51              		.cfi_def_cfa_offset 16
+  52 0004 00AF     		add	r7, sp, #0
+  53              	.LCFI2:
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s 			page 2
+
+
+  54              		.cfi_def_cfa_register 7
+  55 0006 7860     		str	r0, [r7, #4]
+  56 0008 3960     		str	r1, [r7]
+  10:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   if (part != NULL && s_partition == NULL) {
+  57              		.loc 1 10 0
+  58 000a 7B68     		ldr	r3, [r7, #4]
+  59 000c 002B     		cmp	r3, #0
+  60 000e 0BD0     		beq	.L2
+  61              		.loc 1 10 0 is_stmt 0 discriminator 1
+  62 0010 094B     		ldr	r3, .L4
+  63 0012 1B68     		ldr	r3, [r3]
+  64 0014 002B     		cmp	r3, #0
+  65 0016 07D1     		bne	.L2
+  11:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****     s_partition = part;
+  66              		.loc 1 11 0 is_stmt 1
+  67 0018 074A     		ldr	r2, .L4
+  68 001a 7B68     		ldr	r3, [r7, #4]
+  69 001c 1360     		str	r3, [r2]
+  12:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****     max_part_num = max_num;
+  70              		.loc 1 12 0
+  71 001e 074A     		ldr	r2, .L4+4
+  72 0020 3B68     		ldr	r3, [r7]
+  73 0022 1360     		str	r3, [r2]
+  13:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****     return 0;
+  74              		.loc 1 13 0
+  75 0024 0023     		movs	r3, #0
+  76 0026 01E0     		b	.L3
+  77              	.L2:
+  14:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   }
+  15:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   return -1;
+  78              		.loc 1 15 0
+  79 0028 4FF0FF33 		mov	r3, #-1
+  80              	.L3:
+  16:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** }
+  81              		.loc 1 16 0
+  82 002c 1846     		mov	r0, r3
+  83 002e 0C37     		adds	r7, r7, #12
+  84              	.LCFI3:
+  85              		.cfi_def_cfa_offset 4
+  86 0030 BD46     		mov	sp, r7
+  87              	.LCFI4:
+  88              		.cfi_def_cfa_register 13
+  89              		@ sp needed
+  90 0032 5DF8047B 		ldr	r7, [sp], #4
+  91              	.LCFI5:
+  92              		.cfi_restore 7
+  93              		.cfi_def_cfa_offset 0
+  94 0036 7047     		bx	lr
+  95              	.L5:
+  96              		.align	2
+  97              	.L4:
+  98 0038 00000000 		.word	s_partition
+  99 003c 00000000 		.word	max_part_num
+ 100              		.cfi_endproc
+ 101              	.LFE3:
+ 103              		.section	.text.storage_partition_deinit,"ax",%progbits
+ 104              		.align	1
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s 			page 3
+
+
+ 105              		.global	storage_partition_deinit
+ 106              		.syntax unified
+ 107              		.thumb
+ 108              		.thumb_func
+ 109              		.fpu fpv4-sp-d16
+ 111              	storage_partition_deinit:
+ 112              	.LFB4:
+  17:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** 
+  18:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** int storage_partition_deinit()
+  19:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** {
+ 113              		.loc 1 19 0
+ 114              		.cfi_startproc
+ 115              		@ args = 0, pretend = 0, frame = 0
+ 116              		@ frame_needed = 1, uses_anonymous_args = 0
+ 117              		@ link register save eliminated.
+ 118 0000 80B4     		push	{r7}
+ 119              	.LCFI6:
+ 120              		.cfi_def_cfa_offset 4
+ 121              		.cfi_offset 7, -4
+ 122 0002 00AF     		add	r7, sp, #0
+ 123              	.LCFI7:
+ 124              		.cfi_def_cfa_register 7
+  20:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   if (s_partition != NULL) {
+ 125              		.loc 1 20 0
+ 126 0004 094B     		ldr	r3, .L9
+ 127 0006 1B68     		ldr	r3, [r3]
+ 128 0008 002B     		cmp	r3, #0
+ 129 000a 07D0     		beq	.L7
+  21:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****     s_partition = NULL;
+ 130              		.loc 1 21 0
+ 131 000c 074B     		ldr	r3, .L9
+ 132 000e 0022     		movs	r2, #0
+ 133 0010 1A60     		str	r2, [r3]
+  22:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****     max_part_num = 0;
+ 134              		.loc 1 22 0
+ 135 0012 074B     		ldr	r3, .L9+4
+ 136 0014 0022     		movs	r2, #0
+ 137 0016 1A60     		str	r2, [r3]
+  23:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****     return 0;
+ 138              		.loc 1 23 0
+ 139 0018 0023     		movs	r3, #0
+ 140 001a 01E0     		b	.L8
+ 141              	.L7:
+  24:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   }
+  25:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   return -1;
+ 142              		.loc 1 25 0
+ 143 001c 4FF0FF33 		mov	r3, #-1
+ 144              	.L8:
+  26:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** }
+ 145              		.loc 1 26 0
+ 146 0020 1846     		mov	r0, r3
+ 147 0022 BD46     		mov	sp, r7
+ 148              	.LCFI8:
+ 149              		.cfi_def_cfa_register 13
+ 150              		@ sp needed
+ 151 0024 5DF8047B 		ldr	r7, [sp], #4
+ 152              	.LCFI9:
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s 			page 4
+
+
+ 153              		.cfi_restore 7
+ 154              		.cfi_def_cfa_offset 0
+ 155 0028 7047     		bx	lr
+ 156              	.L10:
+ 157 002a 00BF     		.align	2
+ 158              	.L9:
+ 159 002c 00000000 		.word	s_partition
+ 160 0030 00000000 		.word	max_part_num
+ 161              		.cfi_endproc
+ 162              	.LFE4:
+ 164              		.section	.rodata
+ 165              		.align	2
+ 166              	.LC0:
+ 167 0000 25733A69 		.ascii	"%s:invalid args!\012\000"
+ 167      6E76616C 
+ 167      69642061 
+ 167      72677321 
+ 167      0A00
+ 168              		.section	.text.storage_partition_read,"ax",%progbits
+ 169              		.align	1
+ 170              		.global	storage_partition_read
+ 171              		.syntax unified
+ 172              		.thumb
+ 173              		.thumb_func
+ 174              		.fpu fpv4-sp-d16
+ 176              	storage_partition_read:
+ 177              	.LFB5:
+  27:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** 
+  28:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** int storage_partition_read(int part_id, uint8_t *buf, uint32_t len, uint32_t offset)
+  29:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** {
+ 178              		.loc 1 29 0
+ 179              		.cfi_startproc
+ 180              		@ args = 0, pretend = 0, frame = 24
+ 181              		@ frame_needed = 1, uses_anonymous_args = 0
+ 182 0000 80B5     		push	{r7, lr}
+ 183              	.LCFI10:
+ 184              		.cfi_def_cfa_offset 8
+ 185              		.cfi_offset 7, -8
+ 186              		.cfi_offset 14, -4
+ 187 0002 86B0     		sub	sp, sp, #24
+ 188              	.LCFI11:
+ 189              		.cfi_def_cfa_offset 32
+ 190 0004 00AF     		add	r7, sp, #0
+ 191              	.LCFI12:
+ 192              		.cfi_def_cfa_register 7
+ 193 0006 F860     		str	r0, [r7, #12]
+ 194 0008 B960     		str	r1, [r7, #8]
+ 195 000a 7A60     		str	r2, [r7, #4]
+ 196 000c 3B60     		str	r3, [r7]
+  30:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   const storage_partition *sp;
+  31:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** 
+  32:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   if (part_id >= max_part_num || buf == NULL)
+ 197              		.loc 1 32 0
+ 198 000e 194B     		ldr	r3, .L16
+ 199 0010 1B68     		ldr	r3, [r3]
+ 200 0012 FA68     		ldr	r2, [r7, #12]
+ 201 0014 9A42     		cmp	r2, r3
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s 			page 5
+
+
+ 202 0016 02DA     		bge	.L12
+ 203              		.loc 1 32 0 is_stmt 0 discriminator 1
+ 204 0018 BB68     		ldr	r3, [r7, #8]
+ 205 001a 002B     		cmp	r3, #0
+ 206 001c 02D1     		bne	.L13
+ 207              	.L12:
+  33:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****     return -1;
+ 208              		.loc 1 33 0 is_stmt 1
+ 209 001e 4FF0FF33 		mov	r3, #-1
+ 210 0022 22E0     		b	.L14
+ 211              	.L13:
+  34:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** 
+  35:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   sp = &s_partition[part_id];
+ 212              		.loc 1 35 0
+ 213 0024 144B     		ldr	r3, .L16+4
+ 214 0026 1A68     		ldr	r2, [r3]
+ 215 0028 FB68     		ldr	r3, [r7, #12]
+ 216 002a 1B01     		lsls	r3, r3, #4
+ 217 002c 1344     		add	r3, r3, r2
+ 218 002e 7B61     		str	r3, [r7, #20]
+  36:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   if ((offset + len) > (sp->start_addr + sp->size)) {
+ 219              		.loc 1 36 0
+ 220 0030 3A68     		ldr	r2, [r7]
+ 221 0032 7B68     		ldr	r3, [r7, #4]
+ 222 0034 1A44     		add	r2, r2, r3
+ 223 0036 7B69     		ldr	r3, [r7, #20]
+ 224 0038 9968     		ldr	r1, [r3, #8]
+ 225 003a 7B69     		ldr	r3, [r7, #20]
+ 226 003c DB68     		ldr	r3, [r3, #12]
+ 227 003e 0B44     		add	r3, r3, r1
+ 228 0040 9A42     		cmp	r2, r3
+ 229 0042 06D9     		bls	.L15
+  37:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****     printf("%s:invalid args!\n", __func__);
+ 230              		.loc 1 37 0
+ 231 0044 0D49     		ldr	r1, .L16+8
+ 232 0046 0E48     		ldr	r0, .L16+12
+ 233 0048 FFF7FEFF 		bl	printf
+  38:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****     return -1;
+ 234              		.loc 1 38 0
+ 235 004c 4FF0FF33 		mov	r3, #-1
+ 236 0050 0BE0     		b	.L14
+ 237              	.L15:
+  39:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   }
+  40:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** 
+  41:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   return storage_device_read(sp->dev_id, buf, len, sp->start_addr + offset);
+ 238              		.loc 1 41 0
+ 239 0052 7B69     		ldr	r3, [r7, #20]
+ 240 0054 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 241 0056 1846     		mov	r0, r3
+ 242 0058 7B69     		ldr	r3, [r7, #20]
+ 243 005a 9A68     		ldr	r2, [r3, #8]
+ 244 005c 3B68     		ldr	r3, [r7]
+ 245 005e 1344     		add	r3, r3, r2
+ 246 0060 7A68     		ldr	r2, [r7, #4]
+ 247 0062 B968     		ldr	r1, [r7, #8]
+ 248 0064 FFF7FEFF 		bl	storage_device_read
+ 249 0068 0346     		mov	r3, r0
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s 			page 6
+
+
+ 250              	.L14:
+  42:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** }
+ 251              		.loc 1 42 0
+ 252 006a 1846     		mov	r0, r3
+ 253 006c 1837     		adds	r7, r7, #24
+ 254              	.LCFI13:
+ 255              		.cfi_def_cfa_offset 8
+ 256 006e BD46     		mov	sp, r7
+ 257              	.LCFI14:
+ 258              		.cfi_def_cfa_register 13
+ 259              		@ sp needed
+ 260 0070 80BD     		pop	{r7, pc}
+ 261              	.L17:
+ 262 0072 00BF     		.align	2
+ 263              	.L16:
+ 264 0074 00000000 		.word	max_part_num
+ 265 0078 00000000 		.word	s_partition
+ 266 007c 00000000 		.word	__func__.6529
+ 267 0080 00000000 		.word	.LC0
+ 268              		.cfi_endproc
+ 269              	.LFE5:
+ 271              		.section	.text.storage_partition_write,"ax",%progbits
+ 272              		.align	1
+ 273              		.global	storage_partition_write
+ 274              		.syntax unified
+ 275              		.thumb
+ 276              		.thumb_func
+ 277              		.fpu fpv4-sp-d16
+ 279              	storage_partition_write:
+ 280              	.LFB6:
+  43:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** 
+  44:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** int storage_partition_write(int part_id, uint8_t *buf, uint32_t len, uint32_t offset)
+  45:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** {
+ 281              		.loc 1 45 0
+ 282              		.cfi_startproc
+ 283              		@ args = 0, pretend = 0, frame = 24
+ 284              		@ frame_needed = 1, uses_anonymous_args = 0
+ 285 0000 80B5     		push	{r7, lr}
+ 286              	.LCFI15:
+ 287              		.cfi_def_cfa_offset 8
+ 288              		.cfi_offset 7, -8
+ 289              		.cfi_offset 14, -4
+ 290 0002 86B0     		sub	sp, sp, #24
+ 291              	.LCFI16:
+ 292              		.cfi_def_cfa_offset 32
+ 293 0004 00AF     		add	r7, sp, #0
+ 294              	.LCFI17:
+ 295              		.cfi_def_cfa_register 7
+ 296 0006 F860     		str	r0, [r7, #12]
+ 297 0008 B960     		str	r1, [r7, #8]
+ 298 000a 7A60     		str	r2, [r7, #4]
+ 299 000c 3B60     		str	r3, [r7]
+  46:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   const storage_partition *sp;
+  47:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** 
+  48:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   if (part_id >= max_part_num || buf == NULL)
+ 300              		.loc 1 48 0
+ 301 000e 194B     		ldr	r3, .L23
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s 			page 7
+
+
+ 302 0010 1B68     		ldr	r3, [r3]
+ 303 0012 FA68     		ldr	r2, [r7, #12]
+ 304 0014 9A42     		cmp	r2, r3
+ 305 0016 02DA     		bge	.L19
+ 306              		.loc 1 48 0 is_stmt 0 discriminator 1
+ 307 0018 BB68     		ldr	r3, [r7, #8]
+ 308 001a 002B     		cmp	r3, #0
+ 309 001c 02D1     		bne	.L20
+ 310              	.L19:
+  49:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****     return -1;
+ 311              		.loc 1 49 0 is_stmt 1
+ 312 001e 4FF0FF33 		mov	r3, #-1
+ 313 0022 22E0     		b	.L21
+ 314              	.L20:
+  50:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** 
+  51:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   sp = &s_partition[part_id];
+ 315              		.loc 1 51 0
+ 316 0024 144B     		ldr	r3, .L23+4
+ 317 0026 1A68     		ldr	r2, [r3]
+ 318 0028 FB68     		ldr	r3, [r7, #12]
+ 319 002a 1B01     		lsls	r3, r3, #4
+ 320 002c 1344     		add	r3, r3, r2
+ 321 002e 7B61     		str	r3, [r7, #20]
+  52:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   if ((offset + len) > (sp->start_addr + sp->size)) {
+ 322              		.loc 1 52 0
+ 323 0030 3A68     		ldr	r2, [r7]
+ 324 0032 7B68     		ldr	r3, [r7, #4]
+ 325 0034 1A44     		add	r2, r2, r3
+ 326 0036 7B69     		ldr	r3, [r7, #20]
+ 327 0038 9968     		ldr	r1, [r3, #8]
+ 328 003a 7B69     		ldr	r3, [r7, #20]
+ 329 003c DB68     		ldr	r3, [r3, #12]
+ 330 003e 0B44     		add	r3, r3, r1
+ 331 0040 9A42     		cmp	r2, r3
+ 332 0042 06D9     		bls	.L22
+  53:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****     printf("%s:invalid args!\n", __func__);
+ 333              		.loc 1 53 0
+ 334 0044 0D49     		ldr	r1, .L23+8
+ 335 0046 0E48     		ldr	r0, .L23+12
+ 336 0048 FFF7FEFF 		bl	printf
+  54:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****     return -1;
+ 337              		.loc 1 54 0
+ 338 004c 4FF0FF33 		mov	r3, #-1
+ 339 0050 0BE0     		b	.L21
+ 340              	.L22:
+  55:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   }
+  56:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** 
+  57:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   return storage_device_write(sp->dev_id, buf, len, sp->start_addr + offset);
+ 341              		.loc 1 57 0
+ 342 0052 7B69     		ldr	r3, [r7, #20]
+ 343 0054 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 344 0056 1846     		mov	r0, r3
+ 345 0058 7B69     		ldr	r3, [r7, #20]
+ 346 005a 9A68     		ldr	r2, [r3, #8]
+ 347 005c 3B68     		ldr	r3, [r7]
+ 348 005e 1344     		add	r3, r3, r2
+ 349 0060 7A68     		ldr	r2, [r7, #4]
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s 			page 8
+
+
+ 350 0062 B968     		ldr	r1, [r7, #8]
+ 351 0064 FFF7FEFF 		bl	storage_device_write
+ 352 0068 0346     		mov	r3, r0
+ 353              	.L21:
+  58:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** }
+ 354              		.loc 1 58 0
+ 355 006a 1846     		mov	r0, r3
+ 356 006c 1837     		adds	r7, r7, #24
+ 357              	.LCFI18:
+ 358              		.cfi_def_cfa_offset 8
+ 359 006e BD46     		mov	sp, r7
+ 360              	.LCFI19:
+ 361              		.cfi_def_cfa_register 13
+ 362              		@ sp needed
+ 363 0070 80BD     		pop	{r7, pc}
+ 364              	.L24:
+ 365 0072 00BF     		.align	2
+ 366              	.L23:
+ 367 0074 00000000 		.word	max_part_num
+ 368 0078 00000000 		.word	s_partition
+ 369 007c 00000000 		.word	__func__.6537
+ 370 0080 00000000 		.word	.LC0
+ 371              		.cfi_endproc
+ 372              	.LFE6:
+ 374              		.section	.text.storage_partition_erase_write,"ax",%progbits
+ 375              		.align	1
+ 376              		.global	storage_partition_erase_write
+ 377              		.syntax unified
+ 378              		.thumb
+ 379              		.thumb_func
+ 380              		.fpu fpv4-sp-d16
+ 382              	storage_partition_erase_write:
+ 383              	.LFB7:
+  59:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** 
+  60:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** int storage_partition_erase_write(int part_id, uint8_t *buf, uint32_t len, uint32_t offset)
+  61:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** {
+ 384              		.loc 1 61 0
+ 385              		.cfi_startproc
+ 386              		@ args = 0, pretend = 0, frame = 24
+ 387              		@ frame_needed = 1, uses_anonymous_args = 0
+ 388 0000 80B5     		push	{r7, lr}
+ 389              	.LCFI20:
+ 390              		.cfi_def_cfa_offset 8
+ 391              		.cfi_offset 7, -8
+ 392              		.cfi_offset 14, -4
+ 393 0002 86B0     		sub	sp, sp, #24
+ 394              	.LCFI21:
+ 395              		.cfi_def_cfa_offset 32
+ 396 0004 00AF     		add	r7, sp, #0
+ 397              	.LCFI22:
+ 398              		.cfi_def_cfa_register 7
+ 399 0006 F860     		str	r0, [r7, #12]
+ 400 0008 B960     		str	r1, [r7, #8]
+ 401 000a 7A60     		str	r2, [r7, #4]
+ 402 000c 3B60     		str	r3, [r7]
+  62:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   const storage_partition *sp;
+  63:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** 
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s 			page 9
+
+
+  64:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   if (part_id >= max_part_num || buf == NULL)
+ 403              		.loc 1 64 0
+ 404 000e 194B     		ldr	r3, .L30
+ 405 0010 1B68     		ldr	r3, [r3]
+ 406 0012 FA68     		ldr	r2, [r7, #12]
+ 407 0014 9A42     		cmp	r2, r3
+ 408 0016 02DA     		bge	.L26
+ 409              		.loc 1 64 0 is_stmt 0 discriminator 1
+ 410 0018 BB68     		ldr	r3, [r7, #8]
+ 411 001a 002B     		cmp	r3, #0
+ 412 001c 02D1     		bne	.L27
+ 413              	.L26:
+  65:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****     return -1;
+ 414              		.loc 1 65 0 is_stmt 1
+ 415 001e 4FF0FF33 		mov	r3, #-1
+ 416 0022 22E0     		b	.L28
+ 417              	.L27:
+  66:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** 
+  67:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   sp = &s_partition[part_id];
+ 418              		.loc 1 67 0
+ 419 0024 144B     		ldr	r3, .L30+4
+ 420 0026 1A68     		ldr	r2, [r3]
+ 421 0028 FB68     		ldr	r3, [r7, #12]
+ 422 002a 1B01     		lsls	r3, r3, #4
+ 423 002c 1344     		add	r3, r3, r2
+ 424 002e 7B61     		str	r3, [r7, #20]
+  68:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   if ((offset + len) > (sp->start_addr + sp->size)){
+ 425              		.loc 1 68 0
+ 426 0030 3A68     		ldr	r2, [r7]
+ 427 0032 7B68     		ldr	r3, [r7, #4]
+ 428 0034 1A44     		add	r2, r2, r3
+ 429 0036 7B69     		ldr	r3, [r7, #20]
+ 430 0038 9968     		ldr	r1, [r3, #8]
+ 431 003a 7B69     		ldr	r3, [r7, #20]
+ 432 003c DB68     		ldr	r3, [r3, #12]
+ 433 003e 0B44     		add	r3, r3, r1
+ 434 0040 9A42     		cmp	r2, r3
+ 435 0042 06D9     		bls	.L29
+  69:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****     printf("%s:invalid args!\n", __func__);
+ 436              		.loc 1 69 0
+ 437 0044 0D49     		ldr	r1, .L30+8
+ 438 0046 0E48     		ldr	r0, .L30+12
+ 439 0048 FFF7FEFF 		bl	printf
+  70:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****     return -1;
+ 440              		.loc 1 70 0
+ 441 004c 4FF0FF33 		mov	r3, #-1
+ 442 0050 0BE0     		b	.L28
+ 443              	.L29:
+  71:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   }
+  72:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   return storage_device_erase_write(sp->dev_id, buf, len, sp->start_addr + offset);
+ 444              		.loc 1 72 0
+ 445 0052 7B69     		ldr	r3, [r7, #20]
+ 446 0054 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 447 0056 1846     		mov	r0, r3
+ 448 0058 7B69     		ldr	r3, [r7, #20]
+ 449 005a 9A68     		ldr	r2, [r3, #8]
+ 450 005c 3B68     		ldr	r3, [r7]
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s 			page 10
+
+
+ 451 005e 1344     		add	r3, r3, r2
+ 452 0060 7A68     		ldr	r2, [r7, #4]
+ 453 0062 B968     		ldr	r1, [r7, #8]
+ 454 0064 FFF7FEFF 		bl	storage_device_erase_write
+ 455 0068 0346     		mov	r3, r0
+ 456              	.L28:
+  73:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** }
+ 457              		.loc 1 73 0
+ 458 006a 1846     		mov	r0, r3
+ 459 006c 1837     		adds	r7, r7, #24
+ 460              	.LCFI23:
+ 461              		.cfi_def_cfa_offset 8
+ 462 006e BD46     		mov	sp, r7
+ 463              	.LCFI24:
+ 464              		.cfi_def_cfa_register 13
+ 465              		@ sp needed
+ 466 0070 80BD     		pop	{r7, pc}
+ 467              	.L31:
+ 468 0072 00BF     		.align	2
+ 469              	.L30:
+ 470 0074 00000000 		.word	max_part_num
+ 471 0078 00000000 		.word	s_partition
+ 472 007c 00000000 		.word	__func__.6545
+ 473 0080 00000000 		.word	.LC0
+ 474              		.cfi_endproc
+ 475              	.LFE7:
+ 477              		.section	.text.storage_partition_erase,"ax",%progbits
+ 478              		.align	1
+ 479              		.global	storage_partition_erase
+ 480              		.syntax unified
+ 481              		.thumb
+ 482              		.thumb_func
+ 483              		.fpu fpv4-sp-d16
+ 485              	storage_partition_erase:
+ 486              	.LFB8:
+  74:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** 
+  75:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** int storage_partition_erase(int part_id, uint32_t offset, uint32_t len)
+  76:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** {
+ 487              		.loc 1 76 0
+ 488              		.cfi_startproc
+ 489              		@ args = 0, pretend = 0, frame = 24
+ 490              		@ frame_needed = 1, uses_anonymous_args = 0
+ 491 0000 80B5     		push	{r7, lr}
+ 492              	.LCFI25:
+ 493              		.cfi_def_cfa_offset 8
+ 494              		.cfi_offset 7, -8
+ 495              		.cfi_offset 14, -4
+ 496 0002 86B0     		sub	sp, sp, #24
+ 497              	.LCFI26:
+ 498              		.cfi_def_cfa_offset 32
+ 499 0004 00AF     		add	r7, sp, #0
+ 500              	.LCFI27:
+ 501              		.cfi_def_cfa_register 7
+ 502 0006 F860     		str	r0, [r7, #12]
+ 503 0008 B960     		str	r1, [r7, #8]
+ 504 000a 7A60     		str	r2, [r7, #4]
+  77:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   const storage_partition *sp;
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s 			page 11
+
+
+  78:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** 
+  79:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   if (part_id >= max_part_num)
+ 505              		.loc 1 79 0
+ 506 000c 174B     		ldr	r3, .L36
+ 507 000e 1B68     		ldr	r3, [r3]
+ 508 0010 FA68     		ldr	r2, [r7, #12]
+ 509 0012 9A42     		cmp	r2, r3
+ 510 0014 02DB     		blt	.L33
+  80:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****     return -1;
+ 511              		.loc 1 80 0
+ 512 0016 4FF0FF33 		mov	r3, #-1
+ 513 001a 22E0     		b	.L34
+ 514              	.L33:
+  81:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** 
+  82:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   sp = &s_partition[part_id];
+ 515              		.loc 1 82 0
+ 516 001c 144B     		ldr	r3, .L36+4
+ 517 001e 1A68     		ldr	r2, [r3]
+ 518 0020 FB68     		ldr	r3, [r7, #12]
+ 519 0022 1B01     		lsls	r3, r3, #4
+ 520 0024 1344     		add	r3, r3, r2
+ 521 0026 7B61     		str	r3, [r7, #20]
+  83:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   if ((offset + len) > (sp->start_addr + sp->size)){
+ 522              		.loc 1 83 0
+ 523 0028 BA68     		ldr	r2, [r7, #8]
+ 524 002a 7B68     		ldr	r3, [r7, #4]
+ 525 002c 1A44     		add	r2, r2, r3
+ 526 002e 7B69     		ldr	r3, [r7, #20]
+ 527 0030 9968     		ldr	r1, [r3, #8]
+ 528 0032 7B69     		ldr	r3, [r7, #20]
+ 529 0034 DB68     		ldr	r3, [r3, #12]
+ 530 0036 0B44     		add	r3, r3, r1
+ 531 0038 9A42     		cmp	r2, r3
+ 532 003a 06D9     		bls	.L35
+  84:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****     printf("%s:invalid args!\n", __func__);
+ 533              		.loc 1 84 0
+ 534 003c 0D49     		ldr	r1, .L36+8
+ 535 003e 0E48     		ldr	r0, .L36+12
+ 536 0040 FFF7FEFF 		bl	printf
+  85:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****     return -1;
+ 537              		.loc 1 85 0
+ 538 0044 4FF0FF33 		mov	r3, #-1
+ 539 0048 0BE0     		b	.L34
+ 540              	.L35:
+  86:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   }
+  87:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** 
+  88:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c ****   return storage_device_erase(sp->dev_id, sp->start_addr + offset, len);
+ 541              		.loc 1 88 0
+ 542 004a 7B69     		ldr	r3, [r7, #20]
+ 543 004c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 544 004e 1846     		mov	r0, r3
+ 545 0050 7B69     		ldr	r3, [r7, #20]
+ 546 0052 9A68     		ldr	r2, [r3, #8]
+ 547 0054 BB68     		ldr	r3, [r7, #8]
+ 548 0056 1344     		add	r3, r3, r2
+ 549 0058 7A68     		ldr	r2, [r7, #4]
+ 550 005a 1946     		mov	r1, r3
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s 			page 12
+
+
+ 551 005c FFF7FEFF 		bl	storage_device_erase
+ 552 0060 0346     		mov	r3, r0
+ 553              	.L34:
+  89:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage\partition.c **** }
+ 554              		.loc 1 89 0
+ 555 0062 1846     		mov	r0, r3
+ 556 0064 1837     		adds	r7, r7, #24
+ 557              	.LCFI28:
+ 558              		.cfi_def_cfa_offset 8
+ 559 0066 BD46     		mov	sp, r7
+ 560              	.LCFI29:
+ 561              		.cfi_def_cfa_register 13
+ 562              		@ sp needed
+ 563 0068 80BD     		pop	{r7, pc}
+ 564              	.L37:
+ 565 006a 00BF     		.align	2
+ 566              	.L36:
+ 567 006c 00000000 		.word	max_part_num
+ 568 0070 00000000 		.word	s_partition
+ 569 0074 00000000 		.word	__func__.6552
+ 570 0078 00000000 		.word	.LC0
+ 571              		.cfi_endproc
+ 572              	.LFE8:
+ 574              		.section	.rodata.__func__.6529,"a",%progbits
+ 575              		.align	2
+ 578              	__func__.6529:
+ 579 0000 73746F72 		.ascii	"storage_partition_read\000"
+ 579      6167655F 
+ 579      70617274 
+ 579      6974696F 
+ 579      6E5F7265 
+ 580              		.section	.rodata.__func__.6537,"a",%progbits
+ 581              		.align	2
+ 584              	__func__.6537:
+ 585 0000 73746F72 		.ascii	"storage_partition_write\000"
+ 585      6167655F 
+ 585      70617274 
+ 585      6974696F 
+ 585      6E5F7772 
+ 586              		.section	.rodata.__func__.6545,"a",%progbits
+ 587              		.align	2
+ 590              	__func__.6545:
+ 591 0000 73746F72 		.ascii	"storage_partition_erase_write\000"
+ 591      6167655F 
+ 591      70617274 
+ 591      6974696F 
+ 591      6E5F6572 
+ 592              		.section	.rodata.__func__.6552,"a",%progbits
+ 593              		.align	2
+ 596              	__func__.6552:
+ 597 0000 73746F72 		.ascii	"storage_partition_erase\000"
+ 597      6167655F 
+ 597      70617274 
+ 597      6974696F 
+ 597      6E5F6572 
+ 598              		.text
+ 599              	.Letext0:
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s 			page 13
+
+
+ 600              		.file 2 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 601              		.file 3 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 602              		.file 4 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/storage/partition.h"
+ 603              		.file 5 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 604              		.file 6 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 605              		.file 7 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gc
+ 606              		.file 8 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s 			page 14
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 partition.c
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:18     .bss.s_partition:00000000 $d
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:21     .bss.s_partition:00000000 s_partition
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:24     .bss.max_part_num:00000000 $d
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:27     .bss.max_part_num:00000000 max_part_num
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:30     .text.storage_partition_init:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:37     .text.storage_partition_init:00000000 storage_partition_init
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:98     .text.storage_partition_init:00000038 $d
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:104    .text.storage_partition_deinit:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:111    .text.storage_partition_deinit:00000000 storage_partition_deinit
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:159    .text.storage_partition_deinit:0000002c $d
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:165    .rodata:00000000 $d
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:169    .text.storage_partition_read:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:176    .text.storage_partition_read:00000000 storage_partition_read
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:264    .text.storage_partition_read:00000074 $d
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:578    .rodata.__func__.6529:00000000 __func__.6529
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:272    .text.storage_partition_write:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:279    .text.storage_partition_write:00000000 storage_partition_write
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:367    .text.storage_partition_write:00000074 $d
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:584    .rodata.__func__.6537:00000000 __func__.6537
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:375    .text.storage_partition_erase_write:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:382    .text.storage_partition_erase_write:00000000 storage_partition_erase_write
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:470    .text.storage_partition_erase_write:00000074 $d
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:590    .rodata.__func__.6545:00000000 __func__.6545
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:478    .text.storage_partition_erase:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:485    .text.storage_partition_erase:00000000 storage_partition_erase
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:567    .text.storage_partition_erase:0000006c $d
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:596    .rodata.__func__.6552:00000000 __func__.6552
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:575    .rodata.__func__.6529:00000000 $d
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:581    .rodata.__func__.6537:00000000 $d
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:587    .rodata.__func__.6545:00000000 $d
+C:\Users\201711~1\AppData\Local\Temp\ccykSIEI.s:593    .rodata.__func__.6552:00000000 $d
+
+UNDEFINED SYMBOLS
+printf
+storage_device_read
+storage_device_write
+storage_device_erase_write
+storage_device_erase

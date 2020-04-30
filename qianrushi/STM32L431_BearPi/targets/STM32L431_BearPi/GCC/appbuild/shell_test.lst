@@ -1,0 +1,342 @@
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccFTUFHa.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"shell_test.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.shell_taskinfo,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv4-sp-d16
+  24              	shell_taskinfo:
+  25              	.LFB287:
+  26              		.file 1 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell/shell_test.c"
+   1:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * Copyright (c) <2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * All rights reserved.
+   4:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * conditions and the following disclaimer.
+   8:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * provided with the distribution.
+  11:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * permission.
+  14:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * Notice of Export Control Law
+  28:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * ===============================================
+  29:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  * applicable export control laws and regulations.
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccFTUFHa.s 			page 2
+
+
+  33:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** /**
+  35:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  *  DATE                AUTHOR      INSTRUCTION
+  36:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  *  2019-05-14 17:22  zhangqianfu  The first version
+  37:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  *
+  38:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****  */
+  39:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** #if CONFIG_SHELL_ENABLE
+  40:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** 
+  41:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** #include <shell.h>
+  42:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** #include <los_memory.h>
+  43:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** #include <osal.h>
+  44:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** /*
+  45:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** //here we export to shell command,you could add your own shell like this
+  46:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** //test fucntion:print the params passed in
+  47:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** static int shell_test_func(int argc, const char *argv[]){
+  48:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****     int i = 0;
+  49:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****     printf("argc:%d \n\r",argc);
+  50:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****     for(i=0;i<argc;i++){
+  51:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****         printf("args:%d %s\n\r",i,argv[i]);
+  52:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****     }
+  53:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****     return 0;
+  54:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** }
+  55:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** OSSHELL_EXPORT_CMD(shell_test_func,"shell_test_func","shell test func"); //export a functuon demo
+  56:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** 
+  57:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** static u32_t gs_shell_test_var =123;
+  58:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** OSSHELL_EXPORT_VAR(gs_shell_test_var,"shell_test_var","shell test var");  //export a var demo here
+  59:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** */
+  60:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** //show all the task status here
+  61:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** extern UINT32 osGetAllTskInfo(VOID);
+  62:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** static int shell_taskinfo(int argc,const char *argv[]){
+  27              		.loc 1 62 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31 0000 80B5     		push	{r7, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 82B0     		sub	sp, sp, #8
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 16
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  42 0006 7860     		str	r0, [r7, #4]
+  43 0008 3960     		str	r1, [r7]
+  63:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****     osGetAllTskInfo();
+  44              		.loc 1 63 0
+  45 000a FFF7FEFF 		bl	osGetAllTskInfo
+  64:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****     return 0;
+  46              		.loc 1 64 0
+  47 000e 0023     		movs	r3, #0
+  65:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** }
+  48              		.loc 1 65 0
+  49 0010 1846     		mov	r0, r3
+  50 0012 0837     		adds	r7, r7, #8
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccFTUFHa.s 			page 3
+
+
+  51              	.LCFI3:
+  52              		.cfi_def_cfa_offset 8
+  53 0014 BD46     		mov	sp, r7
+  54              	.LCFI4:
+  55              		.cfi_def_cfa_register 13
+  56              		@ sp needed
+  57 0016 80BD     		pop	{r7, pc}
+  58              		.cfi_endproc
+  59              	.LFE287:
+  61              		.section	.rodata
+  62              		.align	2
+  63              	.LC0:
+  64 0000 7461736B 		.ascii	"taskinfo\000"
+  64      696E666F 
+  64      00
+  65              		.section	oshell,"a",%progbits
+  66              		.align	2
+  69              	__oshell_shell_taskinfo:
+  70 0000 00000000 		.word	.LC0
+  71 0004 00000000 		.word	.LC0
+  72 0008 00000000 		.word	shell_taskinfo
+  73 000c 0000     		.short	0
+  74 000e 0400     		.short	4
+  75              		.section	.text.shell_heapinfo,"ax",%progbits
+  76              		.align	1
+  77              		.syntax unified
+  78              		.thumb
+  79              		.thumb_func
+  80              		.fpu fpv4-sp-d16
+  82              	shell_heapinfo:
+  83              	.LFB288:
+  66:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** OSSHELL_EXPORT_CMD(shell_taskinfo,"taskinfo","taskinfo");
+  67:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** 
+  68:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** //show the memstatus here
+  69:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** static int shell_heapinfo(int argc,const char *argv[])
+  70:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** {
+  84              		.loc 1 70 0
+  85              		.cfi_startproc
+  86              		@ args = 0, pretend = 0, frame = 8
+  87              		@ frame_needed = 1, uses_anonymous_args = 0
+  88 0000 80B5     		push	{r7, lr}
+  89              	.LCFI5:
+  90              		.cfi_def_cfa_offset 8
+  91              		.cfi_offset 7, -8
+  92              		.cfi_offset 14, -4
+  93 0002 82B0     		sub	sp, sp, #8
+  94              	.LCFI6:
+  95              		.cfi_def_cfa_offset 16
+  96 0004 00AF     		add	r7, sp, #0
+  97              	.LCFI7:
+  98              		.cfi_def_cfa_register 7
+  99 0006 7860     		str	r0, [r7, #4]
+ 100 0008 3960     		str	r1, [r7]
+  71:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** #if (LOSCFG_HEAP_IMPROVED == YES)
+  72:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****     LOS_MemInfo(NULL, 1);
+ 101              		.loc 1 72 0
+ 102 000a 0121     		movs	r1, #1
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccFTUFHa.s 			page 4
+
+
+ 103 000c 0020     		movs	r0, #0
+ 104 000e FFF7FEFF 		bl	LOS_MemInfo
+  73:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** #else
+  74:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****     LOS_MemPoolList();
+  75:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** #endif
+  76:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****     return 0;
+ 105              		.loc 1 76 0
+ 106 0012 0023     		movs	r3, #0
+  77:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** }
+ 107              		.loc 1 77 0
+ 108 0014 1846     		mov	r0, r3
+ 109 0016 0837     		adds	r7, r7, #8
+ 110              	.LCFI8:
+ 111              		.cfi_def_cfa_offset 8
+ 112 0018 BD46     		mov	sp, r7
+ 113              	.LCFI9:
+ 114              		.cfi_def_cfa_register 13
+ 115              		@ sp needed
+ 116 001a 80BD     		pop	{r7, pc}
+ 117              		.cfi_endproc
+ 118              	.LFE288:
+ 120              		.section	.rodata
+ 121 0009 000000   		.align	2
+ 122              	.LC1:
+ 123 000c 68656170 		.ascii	"heapinfo\000"
+ 123      696E666F 
+ 123      00
+ 124              		.section	oshell
+ 125              		.align	2
+ 128              	__oshell_shell_heapinfo:
+ 129 0010 0C000000 		.word	.LC1
+ 130 0014 0C000000 		.word	.LC1
+ 131 0018 00000000 		.word	shell_heapinfo
+ 132 001c 0000     		.short	0
+ 133 001e 0400     		.short	4
+ 134              		.section	.rodata
+ 135 0015 000000   		.align	2
+ 136              	.LC2:
+ 137 0018 7265626F 		.ascii	"reboot failed\012\015\000"
+ 137      6F742066 
+ 137      61696C65 
+ 137      640A0D00 
+ 138              		.section	.text.shell_reboot,"ax",%progbits
+ 139              		.align	1
+ 140              		.syntax unified
+ 141              		.thumb
+ 142              		.thumb_func
+ 143              		.fpu fpv4-sp-d16
+ 145              	shell_reboot:
+ 146              	.LFB289:
+  78:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** OSSHELL_EXPORT_CMD(shell_heapinfo,"heapinfo","heapinfo");
+  79:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** 
+  80:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** 
+  81:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** static int shell_reboot(int argc,const char *argv[])
+  82:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** {
+ 147              		.loc 1 82 0
+ 148              		.cfi_startproc
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccFTUFHa.s 			page 5
+
+
+ 149              		@ args = 0, pretend = 0, frame = 8
+ 150              		@ frame_needed = 1, uses_anonymous_args = 0
+ 151 0000 80B5     		push	{r7, lr}
+ 152              	.LCFI10:
+ 153              		.cfi_def_cfa_offset 8
+ 154              		.cfi_offset 7, -8
+ 155              		.cfi_offset 14, -4
+ 156 0002 82B0     		sub	sp, sp, #8
+ 157              	.LCFI11:
+ 158              		.cfi_def_cfa_offset 16
+ 159 0004 00AF     		add	r7, sp, #0
+ 160              	.LCFI12:
+ 161              		.cfi_def_cfa_register 7
+ 162 0006 7860     		str	r0, [r7, #4]
+ 163 0008 3960     		str	r1, [r7]
+  83:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****     osal_reboot();
+ 164              		.loc 1 83 0
+ 165 000a FFF7FEFF 		bl	osal_reboot
+  84:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** 
+  85:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****     printf("reboot failed\n\r");
+ 166              		.loc 1 85 0
+ 167 000e 0448     		ldr	r0, .L7
+ 168 0010 FFF7FEFF 		bl	printf
+  86:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** 
+  87:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c ****     return -1;
+ 169              		.loc 1 87 0
+ 170 0014 4FF0FF33 		mov	r3, #-1
+  88:C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/shell\shell_test.c **** }
+ 171              		.loc 1 88 0
+ 172 0018 1846     		mov	r0, r3
+ 173 001a 0837     		adds	r7, r7, #8
+ 174              	.LCFI13:
+ 175              		.cfi_def_cfa_offset 8
+ 176 001c BD46     		mov	sp, r7
+ 177              	.LCFI14:
+ 178              		.cfi_def_cfa_register 13
+ 179              		@ sp needed
+ 180 001e 80BD     		pop	{r7, pc}
+ 181              	.L8:
+ 182              		.align	2
+ 183              	.L7:
+ 184 0020 18000000 		.word	.LC2
+ 185              		.cfi_endproc
+ 186              	.LFE289:
+ 188              		.section	.rodata
+ 189              		.align	2
+ 190              	.LC3:
+ 191 0028 7265626F 		.ascii	"reboot\000"
+ 191      6F7400
+ 192              		.section	oshell
+ 193              		.align	2
+ 196              	__oshell_shell_reboot:
+ 197 0020 28000000 		.word	.LC3
+ 198 0024 28000000 		.word	.LC3
+ 199 0028 00000000 		.word	shell_reboot
+ 200 002c 0000     		.short	0
+ 201 002e 0400     		.short	4
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccFTUFHa.s 			page 6
+
+
+ 202              		.text
+ 203              	.Letext0:
+ 204              		.file 2 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 205              		.file 3 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 206              		.file 4 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/inc/shell.h"
+ 207              		.file 5 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 208              		.file 6 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 209              		.file 7 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gc
+ 210              		.file 8 "c:\\users\\2017115235\\opensourcetools\\gnu tools arm embedded\\7 2018-q2-update\\arm-non
+ 211              		.file 9 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/los_typedef.h"
+ 212              		.file 10 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/arch/arm/common/cmsis/c
+ 213              		.file 11 "E:/danpianji/2017115235_TenxMcu/qianrushi/STM32L431_BearPi/targets/STM32L431_BearPi/Inc/
+ 214              		.file 12 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/arch/arm/arm-m/include/
+ 215              		.file 13 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/los_config.h"
+ 216              		.file 14 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/los_err.h"
+ 217              		.file 15 "C:/Users/2017115235/.icode/sdk/IoT_LINK_1.0.0/iot_link/os/liteos/include/los_memory.h"
+ARM GAS  C:\Users\201711~1\AppData\Local\Temp\ccFTUFHa.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 shell_test.c
+C:\Users\201711~1\AppData\Local\Temp\ccFTUFHa.s:18     .text.shell_taskinfo:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccFTUFHa.s:24     .text.shell_taskinfo:00000000 shell_taskinfo
+C:\Users\201711~1\AppData\Local\Temp\ccFTUFHa.s:62     .rodata:00000000 $d
+C:\Users\201711~1\AppData\Local\Temp\ccFTUFHa.s:66     oshell:00000000 $d
+C:\Users\201711~1\AppData\Local\Temp\ccFTUFHa.s:69     oshell:00000000 __oshell_shell_taskinfo
+C:\Users\201711~1\AppData\Local\Temp\ccFTUFHa.s:76     .text.shell_heapinfo:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccFTUFHa.s:82     .text.shell_heapinfo:00000000 shell_heapinfo
+C:\Users\201711~1\AppData\Local\Temp\ccFTUFHa.s:128    oshell:00000010 __oshell_shell_heapinfo
+C:\Users\201711~1\AppData\Local\Temp\ccFTUFHa.s:139    .text.shell_reboot:00000000 $t
+C:\Users\201711~1\AppData\Local\Temp\ccFTUFHa.s:145    .text.shell_reboot:00000000 shell_reboot
+C:\Users\201711~1\AppData\Local\Temp\ccFTUFHa.s:184    .text.shell_reboot:00000020 $d
+C:\Users\201711~1\AppData\Local\Temp\ccFTUFHa.s:196    oshell:00000020 __oshell_shell_reboot
+
+UNDEFINED SYMBOLS
+osGetAllTskInfo
+LOS_MemInfo
+osal_reboot
+printf
